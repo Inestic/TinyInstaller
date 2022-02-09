@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="TinyInstaller.UserControls.WindowTitle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TinyInstaller.UserControls"
+             mc:Ignorable="d"
+             MouseLeftButtonDown="WindowTitle_MouseLeftButtonDown">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type local:WindowTitle}">
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid>
+                <local:DuckIcon Width="30"
+                                Height="30"
+                                HorizontalAlignment="Left"
+                                Margin="10, 5, 0 ,0" />
+                <TextBlock Style="{DynamicResource RegularText}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="40, 0, 0, 0"
+                           FontSize="12">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="AppName" />
+                            <Binding Path="AppVersion" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>
