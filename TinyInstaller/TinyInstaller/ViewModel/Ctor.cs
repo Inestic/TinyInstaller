@@ -2,9 +2,10 @@
 {
     internal partial class VM
     {
-        public VM(MainWindow window) : base()
+        public VM(MainWindow mainWindow) : base()
         {
-            MainWindow = window;
+            InitializeProperties(mainWindow);
+            InitializeCommands();
         }
     }
 }
