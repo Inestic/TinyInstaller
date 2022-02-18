@@ -1,4 +1,5 @@
-﻿using TinyInstaller.Common;
+﻿using System.Threading.Tasks;
+using TinyInstaller.Common;
 
 namespace TinyInstaller.ViewModel
 {
@@ -7,6 +8,14 @@ namespace TinyInstaller.ViewModel
         private void InitializeCommands()
         {
             WindowCloseCommand = new RelayCommand(WindowCloseCommand_Execute, WindowCloseCommand_CanExecute);
+            WindowMinimizeCommand = new RelayCommand(WindowMinimizeCommand_Execute);
+        }
+
+        private async void InitializeDataAsync()
+        {
+            await Task.Run(() =>
+            {
+            });
         }
 
         private void InitializeProperties(MainWindow mainWindow)
@@ -18,5 +27,7 @@ namespace TinyInstaller.ViewModel
         private bool WindowCloseCommand_CanExecute(object obj) => Window_CanClose;
 
         private void WindowCloseCommand_Execute(object obj) => MainWindow.Close();
+
+        private void WindowMinimizeCommand_Execute(object obj) => MainWindow.WindowState = System.Windows.WindowState.Minimized;
     }
 }

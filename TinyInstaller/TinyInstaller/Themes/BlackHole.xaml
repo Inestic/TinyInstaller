@@ -3,6 +3,8 @@
 
     <SolidColorBrush x:Key="Window.Background.Normal" Color="#121212" />
     <SolidColorBrush x:Key="Window.Background.Light" Color="#303030" />
+    <SolidColorBrush x:Key="Window.Background.Light10" Color="#3F3F3F" />
     <SolidColorBrush x:Key="Window.Foreground.Normal" Color="#FFFFFF" />
     <SolidColorBrush x:Key="Window.Accent.Normal" Color="#1C62B9" />
+    <SolidColorBrush x:Key="Window.Accent.High" Color="#E81123" />
 </ResourceDictionary>

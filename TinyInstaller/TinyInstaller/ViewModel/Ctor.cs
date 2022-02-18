@@ -6,6 +6,7 @@
         {
             InitializeProperties(mainWindow);
             InitializeCommands();
+            InitializeDataAsync();
         }
     }
 }

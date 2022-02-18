@@ -8,14 +8,37 @@
              MouseLeftButtonDown="WindowTitle_MouseLeftButtonDown">
 
     <UserControl.Resources>
+
+        <Style TargetType="{x:Type Button}" x:Key="TitleButtonStyle">
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Width" Value="45" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                            <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
         <Style TargetType="{x:Type local:WindowTitle}">
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Height" Value="30" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-        </Style>
-        <Style TargetType="{x:Type Grid}">
-            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -37,7 +60,36 @@
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
+                <Button x:Name="CloseWindowButton"
+                        Style="{StaticResource TitleButtonStyle}"
+                        Command="{Binding WindowCloseCommand}">
+                    <Button.Content>
+                        <Viewbox Width="16" Height="16" Margin="0, 0, 3, 5">
+                            <Path Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                                  Fill="{DynamicResource Window.Foreground.Normal}" />
+                        </Viewbox>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="MinimizeWindowButton"
+                        Style="{StaticResource TitleButtonStyle}"
+                        Command="{Binding WindowMinimizeCommand}"
+                        Margin="0, 0, 45, 0">
+                    <Button.Content>
+                        <Viewbox Width="16" Height="16" Margin="0, 0, 3, 5">
+                            <Path Data="M20,14H4V10H20"
+                                  Fill="{DynamicResource Window.Foreground.Normal}" />
+                        </Viewbox>
+                    </Button.Content>
+                </Button>
             </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger SourceName="CloseWindowButton" Property="IsMouseOver" Value="True">
+                    <Setter TargetName="CloseWindowButton" Property="Background" Value="{DynamicResource Window.Accent.High}" />
+                </Trigger>
+                <Trigger SourceName="MinimizeWindowButton" Property="IsMouseOver" Value="True">
+                    <Setter TargetName="MinimizeWindowButton" Property="Background" Value="{DynamicResource Window.Background.Light10}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>
