@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TinyInstaller.Common;
+using TinyInstaller.Helpers;
 
 namespace TinyInstaller.ViewModel
 {
@@ -11,17 +12,20 @@ namespace TinyInstaller.ViewModel
             WindowMinimizeCommand = new RelayCommand(WindowMinimizeCommand_Execute);
         }
 
-        private async void InitializeDataAsync()
+        private void InitializeProperties(MainWindow mainWindow)
+        {
+            ActivePage = Page.LoadingView;
+            MainWindow = mainWindow;
+            Window_CanClose = true;
+        }
+
+        private async void StartupTestsInvokeAsync()
         {
             await Task.Run(() =>
             {
+                var startupTestsHelper = new StartupTestsHelper();
+                ActivePage = startupTestsHelper.Run();
             });
-        }
-
-        private void InitializeProperties(MainWindow mainWindow)
-        {
-            MainWindow = mainWindow;
-            Window_CanClose = true;
         }
 
         private bool WindowCloseCommand_CanExecute(object obj) => Window_CanClose;
