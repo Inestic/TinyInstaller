@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using TinyInstaller.Common;
+using TinyInstaller.Interfaces;
 
 namespace TinyInstaller.StartupTests
 {

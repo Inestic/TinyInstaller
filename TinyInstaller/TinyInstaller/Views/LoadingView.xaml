@@ -4,22 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TinyInstaller.Views"
+             xmlns:converters="clr-namespace:TinyInstaller.Converters"
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <converters:TagToVisibility x:Key="TagToVisibilityConverter" />
         <Style TargetType="{x:Type local:LoadingView}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Window.Accent.Normal}" />
-            <Setter Property="Visibility" Value="Collapsed" />
             <Setter Property="Tag" Value="LoadingView" />
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding ActivePage}" Value="LoadingView">
-                    <Setter Property="Visibility" Value="Visible" />
-                </DataTrigger>
-            </Style.Triggers>
+            <Setter Property="Visibility">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource TagToVisibilityConverter}">
+                        <Binding Path="ActivePage" />
+                        <Binding Path="Tag" RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="{x:Type StackPanel}">
             <Setter Property="VerticalAlignment" Value="Center" />

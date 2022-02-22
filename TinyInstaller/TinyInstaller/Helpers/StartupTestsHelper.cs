@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TinyInstaller.Common;
+using TinyInstaller.Interfaces;
 using TinyInstaller.StartupTests;
 
 namespace TinyInstaller.Helpers

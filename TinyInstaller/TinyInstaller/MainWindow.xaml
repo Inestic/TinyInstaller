@@ -64,6 +64,7 @@
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0" Background="{DynamicResource Window.Background.Light}" />
             <views:LoadingView x:Name="LoadingView" Grid.Row="1" />
+            <views:StartupTestTemplate x:Name="ConfigFileExistTestView" Grid.Row="1" Tag="ConfigFileNotFoundTest" />
             <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}" />
         </Grid>
     </Border>

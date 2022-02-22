@@ -1,6 +1,6 @@
 ﻿using TinyInstaller.Common;
 
-namespace TinyInstaller
+namespace TinyInstaller.Interfaces
 {
     internal interface IStartupTest
     {
