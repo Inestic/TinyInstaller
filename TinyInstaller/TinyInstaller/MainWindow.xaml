@@ -42,6 +42,7 @@
         </Style>
     </Window.Style>
     <Window.Resources>
+        <Thickness x:Key="StandartTextInterval" Right="0" Top="5" Left="0" Bottom="5" />
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -64,7 +65,19 @@
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0" Background="{DynamicResource Window.Background.Light}" />
             <views:LoadingView x:Name="LoadingView" Grid.Row="1" />
-            <views:StartupTestTemplate x:Name="ConfigFileExistTestView" Grid.Row="1" Tag="ConfigFileNotFoundTest" />
+            <views:StartupTestTemplate x:Name="ConfigFileExistTestView" Grid.Row="1" Tag="ConfigFileNotFoundTest">
+                <views:StartupTestTemplate.Content>
+                    <TextBlock Style="{DynamicResource RegularText}"
+                               Text="{DynamicResource Localization.Test.ConfigFileExist.Header}"
+                               Foreground="{DynamicResource Window.Accent.Normal}"
+                               Margin="{StaticResource StandartTextInterval}" />
+
+                    <TextBlock Style="{DynamicResource RegularText}"
+                               Text="{DynamicResource Localization.Test.ConfigFileExist.Description}"
+                               Foreground="{DynamicResource Window.Accent.Normal}"
+                               Margin="{StaticResource StandartTextInterval}" />
+                </views:StartupTestTemplate.Content>
+            </views:StartupTestTemplate>
             <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}" />
         </Grid>
     </Border>

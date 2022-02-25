@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>toy-duck.ico</ApplicationIcon>
+    <ApplicationIcon>spinner.ico</ApplicationIcon>
     <IsPublishable>True</IsPublishable>
     <SignAssembly>False</SignAssembly>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="toy-duck.ico" />
+    <Content Include="spinner.ico" />
   </ItemGroup>
 
   <ItemGroup>

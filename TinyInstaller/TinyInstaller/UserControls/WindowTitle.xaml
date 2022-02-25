@@ -44,14 +44,10 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid>
-                <local:DuckIcon Width="30"
-                                Height="30"
-                                HorizontalAlignment="Left"
-                                Margin="10, 5, 0 ,0" />
                 <TextBlock Style="{DynamicResource RegularText}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Margin="40, 0, 0, 0"
+                           Margin="10, 3, 0, 0"
                            FontSize="12">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} {1}">

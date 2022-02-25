@@ -3,11 +3,11 @@
 namespace TinyInstaller.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для DuckIcon.xaml
+    /// Логика взаимодействия для Logo.xaml
     /// </summary>
-    public partial class DuckIcon : UserControl
+    public partial class Logo : UserControl
     {
-        public DuckIcon()
+        public Logo()
         {
             InitializeComponent();
         }

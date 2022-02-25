@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:TinyInstaller.Converters"
+             xmlns:controls="clr-namespace:TinyInstaller.UserControls"
              xmlns:local="clr-namespace:TinyInstaller.Views"
              mc:Ignorable="d">
 
@@ -24,15 +25,28 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="{x:Type StackPanel}">
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Orientation" Value="Vertical" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="{x:Type ContentPresenter}">
+            <Setter Property="Content" Value="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid ShowGridLines="True">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <controls:Logo Width="100" Height="100" Margin="10, 5, 10 ,10" />
+                    <ContentPresenter />
+                </StackPanel>
             </Grid>
         </ControlTemplate>
     </UserControl.Template>
