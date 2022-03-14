@@ -4,5 +4,5 @@
 
     <system:String x:Key="Localization.App.Loading">Loading...</system:String>
     <system:String x:Key="Localization.Test.ConfigFileExist.Header">NO CONFIGURATION FILE</system:String>
-    <system:String x:Key="Localization.Test.ConfigFileExist.Description">Information about the installed programs is stored in the configuration file "PackagesConfig.json". This file must be located in the root directory of the TinyInstaller.</system:String>
+    <system:String x:Key="Localization.Test.ConfigFileExist.Description">Information about the installed programs is stored in the configuration file "PackagesConfig.json". This file must be located in the root directory.</system:String>
 </ResourceDictionary>

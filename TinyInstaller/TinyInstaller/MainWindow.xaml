@@ -67,15 +67,20 @@
             <views:LoadingView x:Name="LoadingView" Grid.Row="1" />
             <views:StartupTestTemplate x:Name="ConfigFileExistTestView" Grid.Row="1" Tag="ConfigFileNotFoundTest">
                 <views:StartupTestTemplate.Content>
-                    <TextBlock Style="{DynamicResource RegularText}"
-                               Text="{DynamicResource Localization.Test.ConfigFileExist.Header}"
-                               Foreground="{DynamicResource Window.Accent.Normal}"
-                               Margin="{StaticResource StandartTextInterval}" />
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource RegularText}"
+                                   Text="{DynamicResource Localization.Test.ConfigFileExist.Header}"
+                                   Foreground="{DynamicResource Window.Accent.Normal}"
+                                   Margin="{StaticResource StandartTextInterval}"
+                                   HorizontalAlignment="Center" />
 
-                    <TextBlock Style="{DynamicResource RegularText}"
-                               Text="{DynamicResource Localization.Test.ConfigFileExist.Description}"
-                               Foreground="{DynamicResource Window.Accent.Normal}"
-                               Margin="{StaticResource StandartTextInterval}" />
+                        <TextBlock Style="{DynamicResource RegularText}"
+                                   Text="{DynamicResource Localization.Test.ConfigFileExist.Description}"
+                                   TextWrapping="WrapWithOverflow"
+                                   Foreground="{DynamicResource Window.Accent.Normal}"
+                                   Margin="{StaticResource StandartTextInterval}"
+                                   TextAlignment="Center" />
+                    </StackPanel>
                 </views:StartupTestTemplate.Content>
             </views:StartupTestTemplate>
             <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}" />
