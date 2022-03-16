@@ -3,7 +3,7 @@
     internal enum Page
     {
         LoadingView,
-        ConfigFileNotFoundTest,
+        ConfigFileNotFoundView,
         ReadyToInstallView,
     }
 }

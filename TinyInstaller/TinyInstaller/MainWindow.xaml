@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:common="clr-namespace:TinyInstaller.Common"
         xmlns:controls="clr-namespace:TinyInstaller.UserControls"
         xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
@@ -42,7 +43,7 @@
         </Style>
     </Window.Style>
     <Window.Resources>
-        <Thickness x:Key="StandartTextInterval" Right="0" Top="5" Left="0" Bottom="5" />
+        <Thickness x:Key="StandartTextInterval" Right="5" Top="5" Left="5" Bottom="5" />
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -65,7 +66,7 @@
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0" Background="{DynamicResource Window.Background.Light}" />
             <views:LoadingView x:Name="LoadingView" Grid.Row="1" />
-            <views:StartupTestTemplate x:Name="ConfigFileExistTestView" Grid.Row="1" Tag="ConfigFileNotFoundTest">
+            <views:StartupTestTemplate x:Name="ConfigFileExistTestView" Grid.Row="1" Tag="{x:Static common:Page.ConfigFileNotFoundView}">
                 <views:StartupTestTemplate.Content>
                     <StackPanel>
                         <TextBlock Style="{DynamicResource RegularText}"
@@ -74,12 +75,15 @@
                                    Margin="{StaticResource StandartTextInterval}"
                                    HorizontalAlignment="Center" />
 
-                        <TextBlock Style="{DynamicResource RegularText}"
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{DynamicResource RegularText}"
                                    Text="{DynamicResource Localization.Test.ConfigFileExist.Description}"
                                    TextWrapping="WrapWithOverflow"
                                    Foreground="{DynamicResource Window.Accent.Normal}"
                                    Margin="{StaticResource StandartTextInterval}"
                                    TextAlignment="Center" />
+                            <controls:HelpButton Command="{Binding HyperlinkClickedCommand}" />
+                        </StackPanel>
                     </StackPanel>
                 </views:StartupTestTemplate.Content>
             </views:StartupTestTemplate>

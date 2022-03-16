@@ -25,4 +25,27 @@ namespace TinyInstaller.Common
 
         public void Execute(object parameter) => executeDelegate?.Invoke(parameter);
     }
+
+    internal class RelayCommand<T> : ICommand
+    {
+        private readonly Predicate<T> canExecuteDelegate;
+
+        private readonly Action<T> executeDelegate;
+
+        public RelayCommand(Action<T> execute, Predicate<T> canExecute = null)
+        {
+            executeDelegate = execute;
+            canExecuteDelegate = canExecute;
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public bool CanExecute(object parameter) => canExecuteDelegate is null || canExecuteDelegate.Invoke((T)parameter);
+
+        public void Execute(object parameter) => executeDelegate?.Invoke((T)parameter);
+    }
 }

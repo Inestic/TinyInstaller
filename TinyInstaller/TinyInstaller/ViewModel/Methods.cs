@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Helpers;
 
@@ -6,10 +7,16 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
+        private void HyperlinkClickedCommand_Execute(string arg)
+        {
+            throw new NotImplementedException();
+        }
+
         private void InitializeCommands()
         {
             WindowCloseCommand = new RelayCommand(WindowCloseCommand_Execute, WindowCloseCommand_CanExecute);
             WindowMinimizeCommand = new RelayCommand(WindowMinimizeCommand_Execute);
+            HyperlinkClickedCommand = new RelayCommand<string>(HyperlinkClickedCommand_Execute);
         }
 
         private void InitializeProperties(MainWindow mainWindow)

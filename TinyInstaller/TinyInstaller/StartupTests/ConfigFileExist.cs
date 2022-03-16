@@ -6,16 +6,17 @@ namespace TinyInstaller.StartupTests
 {
     internal class ConfigFileExist : IStartupTest
     {
+        private string _appDir;
+
+        private string _configFile;
+
         internal ConfigFileExist(string appDir, string configFile)
         {
             _appDir = appDir;
             _configFile = configFile;
         }
 
-        private string _appDir { get; set; }
-        private string _configFile { get; set; }
-
-        public Page PageTag { get; set; } = Page.ConfigFileNotFoundTest;
+        public Page PageTag { get; set; } = Page.ConfigFileNotFoundView;
 
         public void Run()
         {

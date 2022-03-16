@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TinyInstaller.Views"
+             xmlns:common="clr-namespace:TinyInstaller.Common"
              xmlns:converters="clr-namespace:TinyInstaller.Converters"
              xmlns:controls="clr-namespace:TinyInstaller.UserControls"
              mc:Ignorable="d">
@@ -16,7 +17,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Window.Accent.Normal}" />
-            <Setter Property="Tag" Value="LoadingView" />
+            <Setter Property="Tag" Value="{x:Static common:Page.LoadingView}" />
             <Setter Property="Visibility">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource TagToVisibilityConverter}">

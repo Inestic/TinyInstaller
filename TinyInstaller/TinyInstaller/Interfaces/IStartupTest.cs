@@ -4,7 +4,7 @@ namespace TinyInstaller.Interfaces
 {
     internal interface IStartupTest
     {
-        internal Page PageTag { get; set; }
+        Page PageTag { get; set; }
 
         void Run();
     }
