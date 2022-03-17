@@ -82,7 +82,8 @@
                                    Foreground="{DynamicResource Window.Accent.Normal}"
                                    Margin="{StaticResource StandartTextInterval}"
                                    TextAlignment="Center" />
-                            <controls:HelpButton Command="{Binding HyperlinkClickedCommand}" />
+                            <controls:HelpButton Command="{Binding HyperlinkClickedCommand}"
+                                                 CommandParameter="{StaticResource Help.NoConfigFile.Link}"/>
                         </StackPanel>
                     </StackPanel>
                 </views:StartupTestTemplate.Content>

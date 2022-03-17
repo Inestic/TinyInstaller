@@ -7,10 +7,9 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        private void HyperlinkClickedCommand_Execute(string arg)
-        {
-            throw new NotImplementedException();
-        }
+        //TODO: Check the error description links in the "Links.xaml" file.
+
+        private void HyperlinkClickedCommand_Execute(string url) => ProcessHelper.Start("explorer", url);
 
         private void InitializeCommands()
         {
