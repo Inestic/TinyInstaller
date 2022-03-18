@@ -83,8 +83,13 @@
                                    Margin="{StaticResource StandartTextInterval}"
                                    TextAlignment="Center" />
                             <controls:HelpButton Command="{Binding HyperlinkClickedCommand}"
-                                                 CommandParameter="{StaticResource Help.NoConfigFile.Link}"/>
+                                                 CommandParameter="{StaticResource Help.NoConfigFile.Link}" />
                         </StackPanel>
+
+                        <controls:TextedButton Text="Create configuration file"
+                                               Margin="{StaticResource StandartTextInterval}"
+                                               HorizontalAlignment="Center"
+                                               Command="{Binding CreateConfigurationFileCommand}" />
                     </StackPanel>
                 </views:StartupTestTemplate.Content>
             </views:StartupTestTemplate>

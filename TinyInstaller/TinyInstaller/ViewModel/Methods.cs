@@ -9,6 +9,11 @@ namespace TinyInstaller.ViewModel
     {
         //TODO: Check the error description links in the "Links.xaml" file.
 
+        private void CreateConfigurationFileCommand_Execute(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
         private void HyperlinkClickedCommand_Execute(string url) => ProcessHelper.Start("explorer", url);
 
         private void InitializeCommands()
@@ -16,6 +21,7 @@ namespace TinyInstaller.ViewModel
             WindowCloseCommand = new RelayCommand(WindowCloseCommand_Execute, WindowCloseCommand_CanExecute);
             WindowMinimizeCommand = new RelayCommand(WindowMinimizeCommand_Execute);
             HyperlinkClickedCommand = new RelayCommand<string>(HyperlinkClickedCommand_Execute);
+            CreateConfigurationFileCommand = new RelayCommand(CreateConfigurationFileCommand_Execute);
         }
 
         private void InitializeProperties(MainWindow mainWindow)
