@@ -66,25 +66,28 @@
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0" Background="{DynamicResource Window.Background.Light}" />
             <views:LoadingView x:Name="LoadingView" Grid.Row="1" />
-            <views:StartupTestTemplate x:Name="ConfigFileExistTestView" Grid.Row="1" Tag="{x:Static common:Page.ConfigFileNotFoundView}">
+            <views:StartupTestTemplate x:Name="ConfigFileExistTestView" 
+                                       Grid.Row="1" 
+                                       Tag="{x:Static common:Page.ConfigFileNotFoundView}" 
+                                       Background="Red">
                 <views:StartupTestTemplate.Content>
                     <StackPanel>
                         <TextBlock Style="{DynamicResource RegularText}"
-                                   Text="{DynamicResource Localization.Test.ConfigFileExist.Header}"
+                                   Text="{DynamicResource Localization.Test.NoConfigFileExist.Header}"
                                    Foreground="{DynamicResource Window.Accent.Normal}"
                                    Margin="{StaticResource StandartTextInterval}"
                                    HorizontalAlignment="Center" />
 
-                        <StackPanel Orientation="Horizontal">
+                        <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Style="{DynamicResource RegularText}"
-                                   Text="{DynamicResource Localization.Test.ConfigFileExist.Description}"
+                                   Text="{DynamicResource Localization.Test.NoConfigFileExist.Description}"
                                    TextWrapping="WrapWithOverflow"
                                    Foreground="{DynamicResource Window.Accent.Normal}"
                                    Margin="{StaticResource StandartTextInterval}"
                                    TextAlignment="Center" />
                             <controls:HelpButton Command="{Binding HyperlinkClickedCommand}"
                                                  CommandParameter="{StaticResource Help.NoConfigFile.Link}" />
-                        </StackPanel>
+                        </StackPanel>-->
 
                         <controls:TextedButton Text="Create configuration file"
                                                Margin="{StaticResource StandartTextInterval}"

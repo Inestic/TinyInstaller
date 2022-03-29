@@ -6,7 +6,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Common/Fonts.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Common/Links.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Localizations/EN.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Themes/BlackHole.xaml" />
             </ResourceDictionary.MergedDictionaries>

@@ -7,8 +7,6 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        //TODO: Check the error description links in the "Links.xaml" file.
-
         private void CreateConfigurationFileCommand_Execute(object obj)
         {
             throw new NotImplementedException();
