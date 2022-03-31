@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -44,7 +43,5 @@ namespace TinyInstaller.UserControls
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-
-        private void ButtonStoryboard_Completed(object sender, EventArgs e) => Command?.Execute(CommandParameter);
     }
 }

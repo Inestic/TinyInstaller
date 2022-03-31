@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Helpers;
@@ -7,7 +8,9 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        private void CreateConfigurationFileCommand_Execute(object obj)
+        private bool CreateConfigurationFileCommandAsync_CanExecute(object obj) => !File.Exists(Path.Combine(AppHelper.BaseDirectory, AppHelper.ConfigFile));
+
+        private void CreateConfigurationFileCommandAsync_Execute(object obj)
         {
             throw new NotImplementedException();
         }
@@ -19,13 +22,14 @@ namespace TinyInstaller.ViewModel
             WindowCloseCommand = new RelayCommand(WindowCloseCommand_Execute, WindowCloseCommand_CanExecute);
             WindowMinimizeCommand = new RelayCommand(WindowMinimizeCommand_Execute);
             HyperlinkClickedCommand = new RelayCommand<string>(HyperlinkClickedCommand_Execute);
-            CreateConfigurationFileCommand = new RelayCommand(CreateConfigurationFileCommand_Execute);
+            CreateConfigurationFileCommand = new RelayCommand(CreateConfigurationFileCommandAsync_Execute, CreateConfigurationFileCommandAsync_CanExecute);
         }
 
         private void InitializeProperties(MainWindow mainWindow)
         {
             ActivePage = Page.LoadingView;
             MainWindow = mainWindow;
+            StartupTestsHelper = new StartupTestsHelper();
             Window_CanClose = true;
         }
 
@@ -33,8 +37,7 @@ namespace TinyInstaller.ViewModel
         {
             await Task.Run(() =>
             {
-                var startupTestsHelper = new StartupTestsHelper();
-                ActivePage = startupTestsHelper.Run();
+                ActivePage = StartupTestsHelper.Run();
             });
         }
 

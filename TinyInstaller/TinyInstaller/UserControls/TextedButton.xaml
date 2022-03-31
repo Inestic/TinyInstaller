@@ -9,8 +9,7 @@
     <UserControl.Resources>
         <Storyboard x:Key="ButtonAnimation"
                     Storyboard.TargetName="AnimatedButtonTransform"
-                    Storyboard.TargetProperty="Y"
-                    Completed="ButtonStoryboard_Completed">
+                    Storyboard.TargetProperty="Y">
             <DoubleAnimation From="0.0"
                              To="10.0"
                              Duration="0:0:0.1"
@@ -29,26 +28,30 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TextedButton}}}" />
+            <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TextedButton}}}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
                         <Border x:Name="ButtonBorder"
-                                CornerRadius="0"
-                                BorderThickness="1"
-                                BorderBrush="{DynamicResource Window.Accent.Normal}">
+                                CornerRadius="3"
+                                BorderThickness="1">
 
                             <TextBlock x:Name="ButtonText"
                                        Style="{DynamicResource RegularText}"
                                        Text="{Binding Path=Text, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TextedButton}}}"
-                                       Margin="10, 5, 10, 5" />
+                                       Margin="15, 5, 15, 5" />
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="False">
-                                <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Window.Background.Normal}" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource Window.Accent.Normal}" />
                                 <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Window.Accent.Normal}" />
                                 <Setter TargetName="ButtonText" Property="Foreground" Value="{DynamicResource Window.Foreground.Normal}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource Window.Background.Light}" />
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Window.Background.Light}" />
+                                <Setter TargetName="ButtonText" Property="Foreground" Value="{DynamicResource Window.Background.Normal}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

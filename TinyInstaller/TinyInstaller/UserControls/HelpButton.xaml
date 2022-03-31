@@ -7,6 +7,15 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Storyboard x:Key="ButtonClickAnimation"
+                    Storyboard.TargetName="ButtonClickTransform"
+                    Storyboard.TargetProperty="Y"
+                    Completed="ButtonClickStoryboard_Completed">
+            <DoubleAnimation From="0.0"
+                             To="5.0"
+                             Duration="0:0:0.1"
+                             AutoReverse="True" />
+        </Storyboard>
         <Style TargetType="{x:Type local:HelpButton}">
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -23,8 +32,7 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
             <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
-            <Setter Property="Command" Value="{Binding Path=Command, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
-            <Setter Property="CommandParameter" Value="{Binding Path=CommandParameter, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
@@ -53,7 +61,16 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Button />
+            <Button>
+                <Button.RenderTransform>
+                    <TranslateTransform x:Name="ButtonClickTransform" />
+                </Button.RenderTransform>
+            </Button>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonClickAnimation}" />
+                </EventTrigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

@@ -33,5 +33,7 @@ namespace TinyInstaller.UserControls
             get { return (object)GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
         }
+
+        private void ButtonClickStoryboard_Completed(object sender, System.EventArgs e) => Command?.Execute(CommandParameter);
     }
 }
