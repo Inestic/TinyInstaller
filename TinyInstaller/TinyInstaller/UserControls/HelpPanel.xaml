@@ -4,8 +4,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TinyInstaller.UserControls"
-             mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-    </Grid>
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type local:HelpPanel}">
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
+            <Setter Property="Foreground" Value="{DynamicResource Window.Accent.Normal}" />
+        </Style>
+        <Style TargetType="{x:Type StackPanel}">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Grid.Row" Value="0" />
+        </Style>
+        <Style TargetType="{x:Type WrapPanel}">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Name="HeaderPanel">
+                    <TextBlock x:Name="HeaderText"
+                               Style="{DynamicResource RegularText}"
+                               Text="{Binding Path=HeaderText, RelativeSource={RelativeSource TemplatedParent}}"
+                               Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                               Margin="15, 15, 10, 15" />
+
+                    <local:HelpButton x:Name="HelpButton"
+                                      Margin="0, -1, 15, 0" />
+                </StackPanel>
+
+                <WrapPanel x:Name="DescriptionPanel">
+                    <TextBlock x:Name="DescriptionText"
+                               Style="{DynamicResource RegularText}"
+                               Text="{Binding Path=DescriptionText, RelativeSource={RelativeSource TemplatedParent}}"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                               Margin="15" />
+                </WrapPanel>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Template>
 </UserControl>

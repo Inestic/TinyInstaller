@@ -4,5 +4,5 @@
 
     <system:String x:Key="Localization.App.Loading">Loading...</system:String>
     <system:String x:Key="Localization.Test.NoConfigFileExist.Header">NO CONFIGURATION FILE</system:String>
-    <system:String x:Key="Localization.Test.NoConfigFileExist.CreateConfig">Create config</system:String>
+    <system:String x:Key="Localization.Test.NoConfigFileExist.CreateConfig">Create config file</system:String>
 </ResourceDictionary>

@@ -49,8 +49,8 @@
                                 <Setter TargetName="ButtonText" Property="Foreground" Value="{DynamicResource Window.Foreground.Normal}" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource Window.Background.Light}" />
-                                <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Window.Background.Light}" />
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{DynamicResource Window.Background.Light10}" />
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource Window.Background.Light10}" />
                                 <Setter TargetName="ButtonText" Property="Foreground" Value="{DynamicResource Window.Background.Normal}" />
                             </Trigger>
                         </ControlTemplate.Triggers>

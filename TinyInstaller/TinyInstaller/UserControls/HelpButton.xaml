@@ -9,10 +9,10 @@
     <UserControl.Resources>
         <Storyboard x:Key="ButtonClickAnimation"
                     Storyboard.TargetName="ButtonClickTransform"
-                    Storyboard.TargetProperty="Y"
+                    Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
                     Completed="ButtonClickStoryboard_Completed">
-            <DoubleAnimation From="0.0"
-                             To="5.0"
+            <DoubleAnimation From="1.0"
+                             To="0.3"
                              Duration="0:0:0.1"
                              AutoReverse="True" />
         </Storyboard>
@@ -25,14 +25,14 @@
             <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Window.Foreground.Normal}" />
         </Style>
-        <Style TargetType="{x:Type Button}">
+        <Style TargetType="{x:Type ToggleButton}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
             <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
             <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
-
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
@@ -61,11 +61,11 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Button>
-                <Button.RenderTransform>
-                    <TranslateTransform x:Name="ButtonClickTransform" />
-                </Button.RenderTransform>
-            </Button>
+            <ToggleButton>
+                <ToggleButton.RenderTransform>
+                    <ScaleTransform x:Name="ButtonClickTransform" />
+                </ToggleButton.RenderTransform>
+            </ToggleButton>
             <ControlTemplate.Triggers>
                 <EventTrigger RoutedEvent="Button.Click">
                     <BeginStoryboard Storyboard="{StaticResource ButtonClickAnimation}" />
