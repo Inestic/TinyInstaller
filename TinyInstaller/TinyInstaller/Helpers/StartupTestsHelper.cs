@@ -5,14 +5,14 @@ using TinyInstaller.StartupTests;
 
 namespace TinyInstaller.Helpers
 {
-    internal class StartupTestsHelper
+    internal class StartupTestsHelper : IInvoked<Page>
     {
         private List<IStartupTest> startupTests = new List<IStartupTest>()
         {
             new ConfigFileExist(appDir: AppHelper.BaseDirectory, configFile: AppHelper.ConfigFile)
         };
 
-        internal Page Run()
+        public Page Invoke()
         {
             try
             {

@@ -40,7 +40,7 @@
                             <TextBlock x:Name="ButtonText"
                                        Style="{DynamicResource RegularText}"
                                        Text="{Binding Path=Text, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TextedButton}}}"
-                                       Margin="15, 5, 15, 5" />
+                                       Margin="15, 7, 15, 5" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="True">

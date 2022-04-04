@@ -44,7 +44,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel>
-                    <controls:Logo Width="100" Height="100" Margin="10, 5, 10 ,10" />
+                    <controls:Logo Width="75" Height="75" Margin="10, 5, 10 ,10" />
                     <ContentPresenter />
                 </StackPanel>
             </Grid>

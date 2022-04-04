@@ -1,50 +1,48 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Helpers;
+using TinyInstaller.Interfaces;
 
 namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        private bool CreateConfigurationFileCommandAsync_CanExecute(object obj) => !File.Exists(Path.Combine(AppHelper.BaseDirectory, AppHelper.ConfigFile));
+        private bool Command_CreateConfigurationFile_CanExecute(object obj) => !File.Exists(Path.Combine(AppHelper.BaseDirectory, AppHelper.ConfigFile));
 
-        private void CreateConfigurationFileCommandAsync_Execute(object obj)
-        {
-            throw new NotImplementedException();
-        }
+        private async void Command_CreateConfigurationFile_ExecuteAsync(object obj)
+        { }
 
-        private void HyperlinkClickedCommand_Execute(string url) => ProcessHelper.Start("explorer", url);
+        private async void Command_HyperlinkClicked_ExecuteAsync(string url) => await Task.Run(() => ProcessHelper.Start("explorer", url));
+
+        private bool Command_WindowClose_CanExecute(object obj) => Window_CanClose;
+
+        private void Command_WindowClose_Execute(object obj) => MainWindow.Close();
+
+        private void Command_WindowMinimize_Execute(object obj) => MainWindow.WindowState = System.Windows.WindowState.Minimized;
 
         private void InitializeCommands()
         {
-            WindowCloseCommand = new RelayCommand(WindowCloseCommand_Execute, WindowCloseCommand_CanExecute);
-            WindowMinimizeCommand = new RelayCommand(WindowMinimizeCommand_Execute);
-            HyperlinkClickedCommand = new RelayCommand<string>(HyperlinkClickedCommand_Execute);
-            CreateConfigurationFileCommand = new RelayCommand(CreateConfigurationFileCommandAsync_Execute, CreateConfigurationFileCommandAsync_CanExecute);
+            CreateConfigurationFileCommand = new RelayCommand(Command_CreateConfigurationFile_ExecuteAsync, Command_CreateConfigurationFile_CanExecute);
+            HyperlinkClickedCommand = new RelayCommand<string>(Command_HyperlinkClicked_ExecuteAsync);
+            WindowCloseCommand = new RelayCommand(Command_WindowClose_Execute, Command_WindowClose_CanExecute);
+            WindowMinimizeCommand = new RelayCommand(Command_WindowMinimize_Execute);
         }
 
-        private void InitializeProperties(MainWindow mainWindow)
+        private void InitializeProperties(MainWindow mainWindow, IVoidInvoked localizationHelper, IInvoked<Page> testsHelper)
         {
-            ActivePage = Page.LoadingView;
             MainWindow = mainWindow;
-            StartupTestsHelper = new StartupTestsHelper();
-            Window_CanClose = true;
+            LocalizationHelper = localizationHelper;
+            StartupTestsHelper = testsHelper;
         }
 
-        private async void StartupTestsInvokeAsync()
+        private async Task PropertiesInvokeAsync()
         {
             await Task.Run(() =>
             {
-                ActivePage = StartupTestsHelper.Run();
+                LocalizationHelper.Invoke();
+                ActivePage = StartupTestsHelper.Invoke();
             });
         }
-
-        private bool WindowCloseCommand_CanExecute(object obj) => Window_CanClose;
-
-        private void WindowCloseCommand_Execute(object obj) => MainWindow.Close();
-
-        private void WindowMinimizeCommand_Execute(object obj) => MainWindow.WindowState = System.Windows.WindowState.Minimized;
     }
 }

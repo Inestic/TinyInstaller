@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using TinyInstaller.Helpers;
 using TinyInstaller.ViewModel;
 
 namespace TinyInstaller
@@ -13,7 +14,13 @@ namespace TinyInstaller
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e) => DataContext = new VM(this);
+        private void InitializeViewModel()
+        {
+            var viewModel = new VM(mainWindow: this, localizationHelper: new LocalizationHelper(), testsHelper: new StartupTestsHelper());
+            DataContext = viewModel;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) => InitializeViewModel();
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
