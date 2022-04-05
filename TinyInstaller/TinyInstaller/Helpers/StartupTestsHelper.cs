@@ -5,7 +5,7 @@ using TinyInstaller.StartupTests;
 
 namespace TinyInstaller.Helpers
 {
-    internal class StartupTestsHelper : IInvoked<Page>
+    internal class StartupTestsHelper : IGenericInvoker<Page>
     {
         private List<IStartupTest> startupTests = new List<IStartupTest>()
         {

@@ -23,9 +23,9 @@ namespace TinyInstaller.ViewModel
 
         public string AppName { get => AppHelper.Name; }
         public string AppVersion { get => AppHelper.VersionString; }
-        public IVoidInvoked LocalizationHelper { get; private set; }
+        public IInvoker LocalizationHelper { get; private set; }
         public MainWindow MainWindow { get; private set; }
-        public IInvoked<Page> StartupTestsHelper { get; private set; }
+        public IGenericInvoker<Page> StartupTestsHelper { get; private set; }
 
         public bool Window_CanClose
         {

@@ -17,6 +17,10 @@ namespace TinyInstaller.UserControls
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(HelpButton), new PropertyMetadata(default));
 
+        // Using a DependencyProperty as the backing store for IsChecked.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register("IsChecked", typeof(bool), typeof(HelpButton), new PropertyMetadata(default));
+
         public HelpButton()
         {
             InitializeComponent();
@@ -32,6 +36,12 @@ namespace TinyInstaller.UserControls
         {
             get { return (object)GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
+        }
+
+        public bool IsChecked
+        {
+            get { return (bool)GetValue(IsCheckedProperty); }
+            set { SetValue(IsCheckedProperty, value); }
         }
 
         private void ButtonClickStoryboard_Completed(object sender, System.EventArgs e) => Command?.Execute(CommandParameter);

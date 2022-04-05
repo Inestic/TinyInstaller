@@ -71,11 +71,8 @@
                                        Tag="{x:Static common:Page.ConfigFileNotFoundView}">
                 <views:StartupTestTemplate.Content>
                     <StackPanel>
-                        <TextBlock Style="{DynamicResource RegularText}"
-                                   Text="{DynamicResource Localization.Test.NoConfigFileExist.Header}"
-                                   Foreground="{DynamicResource Window.Accent.Normal}"
-                                   Margin="{StaticResource StandartTextInterval}"
-                                   HorizontalAlignment="Center" />
+                        <controls:HelpPanel HeaderText="{DynamicResource Localization.Test.NoConfigFileExist.Header}"
+                                            DescriptionText="{DynamicResource Localization.Test.NoConfigFileExist.Description}" />
 
                         <controls:TextedButton Text="{DynamicResource Localization.Test.NoConfigFileExist.CreateConfig}"
                                                Margin="{StaticResource StandartTextInterval}"

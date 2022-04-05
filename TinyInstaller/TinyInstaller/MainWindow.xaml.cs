@@ -16,7 +16,8 @@ namespace TinyInstaller
 
         private void InitializeViewModel()
         {
-            var viewModel = new VM(mainWindow: this, localizationHelper: new LocalizationHelper(), testsHelper: new StartupTestsHelper());
+            var viewModel = new VM(mainWindow: this, localizationHelper: new LocalizationHelper(), startupTestsHelper: new StartupTestsHelper());
+            viewModel.Initialize();
             DataContext = viewModel;
         }
 

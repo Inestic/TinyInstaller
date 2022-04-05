@@ -6,7 +6,7 @@ using TinyInstaller.Interfaces;
 
 namespace TinyInstaller.Helpers
 {
-    internal class LocalizationHelper : IVoidInvoked
+    internal class LocalizationHelper : IInvoker
     {
         private const string EN_NAME = "EN";
         private const string RU_NAME = "RU";

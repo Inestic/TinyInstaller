@@ -7,6 +7,15 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Thickness x:Key="StandartMargin" Left="10" Top="10" Right="10" Bottom="5" />
+        <Storyboard x:Key="ShowDescriptionPanel"
+                    Storyboard.TargetName="DescriptionPanel"
+                    Storyboard.TargetProperty="RenderTransform.ScaleY">
+            <DoubleAnimation From="0.0"
+                             To="1.0"
+                             Duration="00:00:0.15" />
+        </Storyboard>
+
         <Style TargetType="{x:Type local:HelpPanel}">
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -22,6 +31,11 @@
         <Style TargetType="{x:Type WrapPanel}">
             <Setter Property="Grid.Row" Value="1" />
             <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.0" ScaleY="0.0" />
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -40,22 +54,37 @@
                                Style="{DynamicResource RegularText}"
                                Text="{Binding Path=HeaderText, RelativeSource={RelativeSource TemplatedParent}}"
                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                               Margin="15, 15, 10, 15" />
+                               Margin="{StaticResource StandartMargin}" />
 
                     <local:HelpButton x:Name="HelpButton"
-                                      Margin="0, -1, 15, 0" />
+                                      Margin="0, 2, 10, 0" />
                 </StackPanel>
 
                 <WrapPanel x:Name="DescriptionPanel">
                     <TextBlock x:Name="DescriptionText"
                                Style="{DynamicResource RegularText}"
                                Text="{Binding Path=DescriptionText, RelativeSource={RelativeSource TemplatedParent}}"
-                               TextWrapping="Wrap"
+                               TextWrapping="WrapWithOverflow"
                                TextAlignment="Center"
                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                               Margin="15" />
+                               Margin="{StaticResource StandartMargin}" />
                 </WrapPanel>
             </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger SourceName="HelpButton" Property="IsChecked" Value="False">
+                    <Setter TargetName="DescriptionPanel" Property="Visibility" Value="Collapsed" />
+                </Trigger>
+                <Trigger SourceName="HelpButton" Property="IsChecked" Value="True">
+                    <Setter TargetName="HelpButton" Property="Visibility" Value="Hidden" />
+                    <Setter TargetName="DescriptionPanel" Property="Visibility" Value="Visible" />
+                    <Trigger.EnterActions>
+                        <BeginStoryboard x:Name="ShowDescriptionPanelStoryboard" Storyboard="{StaticResource ShowDescriptionPanel}" />
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <RemoveStoryboard BeginStoryboardName="ShowDescriptionPanelStoryboard" />
+                    </Trigger.ExitActions>
+                </Trigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>
 </UserControl>

@@ -3,6 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Localization.App.Loading">Загрузка...</system:String>
-    <system:String x:Key="Localization.Test.NoConfigFileExist.Header">НЕТ ФАЙЛА КОНФИГУРАЦИИ</system:String>
+    <system:String x:Key="Localization.Test.NoConfigFileExist.Header">ОТСУТСТВУЕТ ФАЙЛ КОНФИГУРАЦИИ</system:String>
+    <system:String x:Key="Localization.Test.NoConfigFileExist.Description">Информация о названии, описании, расположении установочных файлов хранится в файле конфигурации «PackagesConfig.json». Сейчас этого файла нет. Создайте и заполните его используя как образец.</system:String>
     <system:String x:Key="Localization.Test.NoConfigFileExist.CreateConfig">Создать файл</system:String>
 </ResourceDictionary>

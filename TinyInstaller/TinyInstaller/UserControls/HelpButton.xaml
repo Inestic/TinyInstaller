@@ -33,6 +33,7 @@
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
             <Setter Property="Width" Value="{Binding Path=Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
             <Setter Property="Height" Value="{Binding Path=Height, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
+            <Setter Property="IsChecked" Value="{Binding Path=IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:HelpButton}}}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>

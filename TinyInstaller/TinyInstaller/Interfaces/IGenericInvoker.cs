@@ -1,6 +1,6 @@
 ﻿namespace TinyInstaller.Interfaces
 {
-    internal interface IInvoked<T>
+    internal interface IGenericInvoker<T>
     {
         T Invoke();
     }
