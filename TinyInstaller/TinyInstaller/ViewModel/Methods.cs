@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using TinyInstaller.Common;
+﻿using TinyInstaller.Common;
 
 namespace TinyInstaller.ViewModel
 {
@@ -7,25 +6,14 @@ namespace TinyInstaller.ViewModel
     {
         private void InitializeCommands()
         {
-            CreateConfigurationFileCommand = new RelayCommand(Command_CreateConfigurationFile_ExecuteAsync, Command_CreateConfigurationFile_CanExecute);
-            HyperlinkClickedCommand = new RelayCommand<string>(Command_HyperlinkClicked_ExecuteAsync);
-            WindowCloseCommand = new RelayCommand(Command_WindowClose_Execute, Command_WindowClose_CanExecute);
-            WindowMinimizeCommand = new RelayCommand(Command_WindowMinimize_Execute);
+            MainWindowCloseCommand = new RelayCommand(Command_MainWindowClose_Execute, Command_MainWindowClose_CanExecute);
+            MainWindowMinimizeCommand = new RelayCommand(Command_MainWindowMinimize_Execute);
+            MainWindowMinMaxCommand = new RelayCommand(Command_MainWindowMinMaxCommand_Execute);
         }
 
-        private async Task PropertiesInvokeAsync()
+        private void InitializeProperties()
         {
-            await Task.Run(() =>
-            {
-                LocalizationHelper.Invoke();
-                ActivePage = StartupTestsHelper.Invoke();
-            });
-        }
-
-        internal void Initialize()
-        {
-            InitializeCommands();
-            _ = PropertiesInvokeAsync();
+            MainWindowCloseCommand = new RelayCommand(Command_MainWindowClose_Execute, Command_MainWindowClose_CanExecute);
         }
     }
 }

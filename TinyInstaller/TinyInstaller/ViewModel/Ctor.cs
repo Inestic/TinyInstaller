@@ -1,16 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
-using TinyInstaller.Helpers;
 
 namespace TinyInstaller.ViewModel
 {
     internal partial class VM : INotifyPropertyChanged
     {
-        public VM(MainWindow mainWindow, LocalizationHelper localizationHelper, StartupTestsHelper startupTestsHelper) : base()
+        public VM(MainWindow mainWindow) : base()
         {
             MainWindow = mainWindow ?? throw new ArgumentNullException(nameof(mainWindow));
-            LocalizationHelper = localizationHelper ?? throw new ArgumentNullException(nameof(localizationHelper));
-            StartupTestsHelper = startupTestsHelper ?? throw new ArgumentNullException(nameof(startupTestsHelper));
+            InitializeCommands();
+            InitializeProperties();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

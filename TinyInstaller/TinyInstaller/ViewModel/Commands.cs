@@ -1,35 +1,33 @@
-﻿using System.IO;
-using System.Threading.Tasks;
+﻿using System.Windows;
 using TinyInstaller.Common;
-using TinyInstaller.Helpers;
 
 namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        public RelayCommand CreateConfigurationFileCommand { get; private set; }
-        public RelayCommand<string> HyperlinkClickedCommand { get; private set; }
-        public RelayCommand WindowCloseCommand { get; private set; }
-        public RelayCommand WindowMinimizeCommand { get; private set; }
+        public RelayCommand MainWindowCloseCommand { get; private set; }
+        public RelayCommand MainWindowMinimizeCommand { get; private set; }
+        public RelayCommand MainWindowMinMaxCommand { get; private set; }
 
-        private bool Command_CreateConfigurationFile_CanExecute(object obj) => !File.Exists(Path.Combine(AppHelper.BaseDirectory, AppHelper.ConfigFile));
+        private bool Command_MainWindowClose_CanExecute(object args) => MainWindow_CanClose;
 
-        private async void Command_CreateConfigurationFile_ExecuteAsync(object obj)
+        private void Command_MainWindowClose_Execute(object args) => MainWindow.Close();
+
+        private void Command_MainWindowMinimize_Execute(object args) => MainWindow.WindowState = WindowState.Minimized;
+
+        private void Command_MainWindowMinMaxCommand_Execute(object args)
         {
-            await Task.Run(() =>
+            if (MainWindow.WindowState == WindowState.Normal)
             {
-                var configFilePath = Path.Combine(AppHelper.BaseDirectory, AppHelper.ConfigFile);
-                File.WriteAllText(configFilePath, AppHelper.SampleConfig);
-                ActivePage = StartupTestsHelper.Invoke();
-            });
+                MainWindow.WindowState = WindowState.Maximized;
+                //MainWindow.Top = SystemParameters.WorkArea.Top;
+                //MainWindow.Left = SystemParameters.WorkArea.Left;
+                //MainWindow.Height = SystemParameters.WorkArea.Height;
+                //MainWindow.Width = SystemParameters.WorkArea.Width;
+                return;
+            }
+
+            MainWindow.WindowState = WindowState.Normal;
         }
-
-        private async void Command_HyperlinkClicked_ExecuteAsync(string url) => await Task.Run(() => ProcessHelper.Start("explorer", url));
-
-        private bool Command_WindowClose_CanExecute(object obj) => Window_CanClose;
-
-        private void Command_WindowClose_Execute(object obj) => MainWindow.Close();
-
-        private void Command_WindowMinimize_Execute(object obj) => MainWindow.WindowState = System.Windows.WindowState.Minimized;
     }
 }

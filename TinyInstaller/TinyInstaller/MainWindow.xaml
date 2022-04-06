@@ -1,11 +1,9 @@
 ﻿<Window x:Class="TinyInstaller.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:common="clr-namespace:TinyInstaller.Common"
         xmlns:controls="clr-namespace:TinyInstaller.UserControls"
-        xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
@@ -28,7 +26,7 @@
                 <Setter.Value>
                     <MultiBinding StringFormat="{}{0} {1}">
                         <Binding Path="AppName" />
-                        <Binding Path="AppVersion" />
+                        <Binding Path="AppVersionString" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
@@ -64,8 +62,9 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="20" />
             </Grid.RowDefinitions>
-            <controls:WindowTitle Grid.Row="0" Background="{DynamicResource Window.Background.Light}" />
-            <views:LoadingView x:Name="LoadingView" Grid.Row="1" />
+            <controls:WindowTitle Grid.Row="0"
+                                  Background="{DynamicResource Window.Background.Light}" />
+            <!--<views:LoadingView x:Name="LoadingView" Grid.Row="1" />
             <views:StartupTestTemplate x:Name="ConfigFileExistTestView"
                                        Grid.Row="1"
                                        Tag="{x:Static common:Page.ConfigFileNotFoundView}">
@@ -80,8 +79,9 @@
                                                Command="{Binding CreateConfigurationFileCommand}" />
                     </StackPanel>
                 </views:StartupTestTemplate.Content>
-            </views:StartupTestTemplate>
-            <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}" />
+            </views:StartupTestTemplate>-->
+            <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}">
+            </Grid>
         </Grid>
     </Border>
 </Window>
