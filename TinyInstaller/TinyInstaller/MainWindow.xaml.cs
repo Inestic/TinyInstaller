@@ -17,9 +17,5 @@ namespace TinyInstaller
         {
             DataContext = new VM(mainWindow: this);
         }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-        }
     }
 }

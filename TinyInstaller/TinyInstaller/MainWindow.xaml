@@ -6,8 +6,7 @@
         xmlns:controls="clr-namespace:TinyInstaller.UserControls"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded"
-        SizeChanged="Window_SizeChanged">
+        Loaded="Window_Loaded">
 
     <Window.Style>
         <Style TargetType="{x:Type Window}">
@@ -18,8 +17,9 @@
             <Setter Property="ShowInTaskbar" Value="True" />
             <Setter Property="MinHeight" Value="615" />
             <Setter Property="MinWidth" Value="1074" />
-            <Setter Property="Height" Value="615" />
-            <Setter Property="Width" Value="1074" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="Width" Value="Auto" />
+            <Setter Property="MaxHeight" Value="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" />
             <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Window.Foreground.Normal}" />
             <Setter Property="Title">
@@ -33,11 +33,16 @@
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
                     <WindowChrome CaptionHeight="0"
-                      CornerRadius="0"
-                      GlassFrameThickness="0"
-                      ResizeBorderThickness="2" />
+                                  CornerRadius="0"
+                                  GlassFrameThickness="0"
+                                  ResizeBorderThickness="2" />
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},Path=WindowState}" Value="{x:Static WindowState.Maximized}">
+                    <Setter Property="BorderThickness" Value="6" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
     </Window.Style>
     <Window.Resources>

@@ -17,17 +17,8 @@ namespace TinyInstaller.ViewModel
 
         private void Command_MainWindowMinMaxCommand_Execute(object args)
         {
-            if (MainWindow.WindowState == WindowState.Normal)
-            {
-                MainWindow.WindowState = WindowState.Maximized;
-                //MainWindow.Top = SystemParameters.WorkArea.Top;
-                //MainWindow.Left = SystemParameters.WorkArea.Left;
-                //MainWindow.Height = SystemParameters.WorkArea.Height;
-                //MainWindow.Width = SystemParameters.WorkArea.Width;
-                return;
-            }
-
-            MainWindow.WindowState = WindowState.Normal;
+            var state = MainWindow.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+            MainWindow.WindowState = state;
         }
     }
 }
