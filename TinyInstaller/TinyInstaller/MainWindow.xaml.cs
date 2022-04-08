@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using TinyInstaller.ViewModel;
+using TinyInstaller.Helpers;
 
 namespace TinyInstaller
 {
@@ -15,7 +15,7 @@ namespace TinyInstaller
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = new VM(mainWindow: this);
+            DataContext = CompositionRootHelper.CreateVM(mainWindow: this);
         }
     }
 }

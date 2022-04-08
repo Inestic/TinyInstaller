@@ -1,19 +1,16 @@
-﻿using TinyInstaller.Common;
+﻿using System.Threading.Tasks;
 
 namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        private void InitializeCommands()
+        private async void Invoke()
         {
-            MainWindowCloseCommand = new RelayCommand(Command_MainWindowClose_Execute, Command_MainWindowClose_CanExecute);
-            MainWindowMinimizeCommand = new RelayCommand(Command_MainWindowMinimize_Execute);
-            MainWindowMinMaxCommand = new RelayCommand(Command_MainWindowMinMaxCommand_Execute);
-        }
-
-        private void InitializeProperties()
-        {
-            MainWindowCloseCommand = new RelayCommand(Command_MainWindowClose_Execute, Command_MainWindowClose_CanExecute);
+            await Task.Run(() =>
+            {
+                LocalizationHelper.Invoke();
+                ActiveView = StartupConditionsHelper.Invoke();
+            });
         }
     }
 }
