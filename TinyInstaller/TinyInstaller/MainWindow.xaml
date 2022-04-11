@@ -17,8 +17,6 @@
             <Setter Property="ShowInTaskbar" Value="True" />
             <Setter Property="MinHeight" Value="615" />
             <Setter Property="MinWidth" Value="1074" />
-            <Setter Property="Height" Value="Auto" />
-            <Setter Property="Width" Value="Auto" />
             <Setter Property="MaxHeight" Value="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" />
             <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Window.Foreground.Normal}" />

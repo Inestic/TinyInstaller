@@ -1,15 +1,14 @@
-﻿using TinyInstaller.ViewModel;
+﻿using System.Collections.Generic;
+using TinyInstaller.Interfaces;
+using TinyInstaller.ViewModel;
 
 namespace TinyInstaller.Helpers
 {
     internal class CompositionRootHelper
     {
-        internal static VM CreateVM(MainWindow mainWindow)
-        {
-            var localizationHelper = new LocalizationHelper();
-            var conditionsHelper = new StartupConditionsHelper();
+        private static readonly ILocalizationHelper localizationHelper = new LocalizationHelper();
+        private static readonly List<IStartupCondition> startupConditions = new();
 
-            return new VM(mainWindow, localizationHelper, conditionsHelper);
-        }
+        internal static VM CreateVM(MainWindow mainWindow) => new(mainWindow, localizationHelper, startupConditions);
     }
 }

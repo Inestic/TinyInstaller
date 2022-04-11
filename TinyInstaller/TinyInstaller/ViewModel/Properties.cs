@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using TinyInstaller.Common;
 using TinyInstaller.Interfaces;
 
@@ -8,6 +9,8 @@ namespace TinyInstaller.ViewModel
     {
         private Views activeView = Views.StartupConditions;
         private bool mainWindow_CanClose = true;
+
+        private IEnumerable<IStartupCondition> StartupConditions { get; set; }
 
         public Views ActiveView
         {
@@ -26,6 +29,8 @@ namespace TinyInstaller.ViewModel
 
         public string AppVersionString { get => AppHelper.AssemblyName.Version.ToString(); }
 
+        public List<IStartupCondition> ConditionErrors { get; private set; }
+
         public ILocalizationHelper LocalizationHelper { get; private set; }
 
         public MainWindow MainWindow { get; private set; }
@@ -39,7 +44,5 @@ namespace TinyInstaller.ViewModel
                 CommandManager.InvalidateRequerySuggested();
             }
         }
-
-        public IStartupConditionsHelper StartupConditionsHelper { get; private set; }
     }
 }
