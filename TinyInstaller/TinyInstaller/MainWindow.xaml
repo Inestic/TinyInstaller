@@ -17,6 +17,8 @@
             <Setter Property="ShowInTaskbar" Value="True" />
             <Setter Property="MinHeight" Value="615" />
             <Setter Property="MinWidth" Value="1074" />
+            <Setter Property="Height" Value="615" />
+            <Setter Property="Width" Value="1074" />
             <Setter Property="MaxHeight" Value="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" />
             <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Window.Foreground.Normal}" />
@@ -63,7 +65,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="20" />
+                <RowDefinition Height="25" />
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0"
                                   Background="{DynamicResource Window.Background.Light}" />
@@ -84,6 +86,12 @@
                 </views:StartupTestTemplate.Content>
             </views:StartupTestTemplate>-->
             <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}">
+                <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.Inestic}"
+                                    Command="{Binding HyperLinkClickedCommand}"
+                                    CommandParameter="{DynamicResource Hyperlink.GitHub.Inestic}"
+                                    FontSize="14"
+                                    HorizontalAlignment="Right"
+                                    Margin="0, 0, 5, 0" />
             </Grid>
         </Grid>
     </Border>

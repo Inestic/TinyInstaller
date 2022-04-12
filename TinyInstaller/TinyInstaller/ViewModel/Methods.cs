@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Interfaces;
@@ -8,11 +9,14 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
+        private void ConditionsHasError() => ActiveView = Views.ConditionsHasErrors;
+
         private void InitializeCommands()
         {
             MainWindowCloseCommand = new RelayCommand(Command_MainWindowClose_Execute, Command_MainWindowClose_CanExecute);
             MainWindowMinimizeCommand = new RelayCommand(Command_MainWindowMinimize_Execute);
             MainWindowMinMaxCommand = new RelayCommand(Command_MainWindowMinMaxCommand_Execute);
+            HyperLinkClickedCommand = new RelayCommand<string>(Command_HyperLinkClicked_Execute);
         }
 
         private void InitializeProperties(MainWindow mainWindow, ILocalizationHelper localizationHelper, IEnumerable<IStartupCondition> startupConditions)
@@ -39,11 +43,21 @@ namespace TinyInstaller.ViewModel
             {
                 foreach (var condition in StartupConditions)
                 {
-                    if (!condition.Invoke())
+                    try
                     {
-                        ConditionErrors.Add(condition);
+                        condition.Invoke();
+                        if (!condition.IsSuccessfully)
+                            ConditionErrors.Add(condition);
+                    }
+                    catch (Exception)
+                    {
+                        ConditionsHasError();
+                        break;
                     }
                 }
+
+                if (StartupConditions.All(condition => condition.IsSuccessfully))
+                    ActiveView = Views.ReadyToInstall;
             });
         }
     }

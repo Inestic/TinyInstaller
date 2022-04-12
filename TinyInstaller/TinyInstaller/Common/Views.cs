@@ -2,6 +2,8 @@
 {
     internal enum Views
     {
-        StartupConditions
+        ConditionsHasErrors,
+        ReadyToInstall,
+        StartupConditions,
     }
 }
