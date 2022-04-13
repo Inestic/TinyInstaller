@@ -1,9 +1,9 @@
 ﻿namespace TinyInstaller.Common
 {
-    internal enum Views
+    internal enum ActiveView
     {
         ConditionsHasErrors,
         ReadyToInstall,
-        StartupConditions,
+        RunStartupConditions,
     }
 }

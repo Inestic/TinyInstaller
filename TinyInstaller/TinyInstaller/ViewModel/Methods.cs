@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Interfaces;
@@ -9,7 +8,7 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        private void ConditionsHasError() => ActiveView = Views.ConditionsHasErrors;
+        private void ConditionsHasError() => ActiveView = ActiveView.ConditionsHasErrors;
 
         private void InitializeCommands()
         {
@@ -41,23 +40,23 @@ namespace TinyInstaller.ViewModel
         {
             await Task.Run(() =>
             {
-                foreach (var condition in StartupConditions)
-                {
-                    try
-                    {
-                        condition.Invoke();
-                        if (!condition.IsSuccessfully)
-                            ConditionErrors.Add(condition);
-                    }
-                    catch (Exception)
-                    {
-                        ConditionsHasError();
-                        break;
-                    }
-                }
+                //foreach (var condition in StartupConditions)
+                //{
+                //    try
+                //    {
+                //        condition.Invoke();
+                //        if (!condition.IsSuccessfully)
+                //            ConditionErrors.Add(condition);
+                //    }
+                //    catch (Exception)
+                //    {
+                //        ConditionsHasError();
+                //        break;
+                //    }
+                //}
 
-                if (StartupConditions.All(condition => condition.IsSuccessfully))
-                    ActiveView = Views.ReadyToInstall;
+                //if (StartupConditions.All(condition => condition.IsSuccessfully))
+                //    ActiveView = ActiveView.ReadyToInstall;
             });
         }
     }

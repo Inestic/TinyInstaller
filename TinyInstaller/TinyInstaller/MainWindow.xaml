@@ -1,9 +1,11 @@
 ﻿<Window x:Class="TinyInstaller.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:TinyInstaller.Converters"
         xmlns:controls="clr-namespace:TinyInstaller.UserControls"
+        xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
@@ -47,6 +49,7 @@
     </Window.Style>
     <Window.Resources>
         <Thickness x:Key="StandartTextInterval" Right="15" Top="7" Left="15" Bottom="8" />
+        <converters:IntToAnimation x:Key="IntToAnimationConverter" />
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -69,22 +72,9 @@
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0"
                                   Background="{DynamicResource Window.Background.Light}" />
-            <!--<views:LoadingView x:Name="LoadingView" Grid.Row="1" />
-            <views:StartupTestTemplate x:Name="ConfigFileExistTestView"
-                                       Grid.Row="1"
-                                       Tag="{x:Static common:Page.ConfigFileNotFoundView}">
-                <views:StartupTestTemplate.Content>
-                    <StackPanel>
-                        <controls:HelpPanel HeaderText="{DynamicResource Localization.Test.NoConfigFileExist.Header}"
-                                            DescriptionText="{DynamicResource Localization.Test.NoConfigFileExist.Description}" />
 
-                        <controls:TextedButton Text="{DynamicResource Localization.Test.NoConfigFileExist.CreateConfig}"
-                                               Margin="{StaticResource StandartTextInterval}"
-                                               HorizontalAlignment="Center"
-                                               Command="{Binding CreateConfigurationFileCommand}" />
-                    </StackPanel>
-                </views:StartupTestTemplate.Content>
-            </views:StartupTestTemplate>-->
+            <views:ViewRunStartupConditions Grid.Row="1" />
+
             <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}">
                 <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.Inestic}"
                                     Command="{Binding HyperLinkClickedCommand}"

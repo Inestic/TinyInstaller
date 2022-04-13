@@ -7,12 +7,12 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class VM
     {
-        private Views activeView = Views.StartupConditions;
+        private ActiveView activeView = ActiveView.RunStartupConditions;
         private bool mainWindow_CanClose = true;
 
         private IEnumerable<IStartupCondition> StartupConditions { get; set; }
 
-        public Views ActiveView
+        public ActiveView ActiveView
         {
             get
             {
@@ -29,7 +29,7 @@ namespace TinyInstaller.ViewModel
 
         public string AppVersionString { get => AppHelper.AssemblyName.Version.ToString(); }
 
-        public List<IStartupCondition> ConditionErrors { get; private set; }
+        public List<IStartupCondition> ConditionErrors { get; private set; } = new() { };
 
         public ILocalizationHelper LocalizationHelper { get; private set; }
 
