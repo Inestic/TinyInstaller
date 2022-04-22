@@ -1,48 +1,43 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
-using TinyInstaller.Common;
-using TinyInstaller.Interfaces;
-
-namespace TinyInstaller.ViewModel
+﻿namespace TinyInstaller.ViewModel
 {
-    internal partial class VM
-    {
-        private ActiveView activeView = ActiveView.RunStartupConditions;
-        private bool mainWindow_CanClose = true;
+    //internal partial class VM
+    //{
+    //    private ActiveView activeView = ActiveView.LoadingData;
+    //    private bool mainWindow_CanClose = true;
 
-        private IEnumerable<IStartupCondition> StartupConditions { get; set; }
+    //    private IEnumerable<IStartupCondition> StartupConditions { get; set; }
 
-        public ActiveView ActiveView
-        {
-            get
-            {
-                return activeView;
-            }
-            private set
-            {
-                activeView = value;
-                OnPropertyChanged(ACTIVE_VIEW_PROPERTY_NAME);
-            }
-        }
+    //    public ActiveView ActiveView
+    //    {
+    //        get
+    //        {
+    //            return activeView;
+    //        }
+    //        private set
+    //        {
+    //            activeView = value;
+    //            OnPropertyChanged(ACTIVE_VIEW_PROPERTY_NAME);
+    //        }
+    //    }
 
-        public string AppName { get => AppHelper.AssemblyName.Name; }
+    //    public string AppName { get => AppHelper.AssemblyName.Name; }
 
-        public string AppVersionString { get => AppHelper.AssemblyName.Version.ToString(); }
+    //    public string AppVersionString { get => AppHelper.AssemblyName.Version.ToString(); }
 
-        public List<IStartupCondition> ConditionErrors { get; private set; } = new() { };
+    //    public List<IStartupCondition> ConditionsErrors { get; private set; } = new() { };
 
-        public ILocalizationHelper LocalizationHelper { get; private set; }
+    //    public ILocalizationHelper LocalizationHelper { get; private set; }
 
-        public MainWindow MainWindow { get; private set; }
+    //    public MainWindow MainWindow { get; private set; }
 
-        public bool MainWindow_CanClose
-        {
-            get => mainWindow_CanClose;
-            private set
-            {
-                mainWindow_CanClose = value;
-                CommandManager.InvalidateRequerySuggested();
-            }
-        }
-    }
+    //    public bool MainWindow_CanClose
+    //    {
+    //        get => mainWindow_CanClose;
+    //        private set
+    //        {
+    //            mainWindow_CanClose = value;
+    //            CommandManager.InvalidateRequerySuggested();
+    //        }
+    //    }
+    //}
 }

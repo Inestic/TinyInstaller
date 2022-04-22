@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="TinyInstaller.UserControls.LoadingIndicator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TinyInstaller.UserControls"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type local:LoadingIndicator}">
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Width" Value="326" />
+            <Setter Property="Height" Value="326" />
+        </Style>
+        <Style TargetType="{x:Type Grid}">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="-1" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <Grid x:Name="BasePanel">
+                <Viewbox Panel.ZIndex="10">
+                    <Path x:Name="PathDuck"
+                          Fill="{DynamicResource Brush.Window.Background.Light}"
+                          Data="m 268.756 137.875 c -3.051 -2.063 -3.67 -3.499 -3.669 -3.766 0.042 -0.243 0.814 -1.44 3.809 -2.854 33.822 -15.947 53.219 -35.575 53.219 -53.851 0 -14.783 -7.809 -22.279 -23.209 -22.279 -4.011 0 -8.628 0.467 -14.516 1.468 -0.742 0.124 -1.498 0.187 -2.245 0.187 -6.045 0 -12.098 -4.242 -15.063 -10.56 C 253.87 18.143 225.298 0 194.291 0 c -44.316 0 -80.369 36.051 -80.369 80.363 0 20.645 7.812 40.255 21.99 55.216 2.795 2.958 3.166 4.969 2.971 5.618 -0.195 0.648 -1.483 1.56 -3.922 2.133 -11.175 2.622 -21.319 4.793 -32.294 4.793 -5.476 0 -10.581 -0.548 -15.608 -1.675 -3.189 -0.715 -7.409 -2.1 -12.295 -3.704 -11.302 -3.711 -25.367 -8.328 -38.002 -8.328 -11.492 0 -20.057 3.888 -25.457 11.555 -11.208 15.913 -7.963 47.944 9.918 97.926 21.651 60.516 61.924 83.016 148.594 83.016 13.356 0 27.866 -0.518 44.358 -1.582 29.54 -1.905 54.719 -11.699 72.814 -28.324 19.099 -17.548 29.193 -41.838 29.193 -70.245 0 -35.728 -17.734 -68.959 -47.426 -88.887 z M 203.005 44.133 c 9.213 0 16.682 7.469 16.682 16.682 0 9.213 -7.469 16.682 -16.682 16.682 -9.213 0 -16.682 -7.469 -16.682 -16.682 0 -9.213 7.469 -16.682 16.682 -16.682 z M 55.891 200.245 c -37.260667 -133.496667 -18.630333 -66.74833 0 0 z" />
+                </Viewbox>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=StartAnimation, RelativeSource={RelativeSource Self}}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard x:Name="BackgroundColorAnimation">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="PathDuck"
+                                                              Storyboard.TargetProperty="(Fill).(SolidColorBrush.Color)"
+                                                              BeginTime="00:00:00"
+                                                              RepeatBehavior="Forever">
+                                    <ColorAnimationUsingKeyFrames.KeyFrames>
+                                        <LinearColorKeyFrame KeyTime="00:00:0.0" Value="#303030" />
+                                        <LinearColorKeyFrame KeyTime="00:00:0.5" Value="#3F3F3F" />
+                                        <LinearColorKeyFrame KeyTime="00:00:1.0" Value="#303030" />
+                                    </ColorAnimationUsingKeyFrames.KeyFrames>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=StartAnimation, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                    <DataTrigger.EnterActions>
+                        <StopStoryboard BeginStoryboardName="BackgroundColorAnimation" />
+                    </DataTrigger.EnterActions>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

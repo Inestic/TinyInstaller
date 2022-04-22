@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>spinner.ico</ApplicationIcon>
+    <ApplicationIcon>duck.ico</ApplicationIcon>
     <PlatformTarget>x64</PlatformTarget>
     <DebugType>full</DebugType>
     <Platforms>AnyCPU;x64</Platforms>
@@ -14,15 +14,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\Comfortaa-Regular.ttf" />
+    <None Remove="Fonts\RobotoSlab-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="spinner.ico" />
+    <Content Include="duck.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\Comfortaa-Regular.ttf" />
+    <Resource Include="Fonts\RobotoSlab-Regular.ttf" />
   </ItemGroup>
 
 </Project>

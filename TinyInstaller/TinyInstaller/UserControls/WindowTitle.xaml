@@ -47,12 +47,12 @@
                 <TextBlock Style="{DynamicResource RegularText}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Margin="10, 3, 0, 0"
-                           FontSize="12">
+                           Margin="10, 0, 0, 0"
+                           FontSize="14">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} {1}">
                             <Binding Path="AppName" />
-                            <Binding Path="AppVersionString" />
+                            <Binding Path="AppVersion" />
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
@@ -62,7 +62,7 @@
                     <Button.Content>
                         <Viewbox Width="16" Height="16" Margin="0, 0, 3, 5">
                             <Path Data="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                                  Fill="{DynamicResource Window.Foreground.Normal}" />
+                                  Fill="{DynamicResource Brush.Window.Foreground.Normal}" />
                         </Viewbox>
                     </Button.Content>
                 </Button>
@@ -78,27 +78,27 @@
                     <Button.Content>
                         <Viewbox Width="16" Height="16" Margin="0, 0, 3, 5">
                             <Path Data="M20,14H4V10H20"
-                                  Fill="{DynamicResource Window.Foreground.Normal}" />
+                                  Fill="{DynamicResource Brush.Window.Foreground.Normal}" />
                         </Viewbox>
                     </Button.Content>
                 </Button>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger SourceName="CloseWindowButton" Property="IsMouseOver" Value="True">
-                    <Setter TargetName="CloseWindowButton" Property="Background" Value="{DynamicResource Window.Accent.High}" />
+                    <Setter TargetName="CloseWindowButton" Property="Background" Value="{DynamicResource Brush.Window.Accent.High}" />
                 </Trigger>
                 <Trigger SourceName="MinimizeWindowButton" Property="IsMouseOver" Value="True">
-                    <Setter TargetName="MinimizeWindowButton" Property="Background" Value="{DynamicResource Window.Background.Light10}" />
+                    <Setter TargetName="MinimizeWindowButton" Property="Background" Value="{DynamicResource Brush.Window.Background.Light10}" />
                 </Trigger>
                 <Trigger SourceName="MinMaxWindowButton" Property="IsMouseOver" Value="True">
-                    <Setter TargetName="MinMaxWindowButton" Property="Background" Value="{DynamicResource Window.Background.Light10}" />
+                    <Setter TargetName="MinMaxWindowButton" Property="Background" Value="{DynamicResource Brush.Window.Background.Light10}" />
                 </Trigger>
                 <DataTrigger Binding="{Binding MainWindow.WindowState}" Value="Normal">
                     <Setter TargetName="MinMaxWindowButton" Property="Content">
                         <Setter.Value>
                             <Viewbox Width="16" Height="16" Margin="0, 0, 3, 5">
                                 <Path Data="M4,4H20V20H4V4M6,8V18H18V8H6Z"
-                                      Fill="{DynamicResource Window.Foreground.Normal}" />
+                                      Fill="{DynamicResource Brush.Window.Foreground.Normal}" />
                             </Viewbox>
                         </Setter.Value>
                     </Setter>
@@ -108,7 +108,7 @@
                         <Setter.Value>
                             <Viewbox Width="16" Height="16" Margin="0, 0, 3, 5">
                                 <Path Data="M4,8H8V4H20V16H16V20H4V8M16,8V14H18V6H10V8H16M6,12V18H14V12H6Z"
-                                      Fill="{DynamicResource Window.Foreground.Normal}" />
+                                      Fill="{DynamicResource Brush.Window.Foreground.Normal}" />
                             </Viewbox>
                         </Setter.Value>
                     </Setter>

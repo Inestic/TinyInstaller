@@ -15,9 +15,10 @@ namespace TinyInstaller
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var vm = CompositionRootHelper.CreateVM(mainWindow: this);
-            DataContext = vm;
-            vm.Invoke();
+            DataContext = new MainViewModelBuilder(this).AddStartupConditions()
+                                                        .AddLocalizations()
+                                                        .Build()
+                                                        .Initialize();
         }
     }
 }

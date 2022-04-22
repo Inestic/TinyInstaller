@@ -1,18 +1,14 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using TinyInstaller.Interfaces;
-
-namespace TinyInstaller.ViewModel
+﻿namespace TinyInstaller.ViewModel
 {
-    internal partial class VM : INotifyPropertyChanged
-    {
-        internal VM(MainWindow mainWindow, ILocalizationHelper localizationHelper, IEnumerable<IStartupCondition> startupConditions) : base()
-        {
-            InitializeProperties(mainWindow, localizationHelper, startupConditions);
-        }
+    //internal partial class VM : INotifyPropertyChanged
+    //{
+    //    internal VM(MainWindow mainWindow, ILocalizationHelper localizationHelper, IEnumerable<IStartupCondition> startupConditions) : base()
+    //    {
+    //        InitializeProperties(mainWindow, localizationHelper, startupConditions);
+    //    }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+    //    public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
-    }
+    //    private void OnPropertyChanged(string propertyChanged) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyChanged));
+    //}
 }

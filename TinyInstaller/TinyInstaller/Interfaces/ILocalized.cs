@@ -1,6 +1,6 @@
 ﻿namespace TinyInstaller.Interfaces
 {
-    internal interface ILocalizationHelper
+    internal interface ILocalized
     {
         void Invoke();
     }

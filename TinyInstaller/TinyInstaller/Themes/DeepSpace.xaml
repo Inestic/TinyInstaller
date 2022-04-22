@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Color.Window.Background.Light" R="48" G="48" B="48" />
+    <Color x:Key="Color.Window.Background.Light10" R="63" G="63" B="63" />
+    <Color x:Key="Color.Window.Accent.Normal" R="28" G="98" B="185" />
+    <SolidColorBrush x:Key="Brush.Window.Accent.High" Color="#E81123" />
+    <SolidColorBrush x:Key="Brush.Window.Accent.Normal" Color="#1C62B9" />
+    <SolidColorBrush x:Key="Brush.Window.Background.Light" Color="#303030" />
+    <SolidColorBrush x:Key="Brush.Window.Background.Light10" Color="#3F3F3F" />
+    <SolidColorBrush x:Key="Brush.Window.Background.Normal" Color="#1f1f1f" />
+    <SolidColorBrush x:Key="Brush.Window.Foreground.Normal" Color="#FFFFFF" />
+</ResourceDictionary>

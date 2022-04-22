@@ -17,7 +17,7 @@ namespace TinyInstaller.UserControls
         private void WindowTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
-                (DataContext as VM).MainWindow.DragMove();
+                (DataContext as MainViewModel).MainWindow.DragMove();
         }
     }
 }

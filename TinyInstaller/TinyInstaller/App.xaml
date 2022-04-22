@@ -5,7 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Themes/BlackHole.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Themes/DeepSpace.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Common/Fonts.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

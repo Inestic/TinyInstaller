@@ -3,13 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:converters="clr-namespace:TinyInstaller.Converters"
         xmlns:controls="clr-namespace:TinyInstaller.UserControls"
         xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
-
     <Window.Style>
         <Style TargetType="{x:Type Window}">
             <Setter Property="WindowStyle" Value="None" />
@@ -22,13 +20,13 @@
             <Setter Property="Height" Value="615" />
             <Setter Property="Width" Value="1074" />
             <Setter Property="MaxHeight" Value="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" />
-            <Setter Property="Background" Value="{DynamicResource Window.Background.Normal}" />
-            <Setter Property="Foreground" Value="{DynamicResource Window.Foreground.Normal}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Normal}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
             <Setter Property="Title">
                 <Setter.Value>
                     <MultiBinding StringFormat="{}{0} {1}">
                         <Binding Path="AppName" />
-                        <Binding Path="AppVersionString" />
+                        <Binding Path="AppVersion" />
                     </MultiBinding>
                 </Setter.Value>
             </Setter>
@@ -49,16 +47,15 @@
     </Window.Style>
     <Window.Resources>
         <Thickness x:Key="StandartTextInterval" Right="15" Top="7" Left="15" Bottom="8" />
-        <converters:IntToAnimation x:Key="IntToAnimationConverter" />
         <Style TargetType="Border" x:Key="WindowBorderStyle">
-            <Setter Property="BorderBrush" Value="{DynamicResource Window.Accent.Normal}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="RegularText">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource Comfortaa}" />
+            <Setter Property="FontFamily" Value="{StaticResource RobotoSlab}" />
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="18" />
         </Style>
@@ -71,11 +68,11 @@
                 <RowDefinition Height="25" />
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0"
-                                  Background="{DynamicResource Window.Background.Light}" />
+                                  Background="{DynamicResource Brush.Window.Background.Light}" />
 
-            <views:ViewRunStartupConditions Grid.Row="1" />
+            <views:ViewLoadingData Grid.Row="1" />
 
-            <Grid Grid.Row="2" Background="{DynamicResource Window.Background.Light}">
+            <Grid Grid.Row="2" Background="{DynamicResource Brush.Window.Background.Light}">
                 <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.Inestic}"
                                     Command="{Binding HyperLinkClickedCommand}"
                                     CommandParameter="{DynamicResource Hyperlink.GitHub.Inestic}"
