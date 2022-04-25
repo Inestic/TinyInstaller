@@ -16,9 +16,8 @@ namespace TinyInstaller
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = new MainViewModelBuilder(this).AddStartupConditions()
-                                                        .AddLocalizations()
-                                                        .Build()
-                                                        .Initialize();
+                                                        .SetLocalizations()
+                                                        .Build();
         }
     }
 }

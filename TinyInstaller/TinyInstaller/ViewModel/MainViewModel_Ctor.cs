@@ -1,18 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using TinyInstaller.Interfaces;
 
 namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel : INotifyPropertyChanged
     {
-        public MainViewModel()
+        public MainViewModel(MainWindow mainWindow, IEnumerable<IStartupCondition> startupConditions)
         {
-        }
-
-        public MainViewModel(MainWindow mainWindow, ILocalized localizator) : this()
-        {
-            Localizator = localizator;
-            MainWindow = mainWindow;
+            MainWindow = mainWindow ?? throw new ArgumentNullException(nameof(mainWindow));
+            StartupConditions = startupConditions ?? throw new ArgumentNullException(nameof(startupConditions));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

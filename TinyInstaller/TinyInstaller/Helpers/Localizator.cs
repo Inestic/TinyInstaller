@@ -14,7 +14,7 @@ namespace TinyInstaller.Helpers
         private static Uri RU_URI = new Uri("pack://application:,,,/Localizations/RU.xaml");
         private Dictionary<string, Uri> Localizations = new() { { EN_NAME, EN_URI }, { RU_NAME, RU_URI }, };
 
-        public void Invoke()
+        public void SetLocalization()
         {
             var HasRuCulture = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == RU_NAME;
             var localization = new ResourceDictionary() { Source = Localizations[HasRuCulture ? RU_NAME : EN_NAME] };

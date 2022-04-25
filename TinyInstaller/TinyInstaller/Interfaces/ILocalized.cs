@@ -2,6 +2,6 @@
 {
     internal interface ILocalized
     {
-        void Invoke();
+        void SetLocalization();
     }
 }

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TinyInstaller.Interfaces;
+using TinyInstaller.StartupConditions;
 using TinyInstaller.ViewModel;
 
 namespace TinyInstaller.Helpers
@@ -15,22 +17,31 @@ namespace TinyInstaller.Helpers
             MainWindow = mainWindow;
         }
 
-        private ILocalized Localizator { get; set; }
         private MainWindow MainWindow { get; set; }
         public IEnumerable<IStartupCondition> StartupConditions { get; private set; }
 
-        internal MainViewModelBuilder AddLocalizations()
-        {
-            Localizator = new Localizator();
-            return this;
-        }
-
         internal MainViewModelBuilder AddStartupConditions()
         {
-            StartupConditions = new List<IStartupCondition>();
+            StartupConditions = new List<IStartupCondition>()
+            {
+                new ConfigFileExist(AppDir: AppDomain.CurrentDomain.BaseDirectory, ConfigFile: "PackagesConfig.json"),
+            };
+
             return this;
         }
 
-        internal MainViewModel Build() => new MainViewModel(MainWindow, Localizator);
+        internal MainViewModel Build()
+        {
+            var vm = new MainViewModel(MainWindow, StartupConditions);
+            vm.Initialize();
+            return vm;
+        }
+
+        internal MainViewModelBuilder SetLocalizations()
+        {
+            var localizator = new Localizator();
+            localizator.SetLocalization();
+            return this;
+        }
     }
 }
