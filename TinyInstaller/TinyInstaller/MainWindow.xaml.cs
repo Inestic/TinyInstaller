@@ -17,6 +17,7 @@ namespace TinyInstaller
         {
             DataContext = new MainViewModelBuilder(this).AddStartupConditions()
                                                         .SetLocalizations()
+                                                        .SetModelBuilder()
                                                         .Build();
         }
     }

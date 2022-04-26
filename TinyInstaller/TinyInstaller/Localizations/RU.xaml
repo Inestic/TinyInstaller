@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="Hyperlink.GitHub.Inestic">https://github.com/Inestic</system:String>
+    <system:String x:Key="Hyperlink.GitHub.Inestic">https://github.com/Inestic/TinyInstaller</system:String>
     <system:String x:Key="Localization.StartupCondition.ConfigFileExist.Name">Отсутствует файл конфигурации</system:String>
     <system:String x:Key="Localization.StartupCondition.ConfigFileExist.Description">Информация о названии, описании, расположении установочных файлов хранится в файле конфигурации «PackagesConfig.json». Сейчас этого файла нет. Нужно создать и заполнить его используя записи в нём как шаблон.</system:String>
 </ResourceDictionary>

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TinyInstaller.Common;
+using TinyInstaller.Models;
 
 namespace TinyInstaller.ViewModel
 {
@@ -15,7 +17,20 @@ namespace TinyInstaller.ViewModel
 
         private void InvokeStartupConditions()
         {
-            throw new NotImplementedException();
+            Task.Run(() =>
+            {
+                foreach (var condition in StartupConditions)
+                {
+                    try
+                    {
+                        condition.Invoke();
+                    }
+                    catch (Exception e)
+                    {
+                        Model = ModelBuilder.Build<ConditionHasErrorsModel, string>(e.Message);
+                    }
+                }
+            });
         }
 
         internal void Initialize()
