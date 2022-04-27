@@ -11,6 +11,8 @@ namespace TinyInstaller.ViewModel
         private bool mainWindow_CanClose = true;
         private IModel model;
 
+        private IModelBuilder ModelBuilder { get; set; }
+        private IEnumerable<IStartupCondition> StartupConditions { get; set; }
         public string AppName { get => Assembly.GetExecutingAssembly().GetName().Name; }
         public string AppVersion { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
         public RelayCommand<string> HyperLinkClickedCommand { get; private set; }
@@ -39,8 +41,5 @@ namespace TinyInstaller.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        public IModelBuilder ModelBuilder { get; private set; }
-        public IEnumerable<IStartupCondition> StartupConditions { get; private set; }
     }
 }

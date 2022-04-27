@@ -25,7 +25,7 @@ namespace TinyInstaller.StartupConditions
         public void TryFix()
         {
             if (!File.Exists(Path.Combine(appDir, configFile)))
-                File.Create(Path.Combine(appDir, configFile));
+                _ = File.Create(Path.Combine(appDir, configFile));
         }
     }
 }

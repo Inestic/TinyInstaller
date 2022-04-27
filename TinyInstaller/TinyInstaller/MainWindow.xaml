@@ -4,10 +4,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:TinyInstaller.UserControls"
+        xmlns:models="clr-namespace:TinyInstaller.Models"
         xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        x:Name="AppMainWindow">
     <Window.Style>
         <Style TargetType="{x:Type Window}">
             <Setter Property="WindowStyle" Value="None" />
@@ -47,6 +49,9 @@
     </Window.Style>
     <Window.Resources>
         <Thickness x:Key="StandartTextInterval" Right="15" Top="7" Left="15" Bottom="8" />
+        <DataTemplate DataType="{x:Type models:ConditionHasErrorsModel}">
+            <views:ConditionHasErrorsView />
+        </DataTemplate>
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -59,6 +64,9 @@
             <Setter Property="FontWeight" Value="Regular" />
             <Setter Property="FontSize" Value="18" />
         </Style>
+        <Style TargetType="{x:Type ContentControl}">
+            <Setter Property="Grid.Row" Value="1" />
+        </Style>
     </Window.Resources>
     <Border Style="{StaticResource WindowBorderStyle}">
         <Grid>
@@ -70,12 +78,12 @@
             <controls:WindowTitle Grid.Row="0"
                                   Background="{DynamicResource Brush.Window.Background.Light}" />
 
-            <views:ViewLoadingData Grid.Row="1" />
+            <ContentControl Content="{Binding Model}" />
 
             <Grid Grid.Row="2" Background="{DynamicResource Brush.Window.Background.Light}">
-                <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.Inestic}"
+                <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.TinyInstaller}"
                                     Command="{Binding HyperLinkClickedCommand}"
-                                    CommandParameter="{DynamicResource Hyperlink.GitHub.Inestic}"
+                                    CommandParameter="{DynamicResource Hyperlink.GitHub.TinyInstaller}"
                                     FontSize="14"
                                     HorizontalAlignment="Right"
                                     Margin="0, 0, 5, 0" />
