@@ -20,12 +20,17 @@ namespace TinyInstaller.StartupConditions
         public bool IsSuccessfully { get; set; } = default;
         public string Name { get => (string)Application.Current.Resources["Localization.StartupCondition.ConfigFileExist.Name"]; }
 
-        public bool Invoke() => File.Exists(Path.Combine(appDir, configFile));
+        public void Invoke() => IsSuccessfully = File.Exists(Path.Combine(appDir, configFile));
 
         public void TryFix()
         {
-            if (!File.Exists(Path.Combine(appDir, configFile)))
-                _ = File.Create(Path.Combine(appDir, configFile));
+            var configFilePath = Path.Combine(appDir, configFile);
+
+            if (File.Exists(configFilePath))
+                return;
+
+            _ = File.Create(configFilePath);
+            IsSuccessfully = File.Exists(configFilePath);
         }
     }
 }

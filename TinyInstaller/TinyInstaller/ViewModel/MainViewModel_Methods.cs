@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
+using TinyInstaller.Interfaces;
 using TinyInstaller.Models;
 
 namespace TinyInstaller.ViewModel
@@ -17,7 +20,7 @@ namespace TinyInstaller.ViewModel
 
         private void InvokeStartupConditions()
         {
-            Task.Run(() =>
+            _ = Task.Run(() =>
             {
                 foreach (var condition in StartupConditions)
                 {
@@ -29,6 +32,9 @@ namespace TinyInstaller.ViewModel
                     {
                         Model = ModelBuilder.Build<ConditionHasErrorsModel, string>(e.Message);
                     }
+
+                    Model = StartupConditions.All(c => c.IsSuccessfully) ? ModelBuilder.Build<ReadyToInstallModel>()
+                                                                         : ModelBuilder.Build<ConditionTryFixModel, IEnumerable<IStartupCondition>>(StartupConditions.Where(c => !c.IsSuccessfully));
                 }
             });
         }

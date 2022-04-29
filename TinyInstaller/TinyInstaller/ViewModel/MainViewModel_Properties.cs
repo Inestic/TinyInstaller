@@ -3,13 +3,14 @@ using System.Reflection;
 using System.Windows.Input;
 using TinyInstaller.Common;
 using TinyInstaller.Interfaces;
+using TinyInstaller.Models;
 
 namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel
     {
         private bool mainWindow_CanClose = true;
-        private IModel model;
+        private ModelBase model;
 
         private IModelBuilder ModelBuilder { get; set; }
         private IEnumerable<IStartupCondition> StartupConditions { get; set; }
@@ -32,7 +33,7 @@ namespace TinyInstaller.ViewModel
         public RelayCommand MainWindowMinimizeCommand { get; private set; }
         public RelayCommand MainWindowMinMaxCommand { get; private set; }
 
-        public IModel Model
+        public ModelBase Model
         {
             get => model;
             private set

@@ -1,15 +1,18 @@
-﻿<UserControl x:Class="TinyInstaller.Views.ConditionHasErrorsView"
+﻿<UserControl x:Class="TinyInstaller.Views.ConditionTryFixView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:TinyInstaller.Views"
              xmlns:uc="clr-namespace:TinyInstaller.UserControls"
+             xmlns:local="clr-namespace:TinyInstaller.Views"
              mc:Ignorable="d">
 
     <UserControl.Resources>
         <Thickness x:Key="StandartMargin" Left="20" Top="0" Right="20" Bottom="20" />
-        <Style TargetType="{x:Type local:ConditionHasErrorsView}">
+        <CollectionViewSource
+            x:Key="ConditionsToFix"
+            Source="{Binding ConditionsToFix}" />
+        <Style TargetType="{x:Type local:ConditionTryFixView}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -39,27 +42,11 @@
                                          Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                          Margin="{StaticResource StandartMargin}" />
 
-                    <TextBlock Style="{DynamicResource RegularText}"
-                               Text="{DynamicResource Localization.StartupCondition.HasError}"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               FontWeight="DemiBold"
-                               Margin="{StaticResource StandartMargin}" />
-
-                    <uc:HyperLink Text="{DynamicResource Hyperlink.GitHub.TinyInstaller.Issue}"
-                                  DataContext="{Binding Path=DataContext, ElementName=AppMainWindow}"
-                                  Command="{Binding HyperLinkClickedCommand}"
-                                  CommandParameter="{DynamicResource Hyperlink.GitHub.TinyInstaller.Issue}"
-                                  FontSize="18"
-                                  HorizontalAlignment="Center"
-                                  Margin="{StaticResource StandartMargin}"
-                                  Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
-
-                    <TextBlock Style="{DynamicResource RegularText}"
-                               Text="{Binding ErrorDescription}"
-                               TextAlignment="Center"
-                               TextWrapping="Wrap"
-                               FontWeight="DemiBold" />
+                    <ItemsControl ItemsSource="{Binding Source={StaticResource ConditionsToFix}}" ItemTemplateSelector="">
+                        <!--<DataTemplate DataType="">
+                            
+                        </DataTemplate>-->
+                    </ItemsControl>
                 </StackPanel>
             </Grid>
         </ControlTemplate>

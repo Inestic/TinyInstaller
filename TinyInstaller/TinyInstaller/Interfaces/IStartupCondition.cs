@@ -6,7 +6,7 @@
         public bool IsSuccessfully { get; set; }
         public string Name { get; }
 
-        public bool Invoke();
+        public void Invoke();
 
         public void TryFix();
     }

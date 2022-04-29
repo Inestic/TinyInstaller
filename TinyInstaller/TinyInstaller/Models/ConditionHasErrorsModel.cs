@@ -1,17 +1,15 @@
-﻿using TinyInstaller.Interfaces;
-
-namespace TinyInstaller.Models
+﻿namespace TinyInstaller.Models
 {
-    internal class ConditionHasErrorsModel : IModel
+    internal class ConditionHasErrorsModel : ModelBase
     {
         private string errorDescription;
 
         public string ErrorDescription
         {
-            get { return errorDescription; }
-            set { errorDescription = value; }
+            get => errorDescription;
+            private set => errorDescription = value;
         }
 
-        public void Initialize<TParameter>(TParameter parameter) => ErrorDescription = parameter as string;
+        public new void Initialize<TParameter>(TParameter parameter) => ErrorDescription = parameter as string;
     }
 }

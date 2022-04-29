@@ -1,7 +1,11 @@
-﻿namespace TinyInstaller.Interfaces
+﻿using TinyInstaller.Models;
+
+namespace TinyInstaller.Interfaces
 {
     internal interface IModelBuilder
     {
-        IModel Build<TModel, TParameter>(TParameter parameter);
+        ModelBase Build<TModel, TParameter>(TParameter parameter) where TModel : ModelBase, new();
+
+        ModelBase Build<TModel>() where TModel : ModelBase;
     }
 }
