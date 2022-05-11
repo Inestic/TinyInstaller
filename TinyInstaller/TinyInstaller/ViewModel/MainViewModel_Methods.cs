@@ -31,11 +31,12 @@ namespace TinyInstaller.ViewModel
                     catch (Exception e)
                     {
                         Model = ModelBuilder.Build<ConditionHasErrorsModel, string>(e.Message);
+                        return;
                     }
-
-                    Model = StartupConditions.All(c => c.IsSuccessfully) ? ModelBuilder.Build<ReadyToInstallModel>()
-                                                                         : ModelBuilder.Build<ConditionTryFixModel, IEnumerable<IStartupCondition>>(StartupConditions.Where(c => !c.IsSuccessfully));
                 }
+
+                Model = StartupConditions.All(c => c.IsSuccessfully) ? ModelBuilder.Build<ReadyToInstallModel>()
+                                                                     : ModelBuilder.Build<ConditionTryFixModel, IEnumerable<IStartupCondition>>(StartupConditions.Where(c => !c.IsSuccessfully));
             });
         }
 

@@ -53,6 +53,7 @@
                                   FontSize="18"
                                   HorizontalAlignment="Center"
                                   Margin="{StaticResource StandartMargin}"
+                                  Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                   Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
 
                     <TextBlock Style="{DynamicResource RegularText}"

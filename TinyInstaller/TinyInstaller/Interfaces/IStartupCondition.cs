@@ -2,12 +2,12 @@
 {
     internal interface IStartupCondition
     {
-        public string Description { get; }
-        public bool IsSuccessfully { get; set; }
-        public string Name { get; }
+        string Description { get; }
+        bool IsSuccessfully { get; set; }
+        string Name { get; }
 
-        public void Invoke();
+        void Invoke();
 
-        public void TryFix();
+        void TryFix();
     }
 }

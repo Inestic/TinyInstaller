@@ -70,6 +70,11 @@
         <Style TargetType="{x:Type ContentControl}">
             <Setter Property="Grid.Row" Value="1" />
         </Style>
+        <Style TargetType="{x:Type ScrollViewer}">
+            <Setter Property="CanContentScroll" Value="False" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+        </Style>
     </Window.Resources>
     <Border Style="{StaticResource WindowBorderStyle}">
         <Grid>
