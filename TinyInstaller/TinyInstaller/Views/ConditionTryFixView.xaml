@@ -16,7 +16,7 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Normal}" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Accent.Normal}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -34,19 +34,21 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <uc:LoadingIndicator Width="100"
-                                         Height="100"
-                                         StartAnimation="False"
-                                         Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                                         Grid.Row="0"
-                                         VerticalAlignment="Center"
-                                         HorizontalAlignment="Center" />
+                                     Height="100"
+                                     StartAnimation="False"
+                                     Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Grid.Row="0"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Opacity="0.5" />
 
-                <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1">
+                <ScrollViewer Grid.Row="1">
                     <StackPanel>
                         <ItemsControl ItemsSource="{Binding Source={StaticResource ConditionsToFix}}">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type sc:ConfigFileExist}">
-                                    <TextBlock Text="{Binding Description}" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                                    <uc:SlidingPanel Header="{Binding Name}"
+                                                     Description="{Binding Description}" />
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

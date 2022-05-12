@@ -4,6 +4,6 @@
     <system:String x:Key="Hyperlink.GitHub.TinyInstaller">https://github.com/Inestic/TinyInstaller</system:String>
     <system:String x:Key="Hyperlink.GitHub.TinyInstaller.Issue">https://github.com/Inestic/TinyInstaller/issues/new</system:String>
     <system:String x:Key="Localization.StartupCondition.ConfigFileExist.Name">Отсутствует файл конфигурации</system:String>
-    <system:String x:Key="Localization.StartupCondition.ConfigFileExist.Description">Информация о названии, описании, расположении установочных файлов хранится в файле конфигурации «PackagesConfig.json». Сейчас этого файла нет. Нужно создать и заполнить его используя записи в нём как шаблон.</system:String>
+    <system:String x:Key="Localization.StartupCondition.ConfigFileExist.Description">Информация о названии, описании и расположении установочных файлов хранится в файле конфигурации «PackagesConfig.json». Сейчас этого файла нет. Нужно создать и заполнить его используя записи в нём как шаблон.</system:String>
     <system:String x:Key="Localization.StartupCondition.HasError">Вжух! Произошла ошибка, и вот вы здесь. Очень жаль, но иногда такое случается. Пожалуйста, создайте сообщение об ошибке используя ссылку ниже, это поможет улучшить следующие версии TinyInstaller.</system:String>
 </ResourceDictionary>
