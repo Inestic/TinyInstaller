@@ -10,10 +10,10 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="Width" Value="326" />
-            <Setter Property="Height" Value="326" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Background.Light}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
             <Setter Property="StartAnimation" Value="False" />
         </Style>
         <Style TargetType="{x:Type Grid}">

@@ -6,8 +6,6 @@
         bool IsSuccessfully { get; set; }
         string Name { get; }
 
-        void Invoke();
-
-        void TryFix();
+        bool Invoke();
     }
 }

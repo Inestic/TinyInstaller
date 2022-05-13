@@ -44,6 +44,6 @@ namespace TinyInstaller.UserControls
             set { SetValue(IsExpandedProperty, value); }
         }
 
-        private void GridArrowWrapper_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => IsExpanded ^= true;
+        private void GridHeader_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => IsExpanded ^= true;
     }
 }

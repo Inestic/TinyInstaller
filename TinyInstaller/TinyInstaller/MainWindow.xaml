@@ -56,16 +56,16 @@
             <views:ConditionTryFixView />
         </DataTemplate>
         <Style TargetType="Border" x:Key="WindowBorderStyle">
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="RegularText">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource RobotoSlab}" />
+            <Setter Property="FontFamily" Value="{StaticResource OpenSans}" />
             <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="20" />
         </Style>
         <Style TargetType="{x:Type ContentControl}">
             <Setter Property="Grid.Row" Value="1" />
@@ -93,8 +93,9 @@
                                     Command="{Binding HyperLinkClickedCommand}"
                                     CommandParameter="{DynamicResource Hyperlink.GitHub.TinyInstaller}"
                                     FontSize="14"
-                                    HorizontalAlignment="Right"
-                                    Margin="0, 0, 5, 0" />
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="10, 0, 0, 0" />
             </Grid>
         </Grid>
     </Border>

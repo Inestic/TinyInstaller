@@ -12,10 +12,7 @@
         <converters:ActualHeightMultiply x:Key="ActualHeightMultiplyConverter" />
         <Style x:Key="HeaderGrid" TargetType="{x:Type Grid}">
             <Setter Property="DockPanel.Dock" Value="Top" />
-            <Setter Property="Height" Value="40" />
-        </Style>
-        <Style x:Key="ArrowWrapperGrid" TargetType="{x:Type Grid}">
-            <Setter Property="Grid.Column" Value="2" />
+            <Setter Property="Height" Value="50" />
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
         <Style TargetType="{x:Type DockPanel}">
@@ -32,6 +29,7 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
         <Style x:Key="ArrowViewBox" TargetType="{x:Type Viewbox}">
+            <Setter Property="Grid.Column" Value="2" />
             <Setter Property="Width" Value="18" />
             <Setter Property="Height" Value="18" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -61,8 +59,8 @@
             </Setter>
         </Style>
         <Style TargetType="{x:Type local:SlidingPanel}">
-            <Setter Property="Width" Value="450" />
-            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Width" Value="550" />
+            <Setter Property="MinHeight" Value="50" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -76,7 +74,9 @@
     <UserControl.Template>
         <ControlTemplate>
             <DockPanel x:Name="PanelContent">
-                <Grid Style="{StaticResource HeaderGrid}">
+                <Grid x:Name="GridHeader"
+                      Style="{StaticResource HeaderGrid}"
+                      MouseLeftButtonDown="GridHeader_MouseLeftButtonDown">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="*" />
@@ -84,7 +84,10 @@
                     </Grid.ColumnDefinitions>
                     <Viewbox Style="{StaticResource WarningViewBox}">
                         <Canvas Width="24" Height="24">
-                            <Path Data="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z" />
+                            <Path Data="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  Margin="5, 0, 0, 0" />
                         </Canvas>
                     </Viewbox>
                     <TextBlock x:Name="TextBlockHeader"
@@ -95,16 +98,12 @@
                                Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"
                                TextWrapping="Wrap"
                                Margin="5" />
-                    <Grid x:Name="GridArrowWrapper"
-                          Style="{StaticResource ArrowWrapperGrid}"
-                          MouseLeftButtonDown="GridArrowWrapper_MouseLeftButtonDown">
-                        <Viewbox x:Name="ViewboxArrow"
-                                 Style="{StaticResource ArrowViewBox}">
-                            <Canvas Width="16" Height="16">
-                                <Path Data="M15.1484 12.3516L15.8516 11.6484L8 3.79688L0.148438 11.6484L0.851562 12.3516L8 5.20312L15.1484 12.3516Z" />
-                            </Canvas>
-                        </Viewbox>
-                    </Grid>
+                    <Viewbox x:Name="ViewboxArrow"
+                             Style="{StaticResource ArrowViewBox}">
+                        <Canvas Width="16" Height="16">
+                            <Path Data="M15.1484 12.3516L15.8516 11.6484L8 3.79688L0.148438 11.6484L0.851562 12.3516L8 5.20312L15.1484 12.3516Z" />
+                        </Canvas>
+                    </Viewbox>
                 </Grid>
                 <ScrollViewer x:Name="ScrollViewDescription">
                     <StackPanel x:Name="PanelDescriptionWrapper">
@@ -113,13 +112,13 @@
                                    HorizontalAlignment="Center"
                                    Text="{Binding Description, RelativeSource={RelativeSource TemplatedParent}}"
                                    TextWrapping="WrapWithOverflow"
-                                   Margin="5" />
+                                   Margin="10, 5, 10 ,10" />
                     </StackPanel>
                 </ScrollViewer>
             </DockPanel>
             <ControlTemplate.Triggers>
-                <Trigger SourceName="GridArrowWrapper" Property="IsMouseOver" Value="True">
-                    <Setter TargetName="GridArrowWrapper" Property="Background" Value="{DynamicResource Brush.Window.Background.Light10}" />
+                <Trigger SourceName="GridHeader" Property="IsMouseOver" Value="True">
+                    <Setter TargetName="GridHeader" Property="Background" Value="{DynamicResource Brush.Window.Background.Light10}" />
                 </Trigger>
                 <DataTrigger Binding="{Binding Path=IsExpanded, RelativeSource={RelativeSource Self}}" Value="True">
                     <DataTrigger.EnterActions>

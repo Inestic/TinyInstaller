@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\RobotoSlab-Regular.ttf" />
+    <None Remove="Fonts\OpenSans-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\RobotoSlab-Regular.ttf" />
+    <Resource Include="Fonts\OpenSans-Regular.ttf" />
   </ItemGroup>
 
 </Project>

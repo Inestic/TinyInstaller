@@ -30,7 +30,7 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Light}" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Light}" />
         </Style>
     </UserControl.Resources>

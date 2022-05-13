@@ -3,7 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:sc="clr-namespace:TinyInstaller.StartupConditions"
              xmlns:uc="clr-namespace:TinyInstaller.UserControls"
              xmlns:local="clr-namespace:TinyInstaller.Views"
              mc:Ignorable="d">
@@ -32,28 +31,27 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="150" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
-                <uc:LoadingIndicator Width="100"
-                                     Height="100"
-                                     StartAnimation="False"
-                                     Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                                     Grid.Row="0"
+                <uc:LoadingIndicator Grid.Row="0"
                                      VerticalAlignment="Center"
                                      HorizontalAlignment="Center"
-                                     Opacity="0.5" />
+                                     Opacity="0.7" />
 
-                <ScrollViewer Grid.Row="1">
-                    <StackPanel>
-                        <ItemsControl ItemsSource="{Binding Source={StaticResource ConditionsToFix}}">
-                            <ItemsControl.Resources>
-                                <DataTemplate DataType="{x:Type sc:ConfigFileExist}">
-                                    <uc:SlidingPanel Header="{Binding Name}"
-                                                     Description="{Binding Description}" />
-                                </DataTemplate>
-                            </ItemsControl.Resources>
-                        </ItemsControl>
-                    </StackPanel>
-                </ScrollViewer>
+                <ItemsControl ItemsSource="{Binding Source={StaticResource ConditionsToFix}}"
+                              Grid.Row="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <uc:SlidingPanel Header="{Binding Name}"
+                                             Description="{Binding Description}"
+                                             Margin="0, 10, 0, 10" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <uc:FilledButton Grid.Row="2"
+                                 Text="{DynamicResource Localization.StartupCondition.FixIt}"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center" />
             </Grid>
         </ControlTemplate>
     </UserControl.Template>

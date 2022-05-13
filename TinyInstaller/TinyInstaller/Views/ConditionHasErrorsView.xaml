@@ -14,7 +14,7 @@
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Normal}" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Accent.Normal}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
         </Style>
         <Style TargetType="{x:Type Grid}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -33,11 +33,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel>
-                    <uc:LoadingIndicator Width="100"
-                                         Height="100"
-                                         StartAnimation="False"
-                                         Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
-                                         Margin="{StaticResource StandartMargin}" />
+                    <uc:LoadingIndicator Margin="{StaticResource StandartMargin}" />
 
                     <TextBlock Style="{DynamicResource RegularText}"
                                Text="{DynamicResource Localization.StartupCondition.HasError}"

@@ -18,7 +18,7 @@ namespace TinyInstaller.ViewModel
             HyperLinkClickedCommand = new RelayCommand<string>(Command_HyperLinkClicked_Execute);
         }
 
-        private void InvokeStartupConditions()
+        private void StartupConditionsInvoke()
         {
             _ = Task.Run(() =>
             {
@@ -26,7 +26,8 @@ namespace TinyInstaller.ViewModel
                 {
                     try
                     {
-                        condition.Invoke();
+                        if (!condition.Invoke())
+                            break;
                     }
                     catch (Exception e)
                     {
@@ -43,7 +44,7 @@ namespace TinyInstaller.ViewModel
         internal void Initialize()
         {
             InitializeCommands();
-            InvokeStartupConditions();
+            StartupConditionsInvoke();
         }
     }
 }
