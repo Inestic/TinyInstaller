@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using TinyInstaller.Common;
 using TinyInstaller.Interfaces;
 using TinyInstaller.Models;
@@ -12,10 +10,9 @@ namespace TinyInstaller.ViewModel
         private bool mainWindow_CanClose = true;
         private ModelBase model;
 
-        private IModelBuilder ModelBuilder { get; set; }
-        private IEnumerable<IStartupCondition> StartupConditions { get; set; }
-        public string AppName { get => Assembly.GetExecutingAssembly().GetName().Name; }
-        public string AppVersion { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+        public string AppName => AppValues.AppName;
+        public IConstantsValues AppValues { get; private set; }
+        public string AppVersion => AppValues.AppVersion;
         public RelayCommand<string> HyperLinkClickedCommand { get; private set; }
         public MainWindow MainWindow { get; private set; }
 

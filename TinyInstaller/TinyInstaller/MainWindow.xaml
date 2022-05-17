@@ -56,7 +56,7 @@
             <views:ConditionTryFixView />
         </DataTemplate>
         <Style TargetType="Border" x:Key="WindowBorderStyle">
-            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="RegularText">

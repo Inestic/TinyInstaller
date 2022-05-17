@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using TinyInstaller.Interfaces;
-using TinyInstaller.StartupConditions;
+﻿using TinyInstaller.Interfaces;
 using TinyInstaller.ViewModel;
 
 namespace TinyInstaller.Helpers
@@ -17,24 +15,11 @@ namespace TinyInstaller.Helpers
         }
 
         private MainWindow MainWindow { get; set; }
-
-        public AppConstants AppConstants { get; private set; }
-        public IModelBuilder ModelBuilder { get; private set; }
-        public IEnumerable<IStartupCondition> StartupConditions { get; private set; }
-
-        internal MainViewModelBuilder AddStartupConditions()
-        {
-            StartupConditions = new List<IStartupCondition>()
-            {
-                new ConfigFileExist(AppDir: AppConstants.BaseDirectory, ConfigFile: AppConstants.ConfigFile),
-            };
-
-            return this;
-        }
+        public IConstantsValues AppConstants { get; private set; } = new AppConstants();
 
         internal MainViewModel Build()
         {
-            var vm = new MainViewModel(MainWindow, StartupConditions, ModelBuilder);
+            var vm = new MainViewModel(MainWindow, AppConstants);
             vm.Initialize();
             return vm;
         }
@@ -43,12 +28,6 @@ namespace TinyInstaller.Helpers
         {
             var localizator = new Localizator();
             localizator.SetLocalization();
-            return this;
-        }
-
-        internal MainViewModelBuilder SetModelBuilder()
-        {
-            ModelBuilder = new ModelBuilder();
             return this;
         }
     }

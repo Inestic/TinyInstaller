@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
-using TinyInstaller.Interfaces;
-using TinyInstaller.Models;
+using TinyInstaller.Poco;
 
 namespace TinyInstaller.ViewModel
 {
@@ -18,33 +17,37 @@ namespace TinyInstaller.ViewModel
             HyperLinkClickedCommand = new RelayCommand<string>(Command_HyperLinkClicked_Execute);
         }
 
-        private void StartupConditionsInvoke()
+        private void ParseJsonConfig()
         {
             _ = Task.Run(() =>
             {
-                foreach (var condition in StartupConditions)
+                try
                 {
-                    try
-                    {
-                        if (!condition.Invoke())
-                            break;
-                    }
-                    catch (Exception e)
-                    {
-                        Model = ModelBuilder.Build<ConditionHasErrorsModel, string>(e.Message);
-                        return;
-                    }
+                    var json = File.ReadAllText(AppValues.ConfigFile);
+                    var a = JsonSerializer.Deserialize<InstallationPackageArray>(json);
                 }
-
-                Model = StartupConditions.All(c => c.IsSuccessfully) ? ModelBuilder.Build<ReadyToInstallModel>()
-                                                                     : ModelBuilder.Build<ConditionTryFixModel, IEnumerable<IStartupCondition>>(StartupConditions.Where(c => !c.IsSuccessfully));
+                catch (FileNotFoundException e)
+                {
+                    //return file not found model
+                    throw;
+                }
+                catch (JsonException e)
+                {
+                    //return json data read model
+                    throw;
+                }
+                catch (Exception e)
+                {
+                    //return unknow error model
+                    throw;
+                }
             });
         }
 
         internal void Initialize()
         {
             InitializeCommands();
-            StartupConditionsInvoke();
+            ParseJsonConfig();
         }
     }
 }
