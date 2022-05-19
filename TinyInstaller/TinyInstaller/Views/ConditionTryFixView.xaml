@@ -38,7 +38,7 @@
                                      HorizontalAlignment="Center"
                                      Opacity="0.7" />
 
-                <ItemsControl ItemsSource="{Binding Source={StaticResource ConditionsToFix}}"
+                <!--<ItemsControl ItemsSource="{Binding Source={StaticResource ConditionsToFix}}"
                               Grid.Row="1">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -47,7 +47,7 @@
                                              Margin="0, 10, 0, 10" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                </ItemsControl>-->
                 <uc:FilledButton Grid.Row="2"
                                  Text="{DynamicResource Localization.StartupCondition.FixIt}"
                                  VerticalAlignment="Center"

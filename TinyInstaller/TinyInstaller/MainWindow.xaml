@@ -3,9 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:models="clr-namespace:TinyInstaller.Models"
-        xmlns:controls="clr-namespace:TinyInstaller.UserControls"
-        xmlns:views="clr-namespace:TinyInstaller.Views"
+        xmlns:controls="clr-namespace:TinyInstaller.UserControls" xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
@@ -49,12 +47,12 @@
     </Window.Style>
     <Window.Resources>
         <Thickness x:Key="StandartTextInterval" Right="15" Top="7" Left="15" Bottom="8" />
-        <DataTemplate DataType="{x:Type models:ConditionHasErrorsModel}">
+        <!--<DataTemplate DataType="{x:Type models:ConditionHasErrorsModel}">
             <views:ConditionHasErrorsView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type models:ConditionTryFixModel}">
+        </DataTemplate>-->
+        <!--<DataTemplate DataType="{x:Type models:ConditionTryFixModel}">
             <views:ConditionTryFixView />
-        </DataTemplate>
+        </DataTemplate>-->
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -86,7 +84,7 @@
             <controls:WindowTitle Grid.Row="0"
                                   Background="{DynamicResource Brush.Window.Background.Light}" />
 
-            <ContentControl Content="{Binding Model}" />
+            <ContentControl Content="{Binding ViewModel}" />
 
             <Grid Grid.Row="2" Background="{DynamicResource Brush.Window.Background.Light}">
                 <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.TinyInstaller}"

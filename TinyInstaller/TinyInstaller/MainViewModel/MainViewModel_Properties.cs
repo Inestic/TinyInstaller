@@ -1,18 +1,20 @@
 ﻿using System.Windows.Input;
 using TinyInstaller.Common;
+using TinyInstaller.Helpers;
 using TinyInstaller.Interfaces;
-using TinyInstaller.Models;
+using TinyInstaller.ViewsModels;
 
 namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel
     {
         private bool mainWindow_CanClose = true;
-        private ModelBase model;
+        private ViewModelBase viewModel;
 
-        public string AppName => AppValues.AppName;
-        public IConstantsValues AppValues { get; private set; }
-        public string AppVersion => AppValues.AppVersion;
+        public AppConstants AppConstants { get; private set; }
+        public string AppName => AppConstants.AppName;
+        public string AppVersion => AppConstants.AppVersion;
+        public IConfigParser ConfigParser { get; private set; }
         public RelayCommand<string> HyperLinkClickedCommand { get; private set; }
         public MainWindow MainWindow { get; private set; }
 
@@ -30,14 +32,16 @@ namespace TinyInstaller.ViewModel
         public RelayCommand MainWindowMinimizeCommand { get; private set; }
         public RelayCommand MainWindowMinMaxCommand { get; private set; }
 
-        public ModelBase Model
+        public ViewModelBase ViewModel
         {
-            get => model;
+            get => viewModel;
             private set
             {
-                model = value;
+                viewModel = value;
                 OnPropertyChanged();
             }
         }
+
+        public IViewsModelsBuilder ViewsModelsBuilder { get; private set; }
     }
 }

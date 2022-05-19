@@ -6,7 +6,7 @@ using TinyInstaller.Interfaces;
 
 namespace TinyInstaller.Helpers
 {
-    internal class Localizator : ILocalized
+    internal class LocalizationsBuilder : ILocalized
     {
         private const string EN_NAME = "EN";
         private const string RU_NAME = "RU";
@@ -14,7 +14,7 @@ namespace TinyInstaller.Helpers
         private static Uri RU_URI = new Uri("pack://application:,,,/Localizations/RU.xaml");
         private Dictionary<string, Uri> Localizations = new() { { EN_NAME, EN_URI }, { RU_NAME, RU_URI }, };
 
-        public void SetLocalization()
+        public void Set()
         {
             var HasRuCulture = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName.ToUpper() == RU_NAME;
             var localization = new ResourceDictionary() { Source = Localizations[HasRuCulture ? RU_NAME : EN_NAME] };

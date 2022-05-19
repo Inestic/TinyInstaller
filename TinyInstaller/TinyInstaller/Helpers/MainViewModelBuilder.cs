@@ -14,20 +14,22 @@ namespace TinyInstaller.Helpers
             MainWindow = mainWindow;
         }
 
+        private AppConstants AppConstants { get; set; } = new AppConstants();
         private MainWindow MainWindow { get; set; }
-        public IConstantsValues AppConstants { get; private set; } = new AppConstants();
+        private IViewsModelsBuilder ViewsModelsBuilder { get; set; } = new ViewsModelsBuilder();
+        public IConfigParser ConfigParser { get; set; } = new ConfigParser();
 
-        internal MainViewModel Build()
+        internal IViewModel Build()
         {
-            var vm = new MainViewModel(MainWindow, AppConstants);
+            var vm = new MainViewModel(MainWindow, AppConstants, ViewsModelsBuilder, ConfigParser);
             vm.Initialize();
             return vm;
         }
 
         internal MainViewModelBuilder SetLocalization()
         {
-            var localizator = new Localizator();
-            localizator.SetLocalization();
+            var localizator = new LocalizationsBuilder();
+            localizator.Set();
             return this;
         }
     }
