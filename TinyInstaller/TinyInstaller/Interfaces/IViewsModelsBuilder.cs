@@ -1,8 +1,8 @@
-﻿using TinyInstaller.ViewsModels;
+﻿using TinyInstaller.Models;
 
 namespace TinyInstaller.Interfaces
 {
-    internal interface IViewsModelsBuilder
+    internal interface IModelsBuilder
     {
         ViewModelBase Build<TViewModel, TParameter>(TParameter parameter) where TViewModel : ViewModelBase;
 

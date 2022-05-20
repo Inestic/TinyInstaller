@@ -1,4 +1,10 @@
-﻿using TinyInstaller.Common;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using TinyInstaller.Common;
+using TinyInstaller.Interfaces;
+using TinyInstaller.Poco;
 
 namespace TinyInstaller.ViewModel
 {
@@ -12,10 +18,33 @@ namespace TinyInstaller.ViewModel
             HyperLinkClickedCommand = new RelayCommand<string>(Command_HyperLinkClicked_Execute);
         }
 
-        public async void Initialize()
+        public void Initialize()
         {
             InitializeCommands();
-            ViewModel = await ConfigParser.ParseAsync(ViewsModelsBuilder, AppConstants.ConfigFile, AppConstants.PackagesFolder);
+            InitializeEvents();
+            Task.Run(async () => await InitializeModelAsync());
+        }
+
+        private async Task InitializeModelAsync()
+        {
+            Model = await ConfigParser.ParseAsync(ModelsBuilder, AppConstants.ConfigFile, AppConstants.PackagesFolder);
+        }
+
+        private void InitializeEvents()
+        {
+            ConfigParser.IsSuccessfulParsed += ConfigSuccessfulParsed;
+            ConfigParser.IsAutoInstall += ConfigIsAutoInstallMode;
+        }
+
+        private void ConfigIsAutoInstallMode(object sender, IEnumerable<Package> packages)
+        {
+            MainWindow_CanClose = false;
+            Packages = packages.Where(package => package.AutoInstall);
+        }
+
+        private void ConfigSuccessfulParsed(object sender, IEnumerable<Package> packages)
+        {
+            Packages = packages;
         }
     }
 }

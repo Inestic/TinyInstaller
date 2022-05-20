@@ -1,4 +1,4 @@
-﻿namespace TinyInstaller.ViewsModels
+﻿namespace TinyInstaller.Models
 {
     public abstract class ViewModelBase
     {

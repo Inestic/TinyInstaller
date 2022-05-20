@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using TinyInstaller.Poco;
 
-namespace TinyInstaller.ViewsModels
+namespace TinyInstaller.Models
 {
-    internal class InstallReadyViewModel : ViewModelBase
+    internal class AutoInstallModel : ViewModelBase
     {
-        public InstallReadyViewModel(IEnumerable<Package> parameter)
+        public AutoInstallModel(IEnumerable<Package> parameter)
         {
             Packages = parameter;
         }

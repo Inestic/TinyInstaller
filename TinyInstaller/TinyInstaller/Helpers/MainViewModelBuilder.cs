@@ -1,4 +1,5 @@
-﻿using TinyInstaller.Interfaces;
+﻿using System.Threading.Tasks;
+using TinyInstaller.Interfaces;
 using TinyInstaller.ViewModel;
 
 namespace TinyInstaller.Helpers
@@ -16,12 +17,12 @@ namespace TinyInstaller.Helpers
 
         private AppConstants AppConstants { get; set; } = new AppConstants();
         private MainWindow MainWindow { get; set; }
-        private IViewsModelsBuilder ViewsModelsBuilder { get; set; } = new ViewsModelsBuilder();
+        private IModelsBuilder ModelsBuilder { get; set; } = new ViewsModelsBuilder();
         public IConfigParser ConfigParser { get; set; } = new ConfigParser();
 
         internal IViewModel Build()
         {
-            var vm = new MainViewModel(MainWindow, AppConstants, ViewsModelsBuilder, ConfigParser);
+            var vm = new MainViewModel(MainWindow, AppConstants, ModelsBuilder, ConfigParser);
             vm.Initialize();
             return vm;
         }

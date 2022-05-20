@@ -1,4 +1,6 @@
-﻿namespace TinyInstaller.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace TinyInstaller.Interfaces
 {
     internal interface IViewModel
     {

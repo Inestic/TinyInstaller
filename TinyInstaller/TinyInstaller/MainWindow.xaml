@@ -3,7 +3,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:TinyInstaller.UserControls" xmlns:views="clr-namespace:TinyInstaller.Views"
+        xmlns:controls="clr-namespace:TinyInstaller.UserControls" 
+        xmlns:model="clr-namespace:TinyInstaller.Models"
+        xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
@@ -47,12 +49,9 @@
     </Window.Style>
     <Window.Resources>
         <Thickness x:Key="StandartTextInterval" Right="15" Top="7" Left="15" Bottom="8" />
-        <!--<DataTemplate DataType="{x:Type models:ConditionHasErrorsModel}">
-            <views:ConditionHasErrorsView />
-        </DataTemplate>-->
-        <!--<DataTemplate DataType="{x:Type models:ConditionTryFixModel}">
-            <views:ConditionTryFixView />
-        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type model:UnknowErrorModel}">
+            <views:UnknowErrorView />
+        </DataTemplate>
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -61,9 +60,9 @@
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
-            <Setter Property="FontFamily" Value="{StaticResource OpenSans}" />
-            <Setter Property="FontWeight" Value="Regular" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="18" />
         </Style>
         <Style TargetType="{x:Type ContentControl}">
             <Setter Property="Grid.Row" Value="1" />
@@ -83,11 +82,9 @@
             </Grid.RowDefinitions>
             <controls:WindowTitle Grid.Row="0"
                                   Background="{DynamicResource Brush.Window.Background.Light}" />
-
-            <ContentControl Content="{Binding ViewModel}" />
-
+            <ContentControl Content="{Binding Model}" />
             <Grid Grid.Row="2" Background="{DynamicResource Brush.Window.Background.Light}">
-                <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.TinyInstaller}"
+                <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.TinyInstaller.Home}"
                                     Command="{Binding HyperLinkClickedCommand}"
                                     CommandParameter="{DynamicResource Hyperlink.GitHub.TinyInstaller}"
                                     FontSize="14"
