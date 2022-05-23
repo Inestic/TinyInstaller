@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using TinyInstaller.Interfaces;
-using TinyInstaller.Poco;
 using TinyInstaller.Models;
+using TinyInstaller.Poco;
 
 namespace TinyInstaller.Helpers
 {

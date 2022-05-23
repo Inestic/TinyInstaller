@@ -6,23 +6,25 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Interfaces;
-using TinyInstaller.Poco;
 using TinyInstaller.Models;
+using TinyInstaller.Poco;
 
 namespace TinyInstaller.Helpers
 {
     internal class ConfigParser : IConfigParser
     {
-        public event EventHandler<IEnumerable<Package>> IsSuccessfulParsed;
         public event EventHandler<IEnumerable<Package>> IsAutoInstall;
 
-        private void OnSuccessfulParsed(IEnumerable<Package> packages) => IsSuccessfulParsed?.Invoke(this, packages);
-        private void OnAutoInstall(IEnumerable<Package> packages) => IsAutoInstall?.Invoke(this, packages);
+        public event EventHandler<IEnumerable<Package>> IsSuccessfulParsed;
 
         private bool IsAutoInstallMode(IEnumerable<Package> packages)
         {
             return packages.Any(package => package.AutoInstall);
         }
+
+        private void OnAutoInstall(IEnumerable<Package> packages) => IsAutoInstall?.Invoke(this, packages);
+
+        private void OnSuccessfulParsed(IEnumerable<Package> packages) => IsSuccessfulParsed?.Invoke(this, packages);
 
         private bool PackagesIsValid(IEnumerable<Package> packages, string rootFolder)
         {
@@ -31,12 +33,11 @@ namespace TinyInstaller.Helpers
                                             && File.Exists(Path.Combine(rootFolder, package.ExecutableFile)));
         }
 
-        public async Task<ViewModelBase> ParseAsync(IModelsBuilder modelsBuilder, string config, string packagesFolder) => 
-            await Task.Run(() =>
+        public ViewModelBase Parse(IModelsBuilder modelsBuilder, string config, string packagesFolder) =>
+            Task.Run(() =>
             {
                 try
                 {
-                    throw new Exception("sdjjkhjashfjfhfhsdfhjksdhfsdjfhjsdfhuiertytyitgjhgfnxvnxnnzxncsnashdjasdhjkashhweuiryeryuryuutyur");
                     var configContent = File.Exists(config) ? File.ReadAllText(config) : throw new FileNotFoundException();
                     var packages = JsonSerializer.Deserialize<PackageCollection>(configContent).Packages ?? throw new ConfigNotValidExceptions();
 
@@ -64,6 +65,6 @@ namespace TinyInstaller.Helpers
                 {
                     return modelsBuilder.Build<UnknowErrorModel, string>(e.Message);
                 }
-            });
+            }).Result;
     }
 }

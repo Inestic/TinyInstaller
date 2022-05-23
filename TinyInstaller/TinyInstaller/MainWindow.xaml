@@ -3,8 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:TinyInstaller.UserControls" 
         xmlns:model="clr-namespace:TinyInstaller.Models"
+        xmlns:controls="clr-namespace:TinyInstaller.UserControls"
         xmlns:views="clr-namespace:TinyInstaller.Views"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -52,17 +52,20 @@
         <DataTemplate DataType="{x:Type model:UnknowErrorModel}">
             <views:UnknowErrorView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type model:ConfigNotFoundModel}">
+            <views:ConfigNotFoundView />
+        </DataTemplate>
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="RegularText">
             <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
             <Setter Property="TextOptions.TextRenderingMode" Value="Auto" />
             <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
             <Setter Property="FontWeight" Value="Normal" />
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="20" />
         </Style>
         <Style TargetType="{x:Type ContentControl}">
             <Setter Property="Grid.Row" Value="1" />

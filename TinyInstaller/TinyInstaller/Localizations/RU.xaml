@@ -3,14 +3,11 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="Hyperlink.GitHub.TinyInstaller.Home">https://github.com/Inestic/TinyInstaller</system:String>
     <system:String x:Key="Hyperlink.GitHub.TinyInstaller.Issue">https://github.com/Inestic/TinyInstaller/issues/new</system:String>
-    <system:String x:Key="Localization.UnknowError.Greeting">Ой, что-то сломалось! Ничего страшного, такое иногда случается.</system:String>
-    <system:String x:Key="Localization.UnknowError.Issue">Пожалуйста, создайте сообщение об ошибке на GitHub</system:String>
-    <system:String x:Key="Localization.UnknowError.Improve">, это поможет улучшить следующие версии TinyInstaller.</system:String>
-    
-    
-    
-    <system:String x:Key="Localization.StartupCondition.ConfigFileExist.Name">Отсутствует файл конфигурации</system:String>
-    <system:String x:Key="Localization.StartupCondition.ConfigFileExist.Description">Информация о названии, описании и расположении установочных файлов хранится в файле конфигурации «PackagesConfig.json». Сейчас в рабочей папке TinyInstaller нет этого файла. Мы можем создать файл конфигурации с настройками по умолчанию, а вы внесёте необходимые изменения.</system:String>
-    <system:String x:Key="Localization.StartupCondition.HasError">Вжух! Произошла ошибка, и вот вы здесь. Очень жаль, но иногда такое случается. Пожалуйста, создайте сообщение об ошибке используя ссылку ниже, это поможет улучшить следующие версии TinyInstaller.</system:String>
-    <system:String x:Key="Localization.StartupCondition.FixIt">Исправить</system:String>
+    <system:String x:Key="Localization.UnknowError.Greeting">Ой, что-то сломалось!</system:String>
+    <system:String x:Key="Localization.UnknowError.KeepCalm">Ничего страшного, такое иногда случается.</system:String>
+    <system:String x:Key="Localization.UnknowError.CreateIssue">Пожалуйста, сообщите нам об этой ошибке:</system:String>
+    <system:String x:Key="Localization.UnknowError.ReportIssue">Сообщить</system:String>
+    <system:String x:Key="Localization.ConfigNotFound.Greeting">Отсутствует файл конфигурации.</system:String>
+    <system:String x:Key="Localization.ConfigNotFound.Description">Информация о названии, описании и расположении установочных файлов хранится в файле конфигурации «PackagesConfig». Сейчас в рабочей папке TinyInstaller этого файла нет. Мы можем создать файл конфигурации с настройками по умолчанию который можно использовать как шаблон.</system:String>
+    <system:String x:Key="Localization.ConfigNotFound.CreateConfig">Создать</system:String>
 </ResourceDictionary>

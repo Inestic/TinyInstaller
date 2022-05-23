@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TinyInstaller.Views.UnknowErrorView"
+﻿<UserControl x:Class="TinyInstaller.Views.ConfigNotFoundView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,7 +8,7 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <Style TargetType="{x:Type local:UnknowErrorView}">
+        <Style TargetType="{x:Type local:ConfigNotFoundView}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
             <Setter Property="Focusable" Value="False" />
@@ -30,24 +30,16 @@
                 <uc:WarningIcon Grid.Column="0"
                                 Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
                 <StackPanel>
-                    <TextBlock Text="{DynamicResource Localization.UnknowError.Greeting}"
+                    <TextBlock Text="{DynamicResource Localization.ConfigNotFound.Greeting}"
                                Style="{DynamicResource RegularText}"
                                Margin="10, 0, 0, 0" />
-                    <TextBlock Text="{DynamicResource Localization.UnknowError.KeepCalm}"
+                    <TextBlock Text="{DynamicResource Localization.ConfigNotFound.Description}"
                                Style="{DynamicResource RegularText}"
+                               TextWrapping="Wrap"
                                Margin="10, 0, 0, 0" />
-                    <TextBlock Text="{DynamicResource Localization.UnknowError.CreateIssue}"
-                               Style="{DynamicResource RegularText}"
-                               Margin="10, 0, 0, 0"
-                               TextWrapping="Wrap" />
-                    <TextBlock Text="{Binding ErrorMessage}"
-                                   Style="{DynamicResource RegularText}"
-                                   Margin="10, 20, 20, 20"
-                                   TextWrapping="Wrap" />
-                    <uc:FilledButton Text="{DynamicResource Localization.UnknowError.ReportIssue}"
-                                     Margin="10, 0, 0, 50"
-                                     Command="{Binding Path=DataContext.HyperLinkClickedCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
-                                     CommandParameter="{DynamicResource Hyperlink.GitHub.TinyInstaller.Issue}" />
+                    <uc:FilledButton Text="{DynamicResource Localization.ConfigNotFound.CreateConfig}"
+                                     Margin="10, 20, 0, 50"
+                                     Command="{Binding Path=DataContext.CreateConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" />
                 </StackPanel>
             </Grid>
         </ControlTemplate>

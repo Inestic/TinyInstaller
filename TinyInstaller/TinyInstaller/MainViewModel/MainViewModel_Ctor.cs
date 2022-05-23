@@ -8,9 +8,6 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel : INotifyPropertyChanged, IViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         public MainViewModel(MainWindow mainWindow, AppConstants appConstants, IModelsBuilder modelsBuilder, IConfigParser configParser)
         {
             MainWindow = mainWindow ?? throw new ArgumentNullException(nameof(mainWindow));
@@ -18,5 +15,9 @@ namespace TinyInstaller.ViewModel
             ModelsBuilder = modelsBuilder ?? throw new ArgumentNullException(nameof(modelsBuilder));
             ConfigParser = configParser ?? throw new ArgumentNullException(nameof(configParser));
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -10,25 +10,18 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel
     {
+        private bool mainWindow_CanClose = true;
         private ViewModelBase model;
         private IEnumerable<Package> packages;
-        private bool mainWindow_CanClose = true;
-
         public AppConstants AppConstants { get; private set; }
-        public IConfigParser ConfigParser { get; private set; }
-        public IEnumerable<Package> Packages 
-        { 
-            get => packages; 
-            private set
-            {
-                packages = value;
-                OnPropertyChanged();
-            }
-        }
-        public MainWindow MainWindow { get; private set; }
-        public RelayCommand<string> HyperLinkClickedCommand { get; private set; }
         public string AppName => AppConstants.AppName;
         public string AppVersion => AppConstants.AppVersion;
+        public IConfigParser ConfigParser { get; private set; }
+        public RelayCommand CreateConfigCommand { get; private set; }
+        public RelayCommand<string> HyperLinkClickedCommand { get; private set; }
+
+        public MainWindow MainWindow { get; private set; }
+
         public bool MainWindow_CanClose
         {
             get => mainWindow_CanClose;
@@ -38,9 +31,13 @@ namespace TinyInstaller.ViewModel
                 CommandManager.InvalidateRequerySuggested();
             }
         }
+
         public RelayCommand MainWindowCloseCommand { get; private set; }
+
         public RelayCommand MainWindowMinimizeCommand { get; private set; }
+
         public RelayCommand MainWindowMinMaxCommand { get; private set; }
+
         public ViewModelBase Model
         {
             get => model;
@@ -50,6 +47,17 @@ namespace TinyInstaller.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public IModelsBuilder ModelsBuilder { get; private set; }
+
+        public IEnumerable<Package> Packages
+        {
+            get => packages;
+            private set
+            {
+                packages = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

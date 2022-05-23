@@ -14,11 +14,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Roboto-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="gears.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\OpenSans-Regular.ttf" />
+    <Resource Include="Fonts\Roboto-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

@@ -10,10 +10,12 @@
         <Storyboard x:Key="ButtonClickAnimation"
                     Completed="OnStoryboardCompleted"
                     Storyboard.TargetName="ButtonTemplate"
-                    Storyboard.TargetProperty="RenderTransform.ScaleX">
+                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
             <DoubleAnimation AutoReverse="True"
-                             To="0.8"
-                             Duration="0:0:0.05" />
+                             From="0"
+                             To="8"
+                             Duration="00:00:0.5"
+                             SpeedRatio="4" />
         </Storyboard>
         <Style TargetType="{x:Type Button}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -48,15 +50,17 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="MinWidth" Value="150" />
             <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Light}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Accent.Normal}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <Button x:Name="ButtonTemplate">
                 <Button.RenderTransform>
-                    <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
+                    <TranslateTransform />
                 </Button.RenderTransform>
             </Button>
             <ControlTemplate.Triggers>

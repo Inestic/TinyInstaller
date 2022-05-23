@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using TinyInstaller.Interfaces;
+﻿using TinyInstaller.Interfaces;
 using TinyInstaller.ViewModel;
 
 namespace TinyInstaller.Helpers
