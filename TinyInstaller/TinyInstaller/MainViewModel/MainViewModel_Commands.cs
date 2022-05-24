@@ -22,7 +22,7 @@ namespace TinyInstaller.ViewModel
                 if (!Directory.Exists(packagesFolder))
                     Directory.CreateDirectory(packagesFolder);
 
-                InitializeModel();
+                SetModelFromConfig();
             }
             catch (Exception e)
             {

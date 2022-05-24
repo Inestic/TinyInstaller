@@ -33,8 +33,20 @@ namespace TinyInstaller.Helpers
                                             && File.Exists(Path.Combine(rootFolder, package.ExecutableFile)));
         }
 
-        public ViewModelBase Parse(IModelsBuilder modelsBuilder, string config, string packagesFolder) =>
-            Task.Run(() =>
+        private void SetPackageId(IEnumerable<Package> packages)
+        {
+            uint count = 1;
+
+            foreach (var package in packages)
+            {
+                package.Id = count;
+                count++;
+            }
+        }
+
+        public ViewModelBase Parse(IModelsBuilder modelsBuilder, string config, string packagesFolder)
+        {
+            var task = Task.Run(() =>
             {
                 try
                 {
@@ -43,6 +55,8 @@ namespace TinyInstaller.Helpers
 
                     if (!PackagesIsValid(packages, packagesFolder))
                         throw new ConfigNotValidExceptions();
+
+                    SetPackageId(packages);
 
                     if (IsAutoInstallMode(packages))
                     {
@@ -65,6 +79,10 @@ namespace TinyInstaller.Helpers
                 {
                     return modelsBuilder.Build<UnknowErrorModel, string>(e.Message);
                 }
-            }).Result;
+            });
+
+            task.Wait();
+            return task.Result;
+        }
     }
 }

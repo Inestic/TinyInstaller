@@ -55,6 +55,12 @@
         <DataTemplate DataType="{x:Type model:ConfigNotFoundModel}">
             <views:ConfigNotFoundView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type model:ConfigNotValidModel}">
+            <views:ConfigNotValidView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:InstallReadyModel}">
+            <views:InstallReadyView />
+        </DataTemplate>
         <Style TargetType="Border" x:Key="WindowBorderStyle">
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="BorderThickness" Value="1" />

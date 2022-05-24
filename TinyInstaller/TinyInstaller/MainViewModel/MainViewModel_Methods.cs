@@ -33,7 +33,7 @@ namespace TinyInstaller.ViewModel
             ConfigParser.IsAutoInstall += ConfigIsAutoInstallMode;
         }
 
-        private void InitializeModel()
+        private void SetModelFromConfig()
         {
             Model = ConfigParser.Parse(ModelsBuilder, AppConstants.ConfigFile, AppConstants.PackagesFolder);
         }
@@ -42,7 +42,7 @@ namespace TinyInstaller.ViewModel
         {
             InitializeCommands();
             InitializeEvents();
-            InitializeModel();
+            SetModelFromConfig();
         }
     }
 }

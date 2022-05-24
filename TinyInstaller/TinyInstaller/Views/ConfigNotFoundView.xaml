@@ -8,6 +8,7 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
+        <Thickness x:Key="TextMargin" Left="10" Top="0" Right="0" Bottom="0" />
         <Style TargetType="{x:Type local:ConfigNotFoundView}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
@@ -23,24 +24,47 @@
     <UserControl.Template>
         <ControlTemplate>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="3*" />
-                </Grid.ColumnDefinitions>
-                <uc:WarningIcon Grid.Column="0"
-                                Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
-                <StackPanel>
-                    <TextBlock Text="{DynamicResource Localization.ConfigNotFound.Greeting}"
-                               Style="{DynamicResource RegularText}"
-                               Margin="10, 0, 0, 0" />
-                    <TextBlock Text="{DynamicResource Localization.ConfigNotFound.Description}"
-                               Style="{DynamicResource RegularText}"
-                               TextWrapping="Wrap"
-                               Margin="10, 0, 0, 0" />
-                    <uc:FilledButton Text="{DynamicResource Localization.ConfigNotFound.CreateConfig}"
-                                     Margin="10, 20, 0, 50"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="6*" />
+                    </Grid.ColumnDefinitions>
+                    <uc:WarningIcon Grid.Column="0"
+                                    Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Margin="0, 0, 30, 0" />
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource Localization.ConfigNotFound.Warning}"
+                                   Style="{DynamicResource RegularText}" />
+                        <TextBlock Text="{DynamicResource Localization.ConfigNotFound.About}"
+                                   Style="{DynamicResource RegularText}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Text="{DynamicResource Localization.ConfigNotFound.NotFound}"
+                                   Style="{DynamicResource RegularText}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Text="{DynamicResource Localization.ConfigNotFound.CreateExample}"
+                                   Style="{DynamicResource RegularText}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="6*" />
+                    </Grid.ColumnDefinitions>
+                    <uc:FilledButton Grid.Column="1"
+                                     Text="{DynamicResource Localization.ConfigNotFound.CreateConfig}"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Left"
+                                     Margin="0, 20, 0, 0"
                                      Command="{Binding Path=DataContext.CreateConfigCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" />
-                </StackPanel>
+                </Grid>
             </Grid>
         </ControlTemplate>
     </UserControl.Template>
