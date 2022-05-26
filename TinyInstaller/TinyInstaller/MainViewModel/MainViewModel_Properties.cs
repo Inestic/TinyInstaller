@@ -13,6 +13,8 @@ namespace TinyInstaller.ViewModel
         private bool mainWindow_CanClose = true;
         private ViewModelBase model;
         private IEnumerable<Package> packages;
+        private List<Package> willInstalled = new();
+
         public AppConstants AppConstants { get; private set; }
         public string AppName => AppConstants.AppName;
         public string AppVersion => AppConstants.AppVersion;
@@ -37,6 +39,7 @@ namespace TinyInstaller.ViewModel
         public RelayCommand MainWindowMinimizeCommand { get; private set; }
 
         public RelayCommand MainWindowMinMaxCommand { get; private set; }
+        public RelayCommand<Package> SwitchClickedCommand { get; private set; }
 
         public ViewModelBase Model
         {
@@ -56,6 +59,16 @@ namespace TinyInstaller.ViewModel
             private set
             {
                 packages = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public List<Package> WillInstalled 
+        { 
+            get => willInstalled; 
+            private set
+            {
+                willInstalled = value;
                 OnPropertyChanged();
             }
         }

@@ -25,6 +25,7 @@ namespace TinyInstaller.ViewModel
             MainWindowMinMaxCommand = new RelayCommand(Command_MainWindowMinMaxCommand_Execute);
             HyperLinkClickedCommand = new RelayCommand<string>(Command_HyperLinkClicked_Execute);
             CreateConfigCommand = new RelayCommand(Command_CreateConfig_Execute);
+            SwitchClickedCommand = new RelayCommand<Package>(Command_SwitchClickedCommand_Execute);
         }
 
         private void InitializeEvents()

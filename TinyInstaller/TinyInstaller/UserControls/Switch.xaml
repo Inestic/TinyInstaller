@@ -8,17 +8,15 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <!--<Thickness x:Key="Switch.Ellipse.Left">4, 0, 0, 0</Thickness>
-        <Thickness x:Key="Switch.Ellipse.Right">32, 0, 0, 0</Thickness>-->
-        <Storyboard x:Key="Animation.Switch.ToRight">
-            <ThicknessAnimation
+        <Storyboard x:Key="Storyboard.Switch.ToRight">
+            <DoubleAnimation
                 Storyboard.TargetName="EllipseSwitch"
                 Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
                 To="32"
                 Duration="0:0:0.10" />
         </Storyboard>
-        <Storyboard x:Key="Switch.Margin.ToLeft">
-            <ThicknessAnimation
+        <Storyboard x:Key="Storyboard.Switch.ToLeft">
+            <DoubleAnimation
                 Storyboard.TargetName="EllipseSwitch"
                 Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
                 To="4"
@@ -30,8 +28,9 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Light}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
+            <Setter Property="Command" Value="{Binding Path=DataContext.SwitchClickedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
         </Style>
-        <Style TargetType="{x:Type Border}">
+        <Style x:Key="SwitchBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
             <Setter Property="CornerRadius" Value="15" />
@@ -42,31 +41,36 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
+        <Style x:Key="ContentBorderStyle" TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
         <Style TargetType="{x:Type Ellipse}">
             <Setter Property="Height" Value="20" />
             <Setter Property="Width" Value="20" />
             <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
-            <!--<Setter Property="Margin" Value="{StaticResource Switch.Ellipse.Left}" />-->
             <Setter Property="Fill" Value="{DynamicResource Brush.Window.Accent.Normal}" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0"
+            <Border x:Name="ContentBorder"
+                    Style="{StaticResource ContentBorderStyle}">
+                <Grid Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0"
                                 Orientation="Horizontal">
-                        <TextBlock x:Name="TitleText"
+                            <TextBlock x:Name="TitleText"
                                    Grid.Row="0"
                                    Text="{Binding Title}"
                                    Style="{DynamicResource RegularText}"
@@ -74,25 +78,27 @@
                                    HorizontalAlignment="Left"
                                    Margin="10, 10, 0, 10" />
 
-                        <TextBlock x:Name="VersionText"
+                            <TextBlock x:Name="VersionText"
                                    Grid.Row="0"
                                    Text="{Binding Version}"
                                    Style="{DynamicResource RegularText}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    Margin="10" />
-                    </StackPanel>
-                    <Border x:Name="BorderSwitch">
-                        <Ellipse x:Name="EllipseSwitch">
-                            <Ellipse.RenderTransform>
-                                <TranslateTransform X="4" />
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                    </Border>
-                </Grid>
-                <Grid Grid.Row="1"
+                        </StackPanel>
+                        <Border x:Name="BorderSwitch"
+                            Style="{StaticResource SwitchBorderStyle}"
+                            MouseLeftButtonDown="Switch_MouseLeftButtonDown">
+                            <Ellipse x:Name="EllipseSwitch">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform X="4" />
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Row="1"
                       Background="{DynamicResource Brush.Window.Background.Light10}">
-                    <TextBlock x:Name="DescriptionText"
+                        <TextBlock x:Name="DescriptionText"
                                Text="{Binding Description}"
                                TextWrapping="Wrap"
                                Style="{DynamicResource RegularText}"
@@ -100,16 +106,32 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Margin="10" />
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Border>
             <ControlTemplate.Triggers>
                 <Trigger SourceName="DescriptionText" Property="Text" Value="{x:Static sys:String.Empty}">
                     <Setter TargetName="DescriptionText" Property="Visibility" Value="Collapsed" />
                 </Trigger>
-                <Trigger SourceName="EllipseSwitch" Property="(Ellipse.RenderTransform).(TranslateTransform.X)" Value="4">
+                <DataTrigger Binding="{Binding IsChecked}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard x:Name="AnimationSwitchToRight" Storyboard="{StaticResource Storyboard.Switch.ToRight}"/>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <RemoveStoryboard BeginStoryboardName="AnimationSwitchToRight"/>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsChecked}" Value="False">
+                    <Setter TargetName="ContentBorder" Property="BorderBrush" Value="Transparent" />
                     <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
                     <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
-                </Trigger>
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard x:Name="AnimationSwitchToLeft" Storyboard="{StaticResource Storyboard.Switch.ToLeft}"/>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <RemoveStoryboard BeginStoryboardName="AnimationSwitchToLeft"/>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

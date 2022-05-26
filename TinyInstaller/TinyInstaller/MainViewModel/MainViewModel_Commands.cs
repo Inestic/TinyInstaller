@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
 using TinyInstaller.Helpers;
 using TinyInstaller.Models;
+using TinyInstaller.Poco;
 
 namespace TinyInstaller.ViewModel
 {
@@ -42,6 +44,17 @@ namespace TinyInstaller.ViewModel
         {
             var state = MainWindow.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
             MainWindow.WindowState = state;
+        }
+
+        private void Command_SwitchClickedCommand_Execute(Package package)
+        {
+            if (package.IsChecked ^= true)
+            {
+                WillInstalled.Add(package);
+                return;
+            }
+
+            _ = WillInstalled.Remove(package);
         }
     }
 }
