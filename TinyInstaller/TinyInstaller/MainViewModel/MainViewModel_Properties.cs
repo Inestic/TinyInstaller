@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TinyInstaller.Common;
 using TinyInstaller.Helpers;
@@ -10,11 +11,11 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel
     {
+        private InstallationStatus installationStatus;
         private bool mainWindow_CanClose = true;
         private ViewModelBase model;
         private IEnumerable<Package> packages;
-        private List<Package> willInstalled = new();
-
+        private ObservableCollection<Package> willInstalled = new();
         public AppConstants AppConstants { get; private set; }
         public string AppName => AppConstants.AppName;
         public string AppVersion => AppConstants.AppVersion;
@@ -22,6 +23,17 @@ namespace TinyInstaller.ViewModel
         public RelayCommand CreateConfigCommand { get; private set; }
         public RelayCommand<string> HyperLinkClickedCommand { get; private set; }
 
+        public InstallationStatus InstallationStatus
+        {
+            get => installationStatus;
+            set
+            {
+                installationStatus = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RelayCommand InstallPackagesCommand { get; private set; }
         public MainWindow MainWindow { get; private set; }
 
         public bool MainWindow_CanClose
@@ -39,7 +51,6 @@ namespace TinyInstaller.ViewModel
         public RelayCommand MainWindowMinimizeCommand { get; private set; }
 
         public RelayCommand MainWindowMinMaxCommand { get; private set; }
-        public RelayCommand<Package> SwitchClickedCommand { get; private set; }
 
         public ViewModelBase Model
         {
@@ -63,9 +74,11 @@ namespace TinyInstaller.ViewModel
             }
         }
 
-        public List<Package> WillInstalled 
-        { 
-            get => willInstalled; 
+        public RelayCommand<Package> SwitchClickedCommand { get; private set; }
+
+        public ObservableCollection<Package> WillInstalled
+        {
+            get => willInstalled;
             private set
             {
                 willInstalled = value;

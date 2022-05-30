@@ -9,6 +9,10 @@ namespace TinyInstaller.UserControls
     /// </summary>
     public partial class Switch : UserControl
     {
+        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(Switch), new PropertyMetadata(default));
+
         public Switch()
         {
             InitializeComponent();
@@ -20,11 +24,6 @@ namespace TinyInstaller.UserControls
             set { SetValue(CommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register("Command", typeof(ICommand), typeof(Switch), new PropertyMetadata(default));
-
         private void Switch_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Command?.Execute(DataContext);
- 
     }
 }

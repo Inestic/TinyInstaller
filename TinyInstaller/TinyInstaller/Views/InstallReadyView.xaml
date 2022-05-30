@@ -4,15 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TinyInstaller.Views"
-             xmlns:converters="clr-namespace:TinyInstaller.Converters"
-             xmlns:poco="clr-namespace:TinyInstaller.Poco"
              xmlns:uc="clr-namespace:TinyInstaller.UserControls"
              mc:Ignorable="d">
 
     <UserControl.Resources>
         <CollectionViewSource x:Key="OddPackages" Source="{Binding Packages}" Filter="OddPackagesSource_Filter" />
         <CollectionViewSource x:Key="EvenPackages" Source="{Binding Packages}" Filter="EvenPackagesSource_Filter" />
-        <converters:CountToVisibility x:Key="CountToVisibilityConverter"/>
         <DataTemplate x:Key="SwitchDataTemplate">
             <uc:Switch Margin="0, 20, 0, 0" />
         </DataTemplate>
@@ -23,10 +20,17 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
         </Style>
+        <Style x:Key="InstallPanelStyle" TargetType="{x:Type StackPanel}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="5, 10, 5, 5" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid>
+            <Grid x:Name="ContentGrid"
+                  IsHitTestVisible="False">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
@@ -58,12 +62,34 @@
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>
+                <Grid x:Name="InstallGrid"
+                      Grid.Row="1"
+                      Background="{DynamicResource Brush.Window.Background.Light}"
+                      Height="80">
+                    <StackPanel x:Name="InstallIdlePanel"
+                                Style="{StaticResource InstallPanelStyle}">
+                        <uc:FilledButton Text="{DynamicResource Localization.Install}"
+                                     Command="{Binding Path=DataContext.InstallPackagesCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+                                     Width="250"
+                                     Height="45" />
+                    </StackPanel>
+                    <StackPanel x:Name="InstallExecutedPanel"
+                                Style="{StaticResource InstallPanelStyle}"
+                                Visibility="Collapsed">
+                        <TextBlock Text="Executed" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Grid>
             </Grid>
             <ControlTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=DataContext.WillInstalled.Count, 
-                                        RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}, 
-                                            Converter={StaticResource CountToVisibilityConverter}}" Value="0">
-                    <Setter Property="Background" Value="Red"/>
+                <DataTrigger Binding="{Binding Path=DataContext.WillInstalled.Count, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="0">
+                    <Setter TargetName="InstallGrid" Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=DataContext.InstallationStatus, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="Idle">
+                    <Setter TargetName="ContentGrid" Property="IsHitTestVisible" Value="True" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=DataContext.InstallationStatus, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="Executed">
+                    <Setter TargetName="InstallIdlePanel" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="InstallExecutedPanel" Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

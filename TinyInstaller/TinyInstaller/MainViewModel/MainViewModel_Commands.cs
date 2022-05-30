@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
+using TinyInstaller.Common;
 using TinyInstaller.Helpers;
 using TinyInstaller.Models;
 using TinyInstaller.Poco;
@@ -33,6 +33,12 @@ namespace TinyInstaller.ViewModel
         }
 
         private void Command_HyperLinkClicked_Execute(string link) => ProcessHelper.Run("explorer", link);
+
+        private void Command_InstallPackages_Execute(object arg)
+        {
+            MainWindow_CanClose = false;
+            InstallationStatus = InstallationStatus.Executed;
+        }
 
         private bool Command_MainWindowClose_CanExecute(object arg) => MainWindow_CanClose;
 

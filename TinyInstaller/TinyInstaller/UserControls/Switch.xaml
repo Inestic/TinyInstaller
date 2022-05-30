@@ -28,7 +28,7 @@
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Light}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
-            <Setter Property="Command" Value="{Binding Path=DataContext.SwitchClickedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/>
+            <Setter Property="Command" Value="{Binding Path=DataContext.SwitchClickedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
         </Style>
         <Style x:Key="SwitchBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -115,10 +115,10 @@
                 </Trigger>
                 <DataTrigger Binding="{Binding IsChecked}" Value="True">
                     <DataTrigger.EnterActions>
-                        <BeginStoryboard x:Name="AnimationSwitchToRight" Storyboard="{StaticResource Storyboard.Switch.ToRight}"/>
+                        <BeginStoryboard x:Name="AnimationSwitchToRight" Storyboard="{StaticResource Storyboard.Switch.ToRight}" />
                     </DataTrigger.EnterActions>
                     <DataTrigger.ExitActions>
-                        <RemoveStoryboard BeginStoryboardName="AnimationSwitchToRight"/>
+                        <RemoveStoryboard BeginStoryboardName="AnimationSwitchToRight" />
                     </DataTrigger.ExitActions>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked}" Value="False">
@@ -126,10 +126,10 @@
                     <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
                     <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
                     <DataTrigger.EnterActions>
-                        <BeginStoryboard x:Name="AnimationSwitchToLeft" Storyboard="{StaticResource Storyboard.Switch.ToLeft}"/>
+                        <BeginStoryboard x:Name="AnimationSwitchToLeft" Storyboard="{StaticResource Storyboard.Switch.ToLeft}" />
                     </DataTrigger.EnterActions>
                     <DataTrigger.ExitActions>
-                        <RemoveStoryboard BeginStoryboardName="AnimationSwitchToLeft"/>
+                        <RemoveStoryboard BeginStoryboardName="AnimationSwitchToLeft" />
                     </DataTrigger.ExitActions>
                 </DataTrigger>
             </ControlTemplate.Triggers>
