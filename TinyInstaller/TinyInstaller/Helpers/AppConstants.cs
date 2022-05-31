@@ -12,25 +12,25 @@ namespace TinyInstaller.Helpers
       ""Title"": ""7 Zip"",
       ""Description"": ""7-Zip is a free and open-source file archiver"",
       ""ExecutableFile"": ""7 Zip\\7z2107-x64.msi"",
-      ""ExecutableArgs"": ""/qn /norestart /g 1033"",
+      ""ExecutableArgs"": ""/qb"",
       ""ExitCode"": 0,
       ""Version"": ""21.07""
     },
 	{
       ""AutoInstall"": false,
-      ""Title"": ""Brave Browser"",
+      ""Title"": ""Brave Browser Dev"",
       ""Description"": ""Secure, fast, private web browser with Adblocker"",
-      ""ExecutableFile"": ""Brave Browser\\BraveBrowserSetup.exe"",
-      ""ExecutableArgs"": ""--install --silent"",
+      ""ExecutableFile"": ""Brave Browser\\BraveBrowserStandaloneSilentDevSetup.exe"",
+      ""ExecutableArgs"": """",
       ""ExitCode"": 0,
-      ""Version"": ""1.3""
+      ""Version"": ""1.40.81""
     },
     {
       ""AutoInstall"": false,
       ""Title"": ""VLC Media Player"",
       ""Description"": ""VLC is a free and open source cross-platform multimedia player"",
       ""ExecutableFile"": ""VLC\\vlc-3.0.17.4-win64.exe"",
-      ""ExecutableArgs"": ""/L=1033 /S"",
+      ""ExecutableArgs"": ""/S"",
       ""ExitCode"": 0,
       ""Version"": ""3.0""
     }

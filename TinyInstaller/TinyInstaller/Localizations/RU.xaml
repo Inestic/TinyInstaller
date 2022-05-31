@@ -21,4 +21,6 @@
     <system:String x:Key="Localization.ConfigNotValid.CheckPackages">Инсталяционные файлы должны быть в папке «Packages».</system:String>
 
     <system:String x:Key="Localization.Install">Установить</system:String>
+    <system:String x:Key="Localization.Installing">Устанавливается</system:String>
+    <system:String x:Key="Localization.InQueue">, ожидают установки</system:String>
 </ResourceDictionary>

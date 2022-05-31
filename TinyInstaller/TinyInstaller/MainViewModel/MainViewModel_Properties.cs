@@ -12,6 +12,10 @@ namespace TinyInstaller.ViewModel
     internal partial class MainViewModel
     {
         private InstallationStatus installationStatus;
+        private uint installedCorrectly = default;
+        private uint installedIncorrectly = default;
+        private string installingPackage;
+        private int installQueue;
         private bool mainWindow_CanClose = true;
         private ViewModelBase model;
         private IEnumerable<Package> packages;
@@ -33,7 +37,48 @@ namespace TinyInstaller.ViewModel
             }
         }
 
+        public uint InstalledCorrectly
+        {
+            get => installedCorrectly;
+            set
+            {
+                installedCorrectly = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public uint InstalledIncorrectly
+        {
+            get => installedIncorrectly;
+            set
+            {
+                installedIncorrectly = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string InstallingPackage
+        {
+            get => installingPackage;
+            set
+            {
+                installingPackage = value;
+                OnPropertyChanged();
+            }
+        }
+
         public RelayCommand InstallPackagesCommand { get; private set; }
+
+        public int InstallQueue
+        {
+            get => installQueue;
+            set
+            {
+                installQueue = value;
+                OnPropertyChanged();
+            }
+        }
+
         public MainWindow MainWindow { get; private set; }
 
         public bool MainWindow_CanClose
@@ -47,9 +92,7 @@ namespace TinyInstaller.ViewModel
         }
 
         public RelayCommand MainWindowCloseCommand { get; private set; }
-
         public RelayCommand MainWindowMinimizeCommand { get; private set; }
-
         public RelayCommand MainWindowMinMaxCommand { get; private set; }
 
         public ViewModelBase Model

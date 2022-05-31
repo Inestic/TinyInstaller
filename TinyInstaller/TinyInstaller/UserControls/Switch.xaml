@@ -22,14 +22,6 @@
                 To="4"
                 Duration="0:0:0.10" />
         </Storyboard>
-        <Style TargetType="{x:Type local:Switch}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Focusable" Value="False" />
-            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Light}" />
-            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
-            <Setter Property="Command" Value="{Binding Path=DataContext.SwitchClickedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
-        </Style>
         <Style x:Key="SwitchBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" />
             <Setter Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.Normal}" />
@@ -52,6 +44,15 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="Fill" Value="{DynamicResource Brush.Window.Accent.Normal}" />
+        </Style>
+        <Style TargetType="{x:Type local:Switch}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Light}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
+            <Setter Property="Command" Value="{Binding Path=DataContext.SwitchClickedCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+            <Setter Property="IsHitTestVisible" Value="False" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -131,6 +132,14 @@
                     <DataTrigger.ExitActions>
                         <RemoveStoryboard BeginStoryboardName="AnimationSwitchToLeft" />
                     </DataTrigger.ExitActions>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="HasError">
+                    <Setter TargetName="ContentBorder" Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.High}" />
+                    <Setter TargetName="BorderSwitch" Property="BorderBrush" Value="{DynamicResource Brush.Window.Accent.High}" />
+                    <Setter TargetName="EllipseSwitch" Property="Fill" Value="{DynamicResource Brush.Window.Accent.High}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="NotInstalled">
+                    <Setter Property="IsHitTestVisible" Value="True" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

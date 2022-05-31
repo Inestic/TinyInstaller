@@ -1,23 +1,21 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TinyInstaller.Common;
 
 namespace TinyInstaller.Poco
 {
     internal class Package : INotifyPropertyChanged
     {
         private bool isChecked;
+        private PackageStatus status = PackageStatus.NotInstalled;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public bool AutoInstall { get; set; }
         public string Description { get; set; }
-
         public string ExecutableArgs { get; set; }
-
         public string ExecutableFile { get; set; }
-
         public int ExitCode { get; set; }
-
         public uint Id { get; set; }
 
         public bool IsChecked
@@ -26,6 +24,16 @@ namespace TinyInstaller.Poco
             set
             {
                 isChecked = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public PackageStatus Status
+        {
+            get => status;
+            set
+            {
+                status = value;
                 OnPropertyChanged();
             }
         }

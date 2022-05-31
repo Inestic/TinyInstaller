@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Poco;
 
@@ -33,6 +36,46 @@ namespace TinyInstaller.ViewModel
         {
             ConfigParser.IsSuccessfulParsed += ConfigSuccessfulParsed;
             ConfigParser.IsAutoInstall += ConfigIsAutoInstallMode;
+        }
+
+        private async Task InstallPackageAsync()
+        {
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < WillInstalled.Count; i++)
+                {
+                    var package = WillInstalled[i];
+                    InstallingPackage = $"{package.Title} {package.Version}";
+                    InstallQueue = WillInstalled.Count - (i + 1);
+
+                    try
+                    {
+                        var file = $@"{AppConstants.BaseDirectory}{AppConstants.PackagesFolder}\{package.ExecutableFile}";
+                        var startInfo = new ProcessStartInfo(fileName: file, arguments: package.ExecutableArgs) { UseShellExecute=true };
+                        var process = Process.Start(startInfo);
+                        process.WaitForExit();
+
+                        if (process.ExitCode == package.ExitCode)
+                        {
+                            package.Status = PackageStatus.Success;
+                            InstalledCorrectly++;
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        package.Status = PackageStatus.HasError;
+                        InstalledIncorrectly++;
+                    }
+                    finally
+                    {
+                        Task.Delay(1000).Wait();
+                    }
+                }
+            });
         }
 
         private void SetModelFromConfig()

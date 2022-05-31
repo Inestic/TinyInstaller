@@ -95,7 +95,7 @@
             <Grid Grid.Row="2" Background="{DynamicResource Brush.Window.Background.Light}">
                 <controls:HyperLink Text="{DynamicResource Hyperlink.GitHub.TinyInstaller.Home}"
                                     Command="{Binding HyperLinkClickedCommand}"
-                                    CommandParameter="{DynamicResource Hyperlink.GitHub.TinyInstaller}"
+                                    CommandParameter="{DynamicResource Hyperlink.GitHub.TinyInstaller.Home}"
                                     FontSize="14"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"

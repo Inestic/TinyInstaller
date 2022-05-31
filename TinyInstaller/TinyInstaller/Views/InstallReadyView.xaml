@@ -1,18 +1,13 @@
 ﻿<UserControl x:Class="TinyInstaller.Views.InstallReadyView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:TinyInstaller.Views"
              xmlns:uc="clr-namespace:TinyInstaller.UserControls"
+             xmlns:local="clr-namespace:TinyInstaller.Views"
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <CollectionViewSource x:Key="OddPackages" Source="{Binding Packages}" Filter="OddPackagesSource_Filter" />
-        <CollectionViewSource x:Key="EvenPackages" Source="{Binding Packages}" Filter="EvenPackagesSource_Filter" />
-        <DataTemplate x:Key="SwitchDataTemplate">
-            <uc:Switch Margin="0, 20, 0, 0" />
-        </DataTemplate>
         <Style TargetType="{x:Type local:InstallReadyView}">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="IsTabStop" Value="False" />
@@ -20,6 +15,11 @@
             <Setter Property="Background" Value="{DynamicResource Brush.Window.Background.Normal}" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Window.Foreground.Normal}" />
         </Style>
+        <CollectionViewSource x:Key="OddPackages" Source="{Binding Packages}" Filter="OddPackagesSource_Filter" />
+        <CollectionViewSource x:Key="EvenPackages" Source="{Binding Packages}" Filter="EvenPackagesSource_Filter" />
+        <DataTemplate x:Key="SwitchDataTemplate">
+            <uc:Switch Margin="0, 20, 0, 0" />
+        </DataTemplate>
         <Style x:Key="InstallPanelStyle" TargetType="{x:Type StackPanel}">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -29,8 +29,7 @@
     </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
-            <Grid x:Name="ContentGrid"
-                  IsHitTestVisible="False">
+            <Grid x:Name="ContentGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
@@ -75,8 +74,38 @@
                     </StackPanel>
                     <StackPanel x:Name="InstallExecutedPanel"
                                 Style="{StaticResource InstallPanelStyle}"
-                                Visibility="Collapsed">
-                        <TextBlock Text="Executed" VerticalAlignment="Center" />
+                                Visibility="Collapsed"
+                                DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}">
+                        <uc:LoadingRing VerticalAlignment="Center" />
+
+                        <TextBlock Text="{DynamicResource Localization.Installing}"
+                                   Foreground="{DynamicResource Brush.Window.Accent.Normal}"
+                                   VerticalAlignment="Center"
+                                   Style="{DynamicResource RegularText}"
+                                   TextWrapping="NoWrap"
+                                   Margin="20, 0, 0, 0" />
+
+                        <TextBlock Text="{Binding InstallingPackage}"
+                                   Foreground="{DynamicResource Brush.Window.Accent.Normal}"
+                                   VerticalAlignment="Center"
+                                   Style="{DynamicResource RegularText}"
+                                   TextWrapping="NoWrap"
+                                   Margin="5, 0, 0, 0" />
+
+                        <TextBlock x:Name="InQueueTextBlock"
+                                   Text="{DynamicResource Localization.InQueue}"
+                                   Foreground="{DynamicResource Brush.Window.Accent.Normal}"
+                                   VerticalAlignment="Center"
+                                   Style="{DynamicResource RegularText}"
+                                   TextWrapping="NoWrap" />
+
+                        <TextBlock x:Name="InstallQueueTextBlock"
+                                   Text="{Binding InstallQueue}"
+                                   Foreground="{DynamicResource Brush.Window.Accent.Normal}"
+                                   VerticalAlignment="Center"
+                                   Style="{DynamicResource RegularText}"
+                                   TextWrapping="NoWrap"
+                                   Margin="5, 0, 0, 0" />
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -84,12 +113,13 @@
                 <DataTrigger Binding="{Binding Path=DataContext.WillInstalled.Count, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="0">
                     <Setter TargetName="InstallGrid" Property="Visibility" Value="Collapsed" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Path=DataContext.InstallationStatus, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="Idle">
-                    <Setter TargetName="ContentGrid" Property="IsHitTestVisible" Value="True" />
-                </DataTrigger>
                 <DataTrigger Binding="{Binding Path=DataContext.InstallationStatus, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="Executed">
                     <Setter TargetName="InstallIdlePanel" Property="Visibility" Value="Collapsed" />
                     <Setter TargetName="InstallExecutedPanel" Property="Visibility" Value="Visible" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=DataContext.InstallQueue, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="0">
+                    <Setter TargetName="InQueueTextBlock" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="InstallQueueTextBlock" Property="Visibility" Value="Collapsed" />
                 </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
