@@ -1,2 +1,26 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="Hyperlink.GitHub.TinyInstaller.Home">https://github.com/Inestic/TinyInstaller</system:String>
+    <system:String x:Key="Hyperlink.GitHub.TinyInstaller.Issue">https://github.com/Inestic/TinyInstaller/issues/new</system:String>
+
+    <system:String x:Key="Localization.ConfigNotFound.Warning">Отсутствует файл конфигурации.</system:String>
+    <system:String x:Key="Localization.ConfigNotFound.CreateExample">Создать файл конфигурации с настройками по умолчанию?</system:String>
+    <system:String x:Key="Localization.ConfigNotFound.CreateConfig">Создать</system:String>
+
+    <system:String x:Key="Localization.ConfigNotValid.CheckPackages">Инсталляционные файлы должны быть в папке Packages.</system:String>
+    <system:String x:Key="Localization.ConfigNotValid.CheckProperty">Пожалуйста, проверьте, что свойства Title и Version каждого элемента заполнены, а в свойстве ExecutableFile указан путь к инсталляционному файлу.</system:String>
+    <system:String x:Key="Localization.ConfigNotValid.Warning">Файл конфигурации PackagesConfig содержит неправильные параметры.</system:String>
+
+    <system:String x:Key="Localization.AutoInstall.Countdown">Установка начнётся через</system:String>
+    <system:String x:Key="Localization.HasErrors">, с ошибками</system:String>
+    <system:String x:Key="Localization.InQueue">, ожидают установки</system:String>
+    <system:String x:Key="Localization.Install">Установить</system:String>
+    <system:String x:Key="Localization.Installed">Установлено</system:String>
+    <system:String x:Key="Localization.Installing">Устанавливается</system:String>
+
+    <system:String x:Key="Localization.UnknowError.CreateIssue">Пожалуйста, сообщите нам об этой ошибке:</system:String>
+    <system:String x:Key="Localization.UnknowError.KeepCalm">Ничего страшного, такое иногда случается.</system:String>
+    <system:String x:Key="Localization.UnknowError.Ops">Ой, что-то сломалось!</system:String>
+    <system:String x:Key="Localization.UnknowError.ReportIssue">Сообщить</system:String>
 </ResourceDictionary>
