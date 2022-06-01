@@ -8,9 +8,9 @@
     <system:String x:Key="Localization.ConfigNotFound.CreateExample">Создать файл конфигурации с настройками по умолчанию?</system:String>
     <system:String x:Key="Localization.ConfigNotFound.CreateConfig">Создать</system:String>
 
-    <system:String x:Key="Localization.ConfigNotValid.CheckPackages">Инсталяционные файлы должны быть в папке «Packages».</system:String>
-    <system:String x:Key="Localization.ConfigNotValid.CheckProperty">Пожалуйста, проверьте, что свойства «Title» и «Version» каждого элемента заполнены, а в свойстве «ExecutableFile» указан путь к инсталяционному файлу.</system:String>
-    <system:String x:Key="Localization.ConfigNotValid.Warning">Файл конфигурации «PackagesConfig» содержит неправильные параметры.</system:String>
+    <system:String x:Key="Localization.ConfigNotValid.CheckPackages">Инсталляционные файлы должны быть в папке Packages.</system:String>
+    <system:String x:Key="Localization.ConfigNotValid.CheckProperty">Пожалуйста, проверьте, что свойства Title и Version каждого элемента заполнены, а в свойстве ExecutableFile указан путь к инсталляционному файлу.</system:String>
+    <system:String x:Key="Localization.ConfigNotValid.Warning">Файл конфигурации PackagesConfig содержит неправильные параметры.</system:String>
 
     <system:String x:Key="Localization.AutoInstall.Countdown">Установка начнётся через</system:String>
     <system:String x:Key="Localization.HasErrors">, с ошибками</system:String>
