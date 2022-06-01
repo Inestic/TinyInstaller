@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TinyInstaller.Models;
 using TinyInstaller.Poco;
 
@@ -11,6 +12,6 @@ namespace TinyInstaller.Interfaces
 
         event EventHandler<IEnumerable<Package>> IsSuccessfulParsed;
 
-        ViewModelBase Parse(IModelsBuilder modelsBuilder, string config, string packagesFolder);
+        Task<ViewModelBase> ParseAsync(IModelsBuilder modelsBuilder, string config, string packagesFolder);
     }
 }

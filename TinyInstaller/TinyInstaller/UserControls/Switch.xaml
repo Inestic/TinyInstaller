@@ -141,6 +141,9 @@
                 <DataTrigger Binding="{Binding Status}" Value="NotInstalled">
                     <Setter Property="IsHitTestVisible" Value="True" />
                 </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="AutoInstall">
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </DataTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Template>

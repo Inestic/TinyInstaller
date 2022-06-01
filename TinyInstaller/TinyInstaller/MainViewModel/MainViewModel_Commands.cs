@@ -60,6 +60,8 @@ namespace TinyInstaller.ViewModel
 
         private void Command_SwitchClickedCommand_Execute(Package package)
         {
+            InstallationStatus = InstallationStatus.Idle;
+
             if (package.IsChecked ^= true)
             {
                 WillInstalled.Add(package);

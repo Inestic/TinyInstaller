@@ -11,7 +11,8 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel
     {
-        private InstallationStatus installationStatus;
+        private byte autoInstallCountdown;
+        private InstallationStatus installationStatus = InstallationStatus.Idle;
         private uint installedCorrectly = default;
         private uint installedIncorrectly = default;
         private string installingPackage;
@@ -23,6 +24,17 @@ namespace TinyInstaller.ViewModel
         public AppConstants AppConstants { get; private set; }
         public string AppName => AppConstants.AppName;
         public string AppVersion => AppConstants.AppVersion;
+
+        public byte AutoInstallCountdown
+        {
+            get => autoInstallCountdown;
+            set
+            {
+                autoInstallCountdown = value;
+                OnPropertyChanged();
+            }
+        }
+
         public IConfigParser ConfigParser { get; private set; }
         public RelayCommand CreateConfigCommand { get; private set; }
         public RelayCommand<string> HyperLinkClickedCommand { get; private set; }

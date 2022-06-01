@@ -44,9 +44,9 @@ namespace TinyInstaller.Helpers
             }
         }
 
-        public ViewModelBase Parse(IModelsBuilder modelsBuilder, string config, string packagesFolder)
+        public async Task<ViewModelBase> ParseAsync(IModelsBuilder modelsBuilder, string config, string packagesFolder)
         {
-            var task = Task.Run(() =>
+            return await Task.Run(() =>
             {
                 try
                 {
@@ -60,12 +60,13 @@ namespace TinyInstaller.Helpers
 
                     if (IsAutoInstallMode(packages))
                     {
-                        OnAutoInstall(packages);
-                        return modelsBuilder.Build<AutoInstallModel, IEnumerable<Package>>(packages.Where(package => package.AutoInstall));
+                        var autoInstallPackages = packages.Where(package => package.AutoInstall);
+                        OnAutoInstall(autoInstallPackages);
+                        return modelsBuilder.Build<AutoInstallModel>();
                     }
 
                     OnSuccessfulParsed(packages);
-                    return modelsBuilder.Build<InstallReadyModel, IEnumerable<Package>>(packages);
+                    return modelsBuilder.Build<InstallReadyModel>();
                 }
                 catch (FileNotFoundException)
                 {
@@ -80,9 +81,6 @@ namespace TinyInstaller.Helpers
                     return modelsBuilder.Build<UnknowErrorModel, string>(e.Message);
                 }
             });
-
-            task.Wait();
-            return task.Result;
         }
     }
 }

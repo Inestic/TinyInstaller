@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using TinyInstaller.Interfaces;
 using TinyInstaller.Models;
-using TinyInstaller.Poco;
 
 namespace TinyInstaller.Helpers
 {
@@ -14,6 +12,10 @@ namespace TinyInstaller.Helpers
                 return new ConfigNotFoundModel();
             else if (typeof(TViewModel) == typeof(ConfigNotValidModel))
                 return new ConfigNotValidModel();
+            else if (typeof(TViewModel) == typeof(InstallReadyModel))
+                return new InstallReadyModel();
+            else if (typeof(TViewModel) == typeof(AutoInstallModel))
+                return new AutoInstallModel();
             else
                 throw new Exception($"{typeof(TViewModel).Name} is unknow model type.");
         }
@@ -22,12 +24,6 @@ namespace TinyInstaller.Helpers
         {
             if (typeof(TViewModel) == typeof(UnknowErrorModel))
                 return new UnknowErrorModel(parameter as string);
-
-            if (typeof(TViewModel) == typeof(InstallReadyModel))
-                return new InstallReadyModel(parameter as IEnumerable<Package>);
-
-            if (typeof(TViewModel) == typeof(AutoInstallModel))
-                return new AutoInstallModel(parameter as IEnumerable<Package>);
             else
                 throw new Exception($"{typeof(TViewModel).Name} is unknow model type.");
         }

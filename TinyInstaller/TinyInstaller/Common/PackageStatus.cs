@@ -4,6 +4,7 @@
     {
         NotInstalled,
         HasError,
-        Success
+        Success,
+        AutoInstall
     }
 }

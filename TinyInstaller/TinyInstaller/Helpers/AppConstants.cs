@@ -42,6 +42,7 @@ namespace TinyInstaller.Helpers
 
         public string AppName => Assembly.GetExecutingAssembly().GetName().Name;
         public string AppVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public byte AutoInstallCountdown => 30;
         public string BaseDirectory => AppDomain.CurrentDomain.BaseDirectory;
         public string ConfigExample => configExample;
         public string ConfigFile => configFile;

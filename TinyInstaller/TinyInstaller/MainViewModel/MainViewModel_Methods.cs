@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using TinyInstaller.Common;
 using TinyInstaller.Poco;
@@ -10,10 +9,18 @@ namespace TinyInstaller.ViewModel
 {
     internal partial class MainViewModel
     {
-        private void ConfigIsAutoInstallMode(object sender, IEnumerable<Package> packages)
+        private async void ConfigIsAutoInstallMode(object sender, IEnumerable<Package> packages)
         {
+            Packages = SetPackagesAutoInstallStatus(packages);
+            WillInstalled = new System.Collections.ObjectModel.ObservableCollection<Package>(Packages);
+            AutoInstallCountdown = AppConstants.AutoInstallCountdown;
+            InstallationStatus = InstallationStatus.AutoInstallCountdown;
+            await RunAutoInstallCountdown();
             MainWindow_CanClose = false;
-            Packages = packages.Where(package => package.AutoInstall);
+            InstallationStatus = InstallationStatus.AutoInstallExecuted;
+            await InstallPackageAsync();
+            InstallationStatus = InstallationStatus.AutoInstallCompleted;
+            MainWindow_CanClose = true;
         }
 
         private void ConfigSuccessfulParsed(object sender, IEnumerable<Package> packages)
@@ -78,9 +85,31 @@ namespace TinyInstaller.ViewModel
             });
         }
 
-        private void SetModelFromConfig()
+        private async Task RunAutoInstallCountdown()
         {
-            Model = ConfigParser.Parse(ModelsBuilder, AppConstants.ConfigFile, AppConstants.PackagesFolder);
+            await Task.Run(() =>
+            {
+                while (AutoInstallCountdown > 1)
+                {
+                    AutoInstallCountdown--;
+                    Task.Delay(1000).Wait();
+                }
+            });
+        }
+
+        private async void SetModelFromConfig()
+        {
+            Model = await ConfigParser.ParseAsync(ModelsBuilder, AppConstants.ConfigFile, AppConstants.PackagesFolder);
+        }
+
+        private IEnumerable<Package> SetPackagesAutoInstallStatus(IEnumerable<Package> packages)
+        {
+            foreach (var package in packages)
+            {
+                package.Status = PackageStatus.AutoInstall;
+                package.IsChecked = true;
+                yield return package;
+            }
         }
 
         public void Initialize()

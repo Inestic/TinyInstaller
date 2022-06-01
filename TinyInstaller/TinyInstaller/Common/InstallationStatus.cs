@@ -4,6 +4,9 @@
     {
         Idle,
         Executed,
-        Completed
+        Completed,
+        AutoInstallCountdown,
+        AutoInstallExecuted,
+        AutoInstallCompleted,
     }
 }
