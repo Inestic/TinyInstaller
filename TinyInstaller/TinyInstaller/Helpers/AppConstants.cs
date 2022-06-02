@@ -37,15 +37,15 @@ namespace TinyInstaller.Helpers
         ]
       }";
 
-     private const string configFile = "PackagesConfig.json";
-     private const string packagesFolder = "Packages";
+        private const string configFile = "PackagesConfig.json";
+        private const string packagesFolder = "Packages";
 
-     public string AppName => Assembly.GetExecutingAssembly().GetName().Name;
-     public string AppVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
-     public byte AutoInstallCountdown => 30;
-     public string BaseDirectory => AppDomain.CurrentDomain.BaseDirectory;
-     public string ConfigExample => configExample;
-     public string ConfigFile => configFile;
-     public string PackagesFolder => packagesFolder;
+        public string AppName => Assembly.GetExecutingAssembly().GetName().Name;
+        public string AppVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        public byte AutoInstallCountdown => 30;
+        public string BaseDirectory => AppDomain.CurrentDomain.BaseDirectory;
+        public string ConfigExample => configExample;
+        public string ConfigFile => configFile;
+        public string PackagesFolder => packagesFolder;
     }
 }

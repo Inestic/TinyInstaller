@@ -60,8 +60,7 @@ namespace TinyInstaller.Helpers
 
                     if (IsAutoInstallMode(packages))
                     {
-                        var autoInstallPackages = packages.Where(package => package.AutoInstall);
-                        OnAutoInstall(autoInstallPackages);
+                        OnAutoInstall(packages.Where(package => package.AutoInstall));
                         return modelsBuilder.Build<AutoInstallModel>();
                     }
 

@@ -18,6 +18,7 @@
         <Style TargetType="{x:Type StackPanel}">
             <Setter Property="Grid.Column" Value="1" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="30, 0, 10, 0" />
         </Style>
     </UserControl.Resources>
     <UserControl.Template>
@@ -36,8 +37,7 @@
                     <uc:WarningIcon Grid.Column="0"
                                     Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                                     VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"
-                                    Margin="0, 0, 30, 0" />
+                                    HorizontalAlignment="Right" />
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Localization.ConfigNotValid.Warning}"
                                    Style="{DynamicResource RegularText}" />
@@ -45,8 +45,7 @@
                                    Style="{DynamicResource RegularText}"
                                    TextWrapping="Wrap" />
                         <TextBlock Text="{DynamicResource Localization.ConfigNotValid.CheckPackages}"
-                                   Style="{DynamicResource RegularText}"
-                                   TextWrapping="Wrap" />
+                                   Style="{DynamicResource RegularText}" />
                     </StackPanel>
                 </Grid>
             </Grid>

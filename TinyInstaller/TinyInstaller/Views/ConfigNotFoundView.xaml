@@ -42,12 +42,6 @@
                     <StackPanel>
                         <TextBlock Text="{DynamicResource Localization.ConfigNotFound.Warning}"
                                    Style="{DynamicResource RegularText}" />
-                        <TextBlock Text="{DynamicResource Localization.ConfigNotFound.About}"
-                                   Style="{DynamicResource RegularText}"
-                                   TextWrapping="Wrap" />
-                        <TextBlock Text="{DynamicResource Localization.ConfigNotFound.NotFound}"
-                                   Style="{DynamicResource RegularText}"
-                                   TextWrapping="Wrap" />
                         <TextBlock Text="{DynamicResource Localization.ConfigNotFound.CreateExample}"
                                    Style="{DynamicResource RegularText}"
                                    TextWrapping="Wrap" />

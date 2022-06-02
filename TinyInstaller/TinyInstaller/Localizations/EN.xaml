@@ -13,7 +13,7 @@
     <system:String x:Key="Localization.ConfigNotValid.Warning">The configuration file Packages Config contains invalid parameters.</system:String>
 
     <system:String x:Key="Localization.AutoInstall.Countdown">Installation will start in</system:String>
-    <system:String x:Key="Localization.HasErrors">, с ошибками</system:String>
+    <system:String x:Key="Localization.HasErrors">, with errors</system:String>
     <system:String x:Key="Localization.InQueue">, awaiting installation</system:String>
     <system:String x:Key="Localization.Install">Install</system:String>
     <system:String x:Key="Localization.Installed">Installed</system:String>
