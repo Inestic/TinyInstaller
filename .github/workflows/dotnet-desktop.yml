@@ -34,7 +34,7 @@ jobs:
       run: dotnet restore "$env:Solution_Path"
       
     - name: Publish
-      run: dotnet publish -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref }} -p:Version=${{ github.ref }}
+      run: dotnet publish "$env:Solution_Path" -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref }} -p:Version=${{ github.ref }}
       
     - name: Create config file
       run: . "$env:Script_Path\Create-ConfigFile.ps1"
