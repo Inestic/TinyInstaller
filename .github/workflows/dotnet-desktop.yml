@@ -20,13 +20,34 @@ jobs:
       with:
         fetch-depth: 0
 
-    # Install the .NET Core workload
     - name: Install .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.x.x
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.2
-
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Publish
+      run: dotnet publish -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref }} -p:Version=${{ github.ref }}
+      
+    - name: Create config file
+      run: . "$env:Script_Path\Create-ConfigFile.ps1"
+      
+    - name: Copy packages to repo
+      run: . "$env:Script_Path\Copy-RepoPackages.ps1"
+      
+    - name: Create zip arhive
+      run: . "$env:Script_Path\Compress-PublishFolder.ps1"
+      
+    - name: Release
+      uses: svenstaro/upload-release-action@master
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: TinyInstaller.zip
+        tag: ${{ github.ref }}
+        overwrite: true
+        file_glob: true
