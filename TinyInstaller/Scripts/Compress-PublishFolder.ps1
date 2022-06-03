@@ -22,7 +22,6 @@
 
 	Copyright (c) 2021 Inestic
 #>
-Clear-Host
 $AppName = "TinyInstaller"
 $RepoRootDir = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), $AppName
 $ReleaseDir = "{0}\bin\Release\net6.0-windows7.0\" -f $RepoRootDir

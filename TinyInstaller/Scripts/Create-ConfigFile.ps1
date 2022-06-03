@@ -22,7 +22,6 @@
 
 	Copyright (c) 2021 Inestic
 #>
-Clear-Host
 $ConfigTemplate = @"
 {
           "Packages": [
