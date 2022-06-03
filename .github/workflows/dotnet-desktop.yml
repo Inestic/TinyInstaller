@@ -36,13 +36,13 @@ jobs:
       run: dotnet publish "$env:Solution_Path" -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref_name }} -p:Version=${{ github.ref_name }}
       
     - name: Create config file
-      run: . "$env:Script_Path\Create-ConfigFile.ps1"
+      run: ."$env:Script_Path\Create-ConfigFile.ps1"
       
     - name: Copy packages to repo
-      run: . "$env:Script_Path\Copy-RepoPackages.ps1"
+      run: ."$env:Script_Path\Copy-RepoPackages.ps1"
       
     - name: Create zip arhive
-      run: . "$env:Script_Path\Compress-PublishFolder.ps1"
+      run: ."$env:Script_Path\Compress-PublishFolder.ps1"
       
     - name: Release
       uses: svenstaro/upload-release-action@master
