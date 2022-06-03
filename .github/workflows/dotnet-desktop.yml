@@ -37,13 +37,15 @@ jobs:
       
     - name: Create config file
       run: |
-            dir "$env:Scripts_Path\"
+        "$env:Scripts_Path\Create-ConfigFile.ps1"
       
     - name: Copy packages to repo
-      run: ."$env:Script_Path\Copy-RepoPackages.ps1"
+      run: |
+        ."$env:Scripts_Path\Copy-RepoPackages.ps1"
       
     - name: Create zip arhive
-      run: ."$env:Script_Path\Compress-PublishFolder.ps1"
+      run: |
+        ."$env:Scripts_Path\Compress-PublishFolder.ps1"
       
     - name: Release
       uses: svenstaro/upload-release-action@master
