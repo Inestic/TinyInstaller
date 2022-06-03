@@ -11,8 +11,10 @@ jobs:
       matrix:
         configuration: [Release]
 
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on 
+    runs-on: windows-latest  # For a list of available runner types, refer to https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on 
+    env:
+      Script_Path: TinyInstaller\Scripts
+      Solution_Path: TinyInstaller\TinyInstaller.sln
 
     steps:
     - name: Checkout
@@ -29,7 +31,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
       
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore "$env:Solution_Path"
       
     - name: Publish
       run: dotnet publish -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref }} -p:Version=${{ github.ref }}
