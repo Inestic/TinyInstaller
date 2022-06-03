@@ -37,7 +37,7 @@ jobs:
       
     - name: Create config file
       run: |
-        "$env:Scripts_Path\Create-ConfigFile.ps1"
+        ."$env:Scripts_Path\Create-ConfigFile.ps1"
       
     - name: Copy packages to repo
       run: |
