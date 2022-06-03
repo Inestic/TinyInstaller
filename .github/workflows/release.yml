@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-    if: github.event.base_ref == 'refs/heads/master'
     runs-on: windows-2016
     env:
       Script_Path: TinyInstaller\Scripts
