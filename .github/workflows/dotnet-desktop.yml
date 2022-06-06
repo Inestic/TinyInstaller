@@ -19,27 +19,27 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
       with:
         fetch-depth: 0
 
     - name: Install .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@main
       with:
         dotnet-version: 6.x.x
 
     - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@master
       
     - name: Restore dependencies
       run: dotnet restore "$env:Solution_Path"
       
     - name: Publish
       run: dotnet publish "$env:Solution_Path" -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref_name }} -p:Version=${{ github.ref_name }}
-      
+
     - name: Check dir
       run: Get-ChildItem -Path "TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0" -Recurse
-      
+
     - name: Create config file
       run: ."$env:Scripts_Path\Create-ConfigFile.ps1"
       
@@ -48,13 +48,10 @@ jobs:
       
     - name: Create zip arhive
       run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"      
-      
-    - name: Check dir
-      run: Get-ChildItem -Path "TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0" -Recurse
 
     - name: Create release
       id: create_release
-      uses: actions/create-release@v1
+      uses: actions/create-release@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -64,7 +61,7 @@ jobs:
         prerelease: false
 
     - name: Update release asset
-      uses: actions/upload-release-asset@v1
+      uses: actions/upload-release-asset@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
