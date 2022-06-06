@@ -15,7 +15,7 @@ jobs:
     env:
       Scripts_Path: TinyInstaller\Scripts
       Solution_Path: TinyInstaller\TinyInstaller.sln
-      Release_Zip: TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0\TinyInstaller.zip
+      Release_Zip: TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0\win-x64\TinyInstaller.zip
 
     steps:
     - name: Checkout
@@ -34,7 +34,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "$env:Solution_Path"
       
-    - name: Publish release
+    - name: Build release
       run: dotnet publish "$env:Solution_Path" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:AssemblyVersion=${{ github.ref_name }} -p:Version=${{ github.ref_name }}
 
     - name: Create config file
@@ -55,12 +55,12 @@ jobs:
         tag_name: ${{ github.ref}}(${{ matrix.targetplatform }})
         release_name: ${{ github.ref}}
   
-    - name: Update release asset
-      uses: actions/upload-release-asset@main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish release assets
+      uses: svenstaro/upload-release-action@master
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0\TinyInstaller.zip
-        asset_name: TinyInstaller.zip
-        asset_content_type: application/zip
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: "$env:Release_Zip"
+        tag: ${{ github.ref }}
+        overwrite: true
+        file_glob: true
+        prerelease: true
