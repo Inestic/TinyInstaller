@@ -1,6 +1,6 @@
 <#
 	.SYNOPSIS
-	Copy items from "Package" to "Publish" folder
+	Copy items from "Packages" to "Publish" folder
 
 	.INPUTS
 	None
@@ -23,7 +23,7 @@
 	Copyright (c) 2021 Inestic
 #>
 $RepoRootDir = "{0}\TinyInstaller" -f (Split-Path -Path $PSScriptRoot -Parent)
-$PackagesDir = "{0}\Package" -f $RepoRootDir
+$PackagesDir = "{0}\Packages" -f $RepoRootDir
 $PublishDir = "{0}\bin\Release\net6.0-windows7.0\publish" -f $RepoRootDir
 
 if (Test-Path -Path $PackagesDir)
