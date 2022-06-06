@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         configuration: [Release]
+        targetPlatform: [x64]
 
     runs-on: windows-latest  # For a list of available runner types, refer to https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on 
     env:
@@ -51,8 +52,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref}}
-        release_name:  ${{ github.ref }}
+        tag_name: ${{ github.ref}}-${{ matrix.targetplatform }}
+        release_name: ${{ github.ref}}-${{ matrix.targetplatform }}
         draft: false
         prerelease: false
 
