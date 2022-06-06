@@ -46,9 +46,21 @@ jobs:
     - name: Create zip arhive
       run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"
 
-    - name: Publish release assets
-      uses: svenstaro/upload-release-action@master
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: TinyInstaller.zip
-        tag: ${{ github.ref }}
+        tag_name: ${{ github.ref}}
+        release_name: ${{ github.ref}}
+  
+    - name: Update release asset
+      uses: actions/upload-release-asset@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: $env:Release_Zip
+        asset_name: TinyInstaller.zip
+        asset_content_type: application/zip
