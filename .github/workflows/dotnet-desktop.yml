@@ -14,7 +14,7 @@ jobs:
     env:
       Scripts_Path: TinyInstaller\Scripts
       Solution_Path: TinyInstaller\TinyInstaller.sln
-      Release_Zip: TinyInstaller\bin\Release\net6.0-windows7.0\publish\TinyInstaller.zip
+      Release_Zip: TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0\publish\TinyInstaller.zip
 
     steps:
     - name: Checkout
