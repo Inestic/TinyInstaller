@@ -45,6 +45,11 @@ jobs:
     - name: Create zip arhive
       run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"
       
+    - name: Create zip arhive
+      run: |
+        $file = Test-Path -Path "$env:Release_Zip" -Verbose
+        Write-Host "Release zip exist: $file"
+      
     - name: Release
       uses: svenstaro/upload-release-action@master
       with:
