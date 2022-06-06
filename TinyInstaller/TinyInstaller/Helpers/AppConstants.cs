@@ -11,7 +11,7 @@ namespace TinyInstaller.Helpers
               ""AutoInstall"": false,
               ""Title"": ""7-Zip"",
               ""Description"": ""7-Zip is a free and open-source file archiver"",
-              ""ExecutableFile"": ""7 Zip\\7z2107-x64.msi"",
+              ""ExecutableFile"": ""7-Zip\\7z2107-x64.msi"",
               ""ExecutableArgs"": ""/qb"",
               ""ExitCode"": 0,
               ""Version"": ""21.07""
