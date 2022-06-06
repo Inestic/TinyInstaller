@@ -43,16 +43,11 @@ jobs:
       run: ."$env:Scripts_Path\Copy-RepoPackages.ps1"
       
     - name: Create zip arhive
-      run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"
-      
-    - name: Create zip arhive
-      run: |
-        $file = Test-Path -Path "$env:Release_Zip" -Verbose
-        Write-Host "Release zip exist: $file"
-      
+      run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"      
+
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: "$env:Release_Zip"
+        files: TinyInstaller.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
