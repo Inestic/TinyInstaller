@@ -51,10 +51,8 @@ jobs:
         Write-Host "Release zip exist: $file"
       
     - name: Release
-      uses: svenstaro/upload-release-action@master
+      uses: actions/upload-release-asset@v1
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: "$env:Release_Zip"
-        tag: ${{ github.ref }}
-        overwrite: true
-        file_glob: true
+        asset_path: "$env:Release_Zip"
+        asset_name: TinyInstaller.zip
+        asset_content_type: application/zip
