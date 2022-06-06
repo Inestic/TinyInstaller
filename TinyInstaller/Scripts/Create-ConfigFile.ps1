@@ -56,7 +56,7 @@ $ConfigTemplate = @"
 }
 "@
 $RepoRootDir = "{0}\TinyInstaller" -f (Split-Path -Path $PSScriptRoot -Parent)
-$PublishDir = "{0}\bin\Release\net6.0-windows7.0\publish" -f $RepoRootDir
+$PublishDir = "{0}\bin\Release\net6.0-windows7.0\win-x64\publish" -f $RepoRootDir
 $PackagesConfig = "{0}\{1}" -f $PublishDir, "PackagesConfig.json"
 
 if (Test-Path -Path $PackagesConfig)

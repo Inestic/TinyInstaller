@@ -24,7 +24,7 @@
 #>
 $AppName = "TinyInstaller"
 $RepoRootDir = "{0}\{1}" -f (Split-Path -Path $PSScriptRoot -Parent), $AppName
-$ReleaseDir = "{0}\bin\Release\net6.0-windows7.0\" -f $RepoRootDir
+$ReleaseDir = "{0}\bin\Release\net6.0-windows7.0\win-x64\publish\" -f $RepoRootDir
 $PublishDir = "{0}{1}" -f $ReleaseDir, "publish"
 $AppReleaseDir = "{0}\{1}" -f $ReleaseDir, $AppName
 $Zip = "{0}{1}" -f $ReleaseDir, $AppName
