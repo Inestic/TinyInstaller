@@ -54,12 +54,7 @@ jobs:
       uses: actions/create-release@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref}}-${{ matrix.targetplatform }}
-        release_name: ${{ github.ref}}-${{ matrix.targetplatform }}
-        draft: false
-        prerelease: false
-
+  
     - name: Update release asset
       uses: actions/upload-release-asset@main
       env:
