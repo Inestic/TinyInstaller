@@ -37,6 +37,9 @@ jobs:
     - name: Publish
       run: dotnet publish "$env:Solution_Path" -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref_name }} -p:Version=${{ github.ref_name }}
       
+    - name: Check dir
+      run: Get-ChildItem -Path "TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0" -Recurse
+      
     - name: Create config file
       run: ."$env:Scripts_Path\Create-ConfigFile.ps1"
       
@@ -45,6 +48,9 @@ jobs:
       
     - name: Create zip arhive
       run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"      
+      
+    - name: Check dir
+      run: Get-ChildItem -Path "TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0" -Recurse
 
     - name: Create release
       id: create_release
