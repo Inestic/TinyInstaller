@@ -1,4 +1,4 @@
-name: .NET Core Desktop
+name: .NET Desktop
 
 on:
   push:
