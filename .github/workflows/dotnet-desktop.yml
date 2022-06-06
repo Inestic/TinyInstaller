@@ -48,7 +48,7 @@ jobs:
       uses: svenstaro/upload-release-action@master
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: TinyInstaller.zip
+        file: TinyInstaller\bin\Release\net6.0-windows7.0\publish\TinyInstaller.zip
         tag: ${{ github.ref }}
         overwrite: true
         file_glob: true
