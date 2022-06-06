@@ -34,11 +34,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore "$env:Solution_Path"
       
-    - name: Publish
-      run: dotnet publish "$env:Solution_Path" -c Release -p:PublishProfile=PublishProfile -p:AssemblyVersion=${{ github.ref_name }} -p:Version=${{ github.ref_name }}
-
-    - name: Check dir
-      run: Get-ChildItem -Path "TinyInstaller\TinyInstaller\bin\Release\net6.0-windows7.0" -Recurse
+    - name: Publish release
+      run: dotnet publish "$env:Solution_Path" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:AssemblyVersion=${{ github.ref_name }} -p:Version=${{ github.ref_name }}
 
     - name: Create config file
       run: ."$env:Scripts_Path\Create-ConfigFile.ps1"
@@ -54,6 +51,9 @@ jobs:
       uses: actions/create-release@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref}}(${{ matrix.targetplatform }})
+        release_name: ${{ github.ref}}
   
     - name: Update release asset
       uses: actions/upload-release-asset@main
