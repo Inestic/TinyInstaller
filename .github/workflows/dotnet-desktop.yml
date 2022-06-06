@@ -1,4 +1,4 @@
-name: .NET Desktop
+name: NET Desktop
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
         configuration: [Release]
         targetPlatform: [x64]
 
-    runs-on: windows-latest  # For a list of available runner types, refer to https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on 
+    runs-on: windows-latest
     env:
       Scripts_Path: TinyInstaller\Scripts
       Solution_Path: TinyInstaller\TinyInstaller.sln
@@ -44,23 +44,11 @@ jobs:
       run: ."$env:Scripts_Path\Copy-RepoPackages.ps1"
       
     - name: Create zip arhive
-      run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"      
+      run: ."$env:Scripts_Path\Compress-PublishFolder.ps1"
 
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref}}(${{ matrix.targetplatform }})
-        release_name: ${{ github.ref}}
-  
     - name: Publish release assets
       uses: svenstaro/upload-release-action@master
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: "$env:Release_Zip"
+        file: TinyInstaller.zip
         tag: ${{ github.ref }}
-        overwrite: true
-        file_glob: true
-        prerelease: true
