@@ -35,7 +35,7 @@ jobs:
       run: dotnet restore "$env:Solution_Path"
       
     - name: Build release
-      run: dotnet publish "$env:Solution_Path" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:AssemblyVersion=${{ github.ref_name }} -p:Version=${{ github.ref_name }}
+      run: dotnet publish "$env:Solution_Path" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:IncludeNativeLibrariesForSelfExtract=true -p:Version=${{ github.ref_name }}
 
     - name: Create config file
       run: ."$env:Scripts_Path\Create-ConfigFile.ps1"
