@@ -49,6 +49,8 @@ jobs:
       run: |
         $file = Test-Path -Path "$env:Release_Zip" -Verbose
         Write-Host "Release zip exist: $file"
+        Write-Host "Dir GITHUB_WORKSPACE"        
+        Get-ChildItem -Path "$env:GITHUB_WORKSPACE" -Recurse -Force
       
     - name: Release
       uses: svenstaro/upload-release-action@master
