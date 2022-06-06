@@ -51,8 +51,8 @@ jobs:
         Write-Host "Release zip exist: $file"
       
     - name: Release
-      uses: actions/upload-release-asset@v1
+      uses: softprops/action-gh-release@v1
       with:
-        asset_path: "$env:Release_Zip"
-        asset_name: TinyInstaller.zip
-        asset_content_type: application/zip
+        files: "$env:Release_Zip"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
