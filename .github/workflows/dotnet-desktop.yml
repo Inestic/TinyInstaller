@@ -14,6 +14,7 @@ jobs:
     env:
       Scripts_Path: TinyInstaller\Scripts
       Solution_Path: TinyInstaller\TinyInstaller.sln
+      Release_Zip: TinyInstaller\bin\Release\net6.0-windows7.0\publish\TinyInstaller.zip
 
     steps:
     - name: Checkout
@@ -48,7 +49,7 @@ jobs:
       uses: svenstaro/upload-release-action@master
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: TinyInstaller\bin\Release\net6.0-windows7.0\publish\TinyInstaller.zip
+        file: "$env:Release_Zip"
         tag: ${{ github.ref }}
         overwrite: true
         file_glob: true
