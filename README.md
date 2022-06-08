@@ -67,7 +67,7 @@ TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from
 | 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|
 
 ## Inspired By 🚀
-`TinyInstaller` was developed simplify the work and save IT Service Desk's time when installing apps. Installing the necessary programs now takes minutes, not hours.
+`TinyInstaller` was developed to simplify the work and save IT Service Desk's time when installing apps. Installing the necessary programs now takes minutes, not hours.
 
 ## Screenshots
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-1.png)
