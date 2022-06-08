@@ -1,4 +1,4 @@
-# TinyInstaller – WPF based GUI app for silent installing your collection of apps. One-click `Install` instead of endless `Next`, `Next`, `Next`.
+# TinyInstaller
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Windows_10_Logo.svg" height="30px"/> &emsp; 
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Windows_11_logo.svg" height="30px"/>
 
@@ -17,16 +17,18 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ***
 
 <p align="center">
-  &bull;
-	<a href="#features">Features</a>
+  	&bull;
+	<a href="#about">About</a>
 	&bull;
-	<a href="#installation">Installation</a>
+	<a href="#automatic-mode">Automatic Mode</a>
 	&bull;
-  <a href="#system-requirements">System Requirements</a>
+  	<a href="#installation">Installation</a>
 	&bull;
-	<a href="#technologies">Technologies</a>
+	<a href="#frameworks">Frameworks</a>
 	&bull;
-  <a href="#idea">Idea</a>
+	<a href="#supported-windows-versions">Supported Windows Versions</a>
+	&bull;
+  	<a href="#inspired-by-">Inspired By</a>
 	&bull;
 	<a href="#screenshots">Screenshots</a>
 	&bull;
@@ -34,17 +36,22 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 
 ***
 
-## Features
+## About
+`TinyInstaller` — is a Windows GUI app for automatic and manual installation of your apps collection. Just one `Install` click instead of endless `Next`, `Next`, `Next` clicks.
 
+## Automatic Mode
+Set `AutoInstall = $true` in the `PackagesConfig.json` file and at the next start `TinyInstaller` will install that app automatically.
 
 ## Installation
+TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from the archive and run `TinyInstaller.exe`
 
-
-
-## System Requirements
+## Frameworks
+* .NET 7
+* WPF
+* Pure Dependency Injection
+* Compiled via [GitHub Actions](https://github.com/Inestic/TinyInstaller/actions)
 
 ### Supported Windows versions
-
 ### Windows 11
 
 |Version|   Build   |      Editions     |
@@ -59,11 +66,8 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 | 21H1  | May 2021 Update     | 19043.1151 | x64 |Home/Pro/Enterprise|
 | 20H2  | October 2020 Update | 19042.1151 | x64 |Home/Pro/Enterprise|
 
-## Technologies
-
-
-## Idea
-
+## Inspired By 🚀
+`TinyInstaller` was developed simplify the work and save IT Service Desk's time when installing apps. Installing the necessary programs now takes minutes, not hours.
 
 ## Screenshots
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-1.png)
