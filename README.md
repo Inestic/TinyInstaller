@@ -29,6 +29,8 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 	&bull;
 	<a href="#screenshots">Screenshots</a>
 	&bull;
+	<a href="#media">Media</a>
+	&bull;
 </p>
 
 ***
@@ -71,3 +73,6 @@ TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-2.png)
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-4.png)
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-3.png)
+
+## Media
+* [SoftDownload.com.br](https://www.softdownload.com.br/instale-programas-automaticamente-tinyinstaller.html)
