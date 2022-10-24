@@ -14,7 +14,6 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 ***
 
 <p align="center">
-  	&bull;
 	<a href="#about">About</a>
 	&bull;
 	<a href="#automatic-mode">Automatic Mode</a>
@@ -30,7 +29,6 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 	<a href="#screenshots">Screenshots</a>
 	&bull;
 	<a href="#media">Media</a>
-	&bull;
 </p>
 
 ***
@@ -76,3 +74,4 @@ TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from
 
 ## Media
 * [SoftDownload.com.br](https://www.softdownload.com.br/instale-programas-automaticamente-tinyinstaller.html)
+* [SoftPedia.com](https://www.softpedia.com/get/System/System-Miscellaneous/TinyInstaller.shtml)
