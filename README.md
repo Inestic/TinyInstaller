@@ -5,8 +5,7 @@
 <p align="left">  
   <a href="https://github.com/Inestic/TinyInstaller/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Inestic/TinyInstaller/NET%20Desktop?&label=GitHub Actions&color=blue&style=flat-square"></a>
   <a href="https://github.com/Inestic/TinyInstaller/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Inestic/TinyInstaller?&style=flat-square"></a>
-  <a href="https://github.com/Inestic/TinyInstaller/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Inestic/TinyInstaller/total?color=blue&label=downloads%20%28since%20June%202022%29&style=flat-square"></a> 
- <a href="https://github.com/Inestic/TinyInstaller/commits/main"><img src="https://img.shields.io/github/commit-activity/m/Inestic/TinyInstaller?label=Commits&style=flat-square"></a> 
+  <a href="https://github.com/Inestic/TinyInstaller/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Inestic/TinyInstaller/total?color=blue&label=downloads%20%28since%20June%202022%29&style=flat-square"></a>
 </p>
 
 Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" height="11px"/>
