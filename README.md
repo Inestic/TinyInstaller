@@ -69,6 +69,7 @@ TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from
 ## Screenshots
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-1.png)
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-2.png)
+![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-3.gif)
 
 ## Media
 * [SoftPedia.com](https://www.softpedia.com/get/System/System-Miscellaneous/TinyInstaller.shtml)
