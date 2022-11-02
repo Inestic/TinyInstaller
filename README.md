@@ -37,7 +37,7 @@ Available in: <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag
 `TinyInstaller` — is a Windows GUI app for automatic and manual installation of your apps collection. Just one `Install` click instead of endless `Next`, `Next`, `Next` clicks.
 
 ## Automatic Mode
-Set `AutoInstall = $true` in the `PackagesConfig.json` file and at the next start `TinyInstaller` will install that app automatically.
+Set `AutoInstall = true` in the `PackagesConfig.json` file and at the next start `TinyInstaller` will install that app automatically.
 
 ## Installation
 TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from the archive and run `TinyInstaller.exe`
