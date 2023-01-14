@@ -74,3 +74,4 @@ TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from
 ## Media
 * [Softpedia.com](https://www.softpedia.com/get/System/System-Miscellaneous/TinyInstaller.shtml)
 * [Softdownload.com.br](https://www.softdownload.com.br/instale-programas-automaticamente-tinyinstaller.html)
+* [Slunecnice.cz](http://slunecnice.cz/sw/tinyinstaller)
