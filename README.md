@@ -8,9 +8,6 @@
   <a href="https://github.com/Inestic/TinyInstaller/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Inestic/TinyInstaller/total?color=blue&label=downloads%20%28since%20June%202022%29&style=flat-square"></a>
 </p>
 
-Available in: <img src="https://camo.githubusercontent.com/410a775ae4f393939cf548b16aef1b212d3956a5b402167f44ae495a2a789c54/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f612f61352f466c61675f6f665f7468655f556e697465645f4b696e67646f6d5f28312d32292e737667" height="15px"/>
-<img src="https://camo.githubusercontent.com/8c0c2201d8366099c738f23223436cbfbb48b5a6ce259bd1547a0cd5a1eebad4/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f662f66332f466c61675f6f665f5275737369612e737667" height="15px"/>
-
 ***
 
 <p align="center">
