@@ -63,11 +63,10 @@ TinyInstaller is fully portable app. Just expand the `TinyInstaller` folder from
 `TinyInstaller` was developed to simplify the work and save IT Service Desk's time when installing apps. Installing the necessary programs now takes minutes, not hours.
 
 ## Screenshots
-![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-1.png)
-![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-2.png)
 ![Image](https://raw.githubusercontent.com/Inestic/scrn/main/screenshots/tiny-installer-3.gif)
 
 ## Media
 * [Softpedia.com](https://www.softpedia.com/get/System/System-Miscellaneous/TinyInstaller.shtml)
 * [Softdownload.com.br](https://www.softdownload.com.br/instale-programas-automaticamente-tinyinstaller.html)
-* [Slunecnice.cz](http://slunecnice.cz/sw/tinyinstaller)
+* [Slunecnice.cz](https://slunecnice.cz/sw/tinyinstaller)
+* [Stiahnut.sk](https://stiahnut.sk/systemove-nastroje/tinyinstaller)
