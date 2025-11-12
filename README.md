@@ -3,7 +3,10 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Windows_11_logo.svg" height="30px"/>
 
 <p align="left">  
-  <a href="https://github.com/Inestic/TinyInstaller/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Inestic/TinyInstaller/total?color=blue&label=downloads%20%28since%20June%202022%29&style=flat-square"></a>
+	<img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Inestic/TinyInstaller/total?color=blue&label=downloads%20%28since%20June%202022%29&style=flat-square"/>
+	<img alt="GitHub stars" src="https://img.shields.io/github/stars/Inestic/TinyInstaller?style=flat-square"/>
+	
+
 </p>
 
 ***
